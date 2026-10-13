@@ -1,147 +1,143 @@
-/* Plain light theme for the October 14 deck. Font sizes in pt; reveal.js
- * scales the 1280x720 slide to the screen. */
+/* Dark theme carried over from the ACH 2026 deck (cali-narst palette):
+ * Newsreader headings, IBM Plex Sans text, a presenter accent on each
+ * section. Font sizes in pt; reveal.js scales the 1280x720 slide. */
+
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap');
 
 :root {
-  --font: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --base-font-size: 32px;
-  --text-size: 26pt;
-  --text-size-side: 21pt;
-  --h1-size: 46pt;
-  --h2-size: 34pt;
-  --text-color: #111;
-  --muted-color: #555;
-  --link-color: #0b57d0;
-  --rule-color: #bbb;
-  --slide-padding: 64px;
-  --slide-padding-top: 48px;
+  --bg: #0f1319;
+  --fg: rgba(232, 238, 245, 0.94);
+  --body: rgba(218, 225, 232, 0.84);
+  --muted: rgba(196, 206, 220, 0.72);
+  --stroke: rgba(180, 200, 220, 0.13);
+  --card: rgba(180, 200, 220, 0.03);
+  --accent: #8aa8c7;
+  --font-display: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --font-body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", Menlo, monospace;
 }
+
+/* Presenter accents, as in the ACH deck. */
+.reveal section.stefano { --accent: #c9a6cf; }
+.reveal section.steve { --accent: #8fd5c3; }
+.reveal section.zach { --accent: #e8c89f; }
+
+.reveal-viewport { background: var(--bg); }
 
 .reveal {
-  font-family: var(--font);
-  font-size: var(--base-font-size);
-  color: var(--text-color);
+  font-family: var(--font-body);
+  font-size: 32px;
+  color: var(--fg);
+  -webkit-font-smoothing: antialiased;
 }
-
-.reveal-viewport { background: #fff; }
 
 .reveal strong, .reveal b { font-weight: 600; }
+.reveal a { color: var(--accent); }
 
 .reveal h1, .reveal h2 {
-  font-family: var(--font);
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
   text-transform: none;
-  letter-spacing: 0;
-  line-height: 1.15;
-  color: var(--text-color);
+  color: var(--fg);
   margin: 0;
 }
-.reveal h1 { font-size: var(--h1-size); }
-.reveal h2 { font-size: var(--h2-size); }
+.reveal h1 { font-size: 50pt; }
+.reveal h2 { font-size: 34pt; }
 
 .reveal p, .reveal li {
-  font-size: var(--text-size);
-  line-height: 1.4;
-  color: var(--text-color);
+  font-size: 23pt;
+  line-height: 1.42;
+  color: var(--body);
 }
 
-.reveal a { color: var(--link-color); }
-
-.reveal ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
+/* Arrow bullets in the presenter's accent. */
+.reveal ul { list-style: none; margin: 0; padding: 0; }
 .reveal ul li {
   position: relative;
-  padding-left: 1.1em;
-  margin-bottom: 0.55em;
+  padding-left: 1.6em;
+  margin-bottom: 0.6em;
 }
+.reveal ul li:last-child { margin-bottom: 0; }
 .reveal ul li::before {
-  content: "";
+  content: "\2192";
   position: absolute;
-  left: 0.15em;
-  top: 0.6em;
-  width: 0.28em;
-  height: 0.28em;
-  border-radius: 50%;
-  background: var(--text-color);
+  left: 0;
+  top: 0;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  color: var(--accent);
 }
 
-/* Slide frame: title at the top, content fills the rest. */
+/* Slide frame. */
 .reveal .slides section {
   height: 100%;
   display: flex !important;
   flex-direction: column !important;
-  padding: var(--slide-padding-top) var(--slide-padding) 40px !important;
+  padding: 40px 56px 48px !important;
   box-sizing: border-box;
   text-align: left;
 }
 
-.reveal .slides section > .content {
+/* Text slides and openers: a dark card with an accent edge. */
+.reveal .card {
   flex: 1;
   min-height: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-top: 24px;
+  gap: 34px;
+  padding: 44px 56px;
+  border-radius: 16px;
+  border: 1px solid var(--stroke);
+  background: var(--card);
+  box-shadow: inset 3px 0 0 0 var(--accent);
 }
+.reveal .card h2 { font-size: 38pt; }
 
-/* Two columns: cue bullets on the left, picture on the right. */
+.reveal section.opener .card { gap: 18px; }
+.reveal section.opener h1 { margin-bottom: 14px; }
+.reveal section.opener p { font-size: 22pt; margin: 0; color: var(--muted); }
+.reveal section.opener p.name { color: var(--accent); font-weight: 500; }
+
+/* Picture slides: title on top, framed picture below or beside. */
+.reveal .figure {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 22px;
+}
 .reveal .side {
   flex: 1;
   min-height: 0;
   display: grid;
   grid-template-columns: 1fr 1.75fr;
-  gap: 40px;
+  gap: 44px;
   align-items: center;
-  padding-top: 24px;
+  padding-top: 22px;
 }
-.reveal .side li { font-size: var(--text-size-side); }
+.reveal .side li { font-size: 19pt; }
 
-/* Pictures: fit inside their box, never crop. */
-.reveal .shot {
-  width: 100%;
-  height: 100%;
-  min-height: 0;
-  object-fit: contain;
-  margin: 0;
-}
-.reveal .figure {
-  flex: 1;
-  min-height: 0;
-  padding-top: 20px;
-}
-.reveal .figure .r-stack,
-.reveal .side .r-stack {
-  width: 100%;
-  height: 100%;
-}
-.reveal .side .r-stack { height: 520px; }
-.reveal .figure .r-stack img,
-.reveal .side .r-stack img {
+.reveal .shot,
+.reveal .r-stack img {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+  margin: 0;
+  border-radius: 10px;
+  border: 1px solid var(--stroke);
+  box-shadow: 0 20px 54px rgba(0, 0, 0, 0.45);
 }
-
-/* Title and section openers. */
-.reveal .slides section.opener {
-  justify-content: center !important;
-}
-.reveal .slides section.opener h1 { margin-bottom: 0.5em; }
-.reveal .slides section.opener p {
-  font-size: 22pt;
-  color: var(--muted-color);
-  margin: 0.2em 0;
-}
+.reveal .figure .r-stack,
+.reveal .side .r-stack { width: 100%; height: 100%; }
+.reveal .figure .shot { max-height: 540px; }
+.reveal .side .r-stack { height: 520px; }
 
 /* Gateway diagram. */
-.reveal .gw {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 10px;
-}
+.reveal .gw { display: flex; flex-direction: column; gap: 10px; }
 .reveal .gw-row {
   display: grid;
   grid-auto-columns: 1fr;
@@ -149,24 +145,44 @@
   gap: 12px;
 }
 .reveal .gw-box {
-  border: 1.5px solid var(--text-color);
+  border: 1px solid rgba(180, 200, 220, 0.28);
+  border-radius: 10px;
+  background: var(--card);
   padding: 12px 14px;
   text-align: center;
 }
-.reveal .gw-box p { font-size: 15pt; line-height: 1.3; margin: 0; }
-.reveal .gw-box p + p { color: var(--muted-color); font-size: 13pt; }
-.reveal .gw-core { border-width: 3px; }
-.reveal .gw-arrow { font-size: 22pt; text-align: center; margin: 0; color: var(--muted-color); }
-
-.reveal .controls { color: var(--muted-color); }
-.reveal .progress { color: var(--text-color); }
-.reveal .slide-number {
-  background: transparent;
-  color: var(--muted-color);
-  font-family: var(--font);
-  font-size: 12pt;
+.reveal .gw-box p { font-size: 15pt; line-height: 1.3; margin: 0; color: var(--fg); }
+.reveal .gw-box p + p { color: var(--muted); font-size: 13pt; }
+.reveal .gw-core { border: 2px solid var(--accent); }
+.reveal .gw-arrow {
+  font-family: var(--font-mono);
+  font-size: 20pt;
+  text-align: center;
+  margin: 0;
+  color: var(--accent);
 }
 
-/* Slide number bottom left, clear of the arrows. */
-.reveal .slide-number { left: 16px; right: auto; bottom: 12px; }
+/* CAIL logo, top right of every slide. */
+.reveal .logo {
+  position: absolute;
+  top: 22px;
+  right: 28px;
+  height: 26px;
+  z-index: 10;
+  opacity: 0.9;
+}
+
+.reveal .controls { color: var(--muted); }
+.reveal .progress { color: #8fd5c3; }
+.reveal .slide-number {
+  left: 16px;
+  right: auto;
+  bottom: 12px;
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 11pt;
+}
 .reveal .slide-number a { text-decoration: none; color: inherit; }
+
+.reveal h1, .reveal h2, .reveal section.opener p { text-wrap: balance; }

@@ -3,72 +3,114 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0f1319">
   <title>CUNY AI Lab, October 14, 2026</title>
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
-  <link rel="stylesheet" href="styles.css?v=20261013b">
+  <link rel="stylesheet" href="styles.css?v=20261013d">
 </head>
 <body>
   <div class="reveal">
+    <img class="logo" src="images/cail-logo-white.png" alt="CUNY AI Lab">
     <div class="slides">
 
       <section id="title" class="opener">
-        <h1>CUNY AI Lab</h1>
-        <p>Luke Waltzer, Matthew K. Gold, Stefano Morello, Stephen Zweibel and Zach Muhlbauer</p>
-        <p>CUNY Graduate Center, October 14, 2026</p>
+        <div class="card">
+          <h1>CUNY AI Lab</h1>
+          <p>Luke&nbsp;Waltzer, Matthew&nbsp;K.&nbsp;Gold, Stefano&nbsp;Morello, Stephen&nbsp;Zweibel and Zach&nbsp;Muhlbauer</p>
+          <p>CUNY Graduate Center, October 14, 2026</p>
+        </div>
         <aside class="notes">Luke and Matt open with context, without slides. About 5 to 7 minutes.</aside>
       </section>
 
       <!-- Stefano Morello -->
 
-      <section id="stefano-opener" class="opener">
-        <h1>Infrastructure Decisions and Procurement</h1>
-        <p>Stefano Morello</p>
-        <p>American Social History Project / Center for Media and Learning</p>
+      <section id="stefano-opener" class="opener stefano">
+        <div class="card">
+          <h1>Infrastructure Decisions</h1>
+          <p class="name">Stefano Morello</p>
+          <p>American Social History Project / Center for Media and Learning</p>
+        </div>
       </section>
 
-      <section id="stefano-requests">
-        <h2>Handling Requests</h2>
-        <div class="content">
+      <section id="stefano-commitments" class="stefano">
+        <div class="card">
+          <h2>Our Commitments</h2>
+          <ul>
+            <li>We use only providers that don&rsquo;t keep or train on what people send</li>
+            <li>We publish each model&rsquo;s license, abilities and limits</li>
+            <li>Faculty decide whether AI belongs in their courses</li>
+            <li>We prefer open software and open-weight models</li>
+          </ul>
+        </div>
+        <aside class="notes">From the September 4 working outline, section III.
+- Privacy: faculty and researchers can use the service without adding their work to a provider's training data.
+- Transparency: the Model Registry (ailab.gc.cuny.edu/models) lists each model with its license, capabilities and known limits.
+- Environmental accountability: the Sandbox shows energy and carbon estimates under each response. They cover inference only, not training.
+- Faculty can examine a model before deciding, change a planned activity, or leave AI out entirely.
+- Published weights let us get the same model from more than one provider. We offer a closed model only for a specific reason.</aside>
+      </section>
+
+      <section id="stefano-requests" class="stefano">
+        <div class="card">
+          <h2>Handling Requests</h2>
           <ul>
             <li>Faculty, students and librarians bring us their problems</li>
-            <li>We first check whether an existing tool fits</li>
-            <li>If none does, we offer model access, a workshop, or a new tool</li>
+            <li>We check our existing tools first</li>
+            <li>Otherwise we offer model access, a workshop, or a new tool</li>
             <li>We use what we learn to choose models and plan new tools</li>
           </ul>
         </div>
       </section>
 
-      <section id="stefano-services">
-        <h2>Services We Buy and Run</h2>
-        <div class="content">
+      <section id="stefano-services" class="stefano">
+        <div class="card">
+          <h2>Services We Buy and Run</h2>
           <ul>
-            <li>We buy inference and hosting from outside providers</li>
-            <li>We use only providers that don&rsquo;t keep or train on what people send</li>
-            <li>We run a little hardware of our own, including a transcription server</li>
-            <li>We run the gateway people use to reach those providers</li>
+            <li>We buy inference and cloud hosting from outside companies</li>
+            <li>We control access, model choice and data terms</li>
+            <li>Model developers control training and say little about their data</li>
+            <li>We run our own hardware for material we shouldn&rsquo;t send out</li>
           </ul>
         </div>
-        <aside class="notes">The slide does not name vendors. Say aloud what fits the room. Cloudflare is an Enterprise account. The AWS contract is close but not yet signed.</aside>
+        <aside class="notes">The slide names no vendors. Say aloud what fits the room: Cloudflare is an Enterprise account, and the AWS contract is close but not yet signed.
+The lab controls one institutional layer inside a larger commercial system. Published weights expose a model's parameters, but most developers keep their training data and process closed.
+Own hardware: the transcription server in the New Media Lab.</aside>
+      </section>
+
+      <section id="stefano-sustaining" class="stefano">
+        <div class="card">
+          <h2>Sustaining and Sharing the Work</h2>
+          <ul>
+            <li>We publish most of our code so other universities can adapt it</li>
+            <li>We review a tool more closely as more people rely on it</li>
+            <li>We need staff, not just licenses, to keep these services running</li>
+          </ul>
+        </div>
+        <aside class="notes">Other universities have asked how CAIL provides model access and decides what to build. Commons In A Box is the CUNY precedent for packaging academic software that other institutions can run and change. CAIL hasn't assembled that kind of package yet.
+A classroom experiment and a system that touches student records shouldn't get the same review.
+Buying one AI product still leaves a university responsible for data protection, access, faculty support, documentation and the option to leave. That work takes staff.</aside>
       </section>
 
       <!-- Stephen Zweibel -->
 
-      <section id="steve-opener" class="opener">
-        <h1>The CAIL Gateway and the Studios</h1>
-        <p>Stephen Zweibel</p>
-        <p>Mina Rees Library, CUNY Graduate Center</p>
+      <section id="steve-opener" class="opener steve">
+        <div class="card">
+          <h1>The CAIL Gateway and Agent Tools</h1>
+          <p class="name">Stephen Zweibel</p>
+          <p>Mina Rees Library, CUNY Graduate Center</p>
+        </div>
       </section>
 
-      <section id="steve-gateway">
+      <section id="steve-gateway" class="steve">
         <h2>The CAIL Gateway</h2>
-        <div class="side" style="grid-template-columns: 1.2fr 1.6fr;">
+        <div class="side" style="grid-template-columns: 1.15fr 1.6fr;">
           <ul>
             <li>We connect the Lab&rsquo;s tools to it</li>
-            <li>Researchers can call it from their own code</li>
-            <li>We decide which models are offered</li>
-            <li>We can switch providers without changing the tools</li>
+            <li>We choose which models to offer</li>
+            <li>We give each person and app a monthly allowance</li>
+            <li>We run it on Cloudflare Workers and pay per request</li>
           </ul>
           <div class="gw" role="img" aria-label="Diagram: lab tools, personal API keys and approved CUNY applications above the CAIL Gateway; model providers below it">
             <div class="gw-row">
@@ -86,30 +128,21 @@
             </div>
           </div>
         </div>
-        <aside class="notes">Providers are deliberately unnamed. Production currently serves Workers AI and Bedrock; OpenRouter is no longer behind the Gateway. The Sandbox still has older direct connections outside the Gateway, so the diagram shows the Gateway path, not every Sandbox route.</aside>
+        <aside class="notes">The Gateway is where Stefano's commitments become working rules.
+- Researchers can call every model from their own code with one key.
+- We can move a model to another provider without anyone changing their tools.
+- On Workers we pay only for the requests that come in. An always-on container on AWS, which is how the Sandbox runs, costs money every hour whether or not anyone is using it.
+Providers are deliberately unnamed. Production currently serves Workers AI and Bedrock; OpenRouter is no longer behind the Gateway. The Sandbox still has older direct connections outside the Gateway, so the diagram shows the Gateway path, not every Sandbox route.</aside>
       </section>
 
-      <section id="steve-choices">
-        <h2>Gateway Design Decisions</h2>
-        <div class="content">
-          <ul>
-            <li>We keep no prompts or responses at the Gateway, and neither do the providers</li>
-            <li>We offer only open-weight models</li>
-            <li>Each person gets a monthly allowance</li>
-            <li>We run it on Cloudflare Workers and pay per request</li>
-          </ul>
-        </div>
-        <aside class="notes">We made each of these choices. A vendor would make them differently. On Workers we pay only for the requests that come in. An always-on container on AWS, which is how the Sandbox runs, costs money every hour whether or not anyone is using it.</aside>
-      </section>
-
-      <section id="steve-studios">
+      <section id="steve-studios" class="steve">
         <h2>Agent Studio and Site Studio</h2>
-        <div class="side">
+        <div class="side" style="grid-template-columns: 1.15fr 1.6fr;">
           <ul>
-            <li>People give the agent a whole task to do</li>
-            <li>Agent Studio for research with sources, files and drafts</li>
-            <li>Site Studio for academic websites, with a preview before publishing</li>
-            <li>The same login and allowance as everywhere else</li>
+            <li>People hand the agent a whole task</li>
+            <li>Researchers keep sources, files and drafts in one Agent Studio workspace</li>
+            <li>Faculty and students build and preview academic websites in Site Studio</li>
+            <li>Same sign-in and allowance as the other tools</li>
           </ul>
           <div class="r-stack">
             <img class="fragment fade-out" data-fragment-index="1" src="images/tools/site-studio-mock.webp" alt="Site Studio: editing a personal academic website by chatting with the agent, with the page preview on the right">
@@ -119,13 +152,13 @@
         <aside class="notes">Advance once to swap Site Studio for Agent Studio. Site Studio is still the HTML mock-up from the ACH deck. The Agent Studio workspace is a real screenshot of the current app, taken October 13 from a local run. Its panels hold real OpenAlex results (search "generative AI" "higher education"), placed there directly rather than produced by the agent, and the prompt in the chat box was typed for the picture, not sent.</aside>
       </section>
 
-      <section id="steve-pi">
-        <h2>CAIL Pi</h2>
-        <div class="content">
+      <section id="steve-pi" class="steve">
+        <div class="card">
+          <h2>CAIL Pi</h2>
           <ul>
-            <li>Pi is an open-source coding agent that runs in a terminal</li>
-            <li>One command installs it and connects it to the Lab&rsquo;s models</li>
-            <li>People use their own Lab key and monthly allowance</li>
+            <li>Pi is an open-source coding agent for the terminal</li>
+            <li>Participants set it up with the Lab&rsquo;s models in one command</li>
+            <li>Each person uses their own Lab key and allowance</li>
             <li>We teach with it in this fall&rsquo;s vibe-coding workshops</li>
           </ul>
         </div>
@@ -136,13 +169,15 @@ Closing: We can connect the Gateway to any provider that meets these rules, incl
 
       <!-- Zach Muhlbauer -->
 
-      <section id="zach-opener" class="opener">
-        <h1>Apps and Outreach</h1>
-        <p>Zach Muhlbauer</p>
-        <p>CUNY Graduate Center</p>
+      <section id="zach-opener" class="opener zach">
+        <div class="card">
+          <h1>Apps and Outreach</h1>
+          <p class="name">Zach Muhlbauer</p>
+          <p>CUNY Graduate Center</p>
+        </div>
       </section>
 
-      <section id="zach-sandbox">
+      <section id="zach-sandbox" class="zach">
         <h2>The CAIL Sandbox</h2>
         <div class="figure">
           <div class="r-stack">
@@ -158,7 +193,7 @@ Closing: We can connect the Gateway to any provider that meets these rules, incl
 The sign-in screenshot is from June and may not match the current sign-in page.</aside>
       </section>
 
-      <section id="zach-compare">
+      <section id="zach-compare" class="zach">
         <h2>Comparing Open-Weight Models</h2>
         <div class="figure">
           <div class="r-stack">
@@ -172,7 +207,7 @@ The sign-in screenshot is from June and may not match the current sign-in page.<
 - A public Model Registry explains capabilities, licensing and recommended use</aside>
       </section>
 
-      <section id="zach-configs">
+      <section id="zach-configs" class="zach">
         <h2>Configurations for Courses</h2>
         <div class="figure">
           <img class="shot" src="images/owui_model_cards.png" alt="Course-specific model configurations in the Sandbox">
@@ -182,7 +217,7 @@ The sign-in screenshot is from June and may not match the current sign-in page.<
 - A configuration becomes a designed object students can interrogate</aside>
       </section>
 
-      <section id="zach-amigai">
+      <section id="zach-amigai" class="zach">
         <h2>AmigAI in Spanish Courses</h2>
         <div class="figure">
           <img class="shot" src="images/19_amigai_build.png" alt="AmigAI adapted across Spanish course sections">
@@ -193,7 +228,7 @@ The sign-in screenshot is from June and may not match the current sign-in page.<
 - At ACH in June, the AmigAI sections were the busiest workload, 36.6% of all messages</aside>
       </section>
 
-      <section id="zach-tools">
+      <section id="zach-tools" class="zach">
         <h2>Tools Portal</h2>
         <div class="side">
           <ul>
@@ -207,9 +242,9 @@ The sign-in screenshot is from June and may not match the current sign-in page.<
         <aside class="notes">The screenshot is cropped above the old transcription GIF on the public Tools page, whose privacy notice still names Fireworks AI and AssemblyAI.</aside>
       </section>
 
-      <section id="zach-people">
-        <h2>Access and Outreach</h2>
-        <div class="content">
+      <section id="zach-people" class="zach">
+        <div class="card">
+          <h2>Access and Outreach</h2>
           <ul>
             <li>Graduate Center students, faculty and staff</li>
             <li>Selected faculty and staff from other campuses</li>
@@ -221,7 +256,9 @@ The sign-in screenshot is from June and may not match the current sign-in page.<
       </section>
 
       <section id="discussion" class="opener">
-        <h1>Discussion</h1>
+        <div class="card">
+          <h1>Discussion</h1>
+        </div>
       </section>
 
     </div>
