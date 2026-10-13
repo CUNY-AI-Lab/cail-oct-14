@@ -92,7 +92,7 @@ The diagram is a lighter version of the ACH "CALI to CAIL" chart, with the four 
       <section class="stefano">
         <h2>Infrastructure</h2>
         <div class="hosts">
-          <svg viewBox="0 0 1168 488" role="img" aria-label="Two ways in and three places the tools run. People sign in with CUNY Login, apply, then pass the front door into the cloud tools; for local work, people send a request that Lab staff review. On Cloudflare Workers: PDF Accessibility, Agent Studio, Site Studio and Media Tools, all calling models through the Model Gateway, itself a Cloudflare Worker. On AWS: the Sandbox, which calls the Gateway and also connects directly to Amazon Bedrock. In the New Media Lab: a media pipeline that runs on the Lab's own GPU server. On people's own computers: CAIL Pi and personal API access, both calling the Gateway. The Gateway sends requests to Cloudflare Workers AI and Amazon Bedrock.">
+          <svg viewBox="0 0 1168 488" role="img" aria-label="Two ways in and three places the tools run. People sign in with CUNY Login, apply, then pass the front door into the cloud tools; for local work, people send a request that Lab staff review. On Cloudflare Workers: PDF Accessibility, Agent Studio, Site Studio and Media Tools, all calling models through the Model Gateway, itself a Cloudflare Worker. On AWS: the Sandbox, which calls the Gateway and also connects directly to Amazon Bedrock. In the New Media Lab: a media pipeline that runs on the Lab's own GPU server. With a Lab key, from wherever people run them: CAIL Pi and API access, both calling the Gateway. The Gateway sends requests to Cloudflare Workers AI and Amazon Bedrock.">
             <defs>
               <marker id="hz-in" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="hz-head"/></marker>
               <marker id="hz-out" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="hz-head-out"/></marker>
@@ -157,9 +157,9 @@ The diagram is a lighter version of the ACH "CALI to CAIL" chart, with the four 
             <rect class="hz-provider" x="492" y="406" width="220" height="64" rx="10"/>
             <text class="hz-name" x="602" y="445">Amazon Bedrock</text>
 
-            <!-- Own computer: CAIL Pi and personal API keys -->
+            <!-- With a Lab key: CAIL Pi and API access, from wherever people run them -->
             <rect class="hz-zone" x="820" y="358" width="348" height="130" rx="14"/>
-            <text class="hz-label" x="840" y="396">Own computer</text>
+            <text class="hz-label" x="840" y="396">With a Lab key</text>
             <rect class="hz-tool" x="840" y="416" width="140" height="52" rx="10"/>
             <text class="hz-name" x="910" y="449">CAIL Pi</text>
             <rect class="hz-tool" x="994" y="416" width="154" height="52" rx="10"/>
@@ -176,7 +176,7 @@ The diagram is a lighter version of the ACH "CALI to CAIL" chart, with the four 
         <aside class="notes">Two ways in, three hosting arrangements, and model calls that cross them. Solid lines go through the Gateway or are run by the Lab; dashed lines go straight to a provider.
 - Ways in: for the cloud tools, people sign in with CUNY Login, apply (on their own or for a class, slide 9), and the front door then checks CUNY Login, access and allowance on every visit. For local work, people send a request and Lab staff review it before anything touches the GPU server.
 - Cloudflare Workers: PDF Accessibility, Agent Studio, Site Studio, Media Tools, and the Model Gateway itself, plus the sign-in front door. These tools reach models through the Gateway. The self-service Media Tools run here; speaker labels run in a Cloudflare container with no outside model.
-- Own computer: CAIL Pi and personal API keys run on people's own machines and call the Gateway with their Lab key and allowance.
+- With a Lab key: CAIL Pi runs on a person's own computer; API access works from any code or app, on a laptop, a server or another project. Both call the Gateway with the person's Lab key and allowance.
 - AWS: the Sandbox (Open WebUI on ECS). It calls the Gateway and also keeps a direct Bedrock connection. The public website is also on AWS (Amplify).
 - New Media Lab: the local media pipeline (transcription, speaker labels, image description, OCR) runs on our own GPU server and sends nothing out; it is for material that shouldn't leave the GC, and Lab staff review requests for it. AI Use Disclosure (not drawn) is a static page on the same server and calls no model.
 - The Gateway serves only Workers AI and Amazon Bedrock, open-weight models with zero data retention. We no longer use OpenRouter or Fireworks.
