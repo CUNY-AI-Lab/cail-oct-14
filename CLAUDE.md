@@ -105,8 +105,9 @@ Two headless-QA traps that have wasted real time:
 
 ## Deploy
 
-Not published. Preview locally (see above). If it should be shared, publish it the
-way `../ach-2026` is: its own repository with GitHub Pages serving `main`.
+Public deck lives at **https://cuny-ai-lab.github.io/cail-oct-14/** (repo
+`CUNY-AI-Lab/cail-oct-14`, GitHub Pages off `main`). **Push to `main` → Pages
+rebuilds (~1 min).** No build/CI step; the repo root is served as-is.
 
 ## Gotchas
 
