@@ -238,6 +238,7 @@
   text-anchor: middle;
   fill: var(--fg);
 }
+.reveal .hosts .hz-job { text-anchor: start; }
 .reveal .hosts .hz-model {
   font-size: 19px;
   text-anchor: end;
