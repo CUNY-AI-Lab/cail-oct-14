@@ -142,42 +142,29 @@
       <div class="label">Stephen Zweibel</div>
       <h1>The CAIL Gateway</h1>
       <ul class="arrow-bullets">
-        <li>People use one key for every model</li>
-        <li>We add and remove models</li>
-        <li>People never contact a provider directly</li>
+        <li>We connect the Lab&rsquo;s tools to it</li>
+        <li>Researchers can call it from their own code</li>
+        <li>We decide which models are offered</li>
+        <li>We can switch providers without changing the tools</li>
       </ul>
     </div>
     <div class="stage gw-flow-stage">
-      <div class="gw-flow" role="img" aria-label="Diagram: lab tools, personal API keys and approved CUNY applications above the CAIL Gateway; model providers and other routes below it">
+      <div class="gw-flow" role="img" aria-label="Diagram: lab tools, personal API keys and approved CUNY applications above the CAIL Gateway; model providers below it">
         <div class="gw-row gw-sources">
           <div class="gw-box"><strong>Lab tools</strong><span>Sandbox, Studios, Media Tools</span></div>
           <div class="gw-box"><strong>Personal API keys</strong><span>For researchers&rsquo; own code</span></div>
           <div class="gw-box"><strong>Approved applications</strong><span>Other CUNY projects</span></div>
         </div>
         <div class="gw-arrow" aria-hidden="true">&darr;</div>
-        <div class="gw-row"><div class="gw-box gw-core"><strong>CAIL Gateway</strong><span>Sign-in, allowance and model checks</span></div></div>
+        <div class="gw-row"><div class="gw-box gw-core"><strong>CAIL Gateway</strong><span>Credential, allowance and model checks</span></div></div>
         <div class="gw-arrow" aria-hidden="true">&darr;</div>
         <div class="gw-row gw-targets">
           <div class="gw-box"><strong>Model providers</strong><span>Zero retention, open weights</span></div>
-          <div class="gw-box gw-open"><strong>Other routes</strong><span>Local models and other services</span></div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="slide placeholder-slide crowded" data-slide="steve-access" aria-label="Steve, getting access">
-    <div class="content">
-      <div class="label">Stephen Zweibel</div>
-      <h1>Getting Access</h1>
-      <ul class="arrow-bullets">
-        <li>Apply for yourself, or for a whole class</li>
-        <li>Students in a class join through a link from the instructor</li>
-        <li>People get the Sandbox, Studios, tools and an API key with one account</li>
-        <li>Each person has one monthly allowance for all of them</li>
-      </ul>
-    </div>
-    <figure class="stage blank-stage" aria-hidden="true"></figure>
-  </section>
 
   <section class="slide placeholder-slide crowded" data-slide="steve-choices" aria-label="Steve, gateway design decisions">
     <div class="content">
@@ -185,9 +172,9 @@
       <h1>Gateway Design Decisions</h1>
       <ul class="arrow-bullets">
         <li>We record usage under pseudonyms</li>
-        <li>Neither we nor the providers keep prompts or responses</li>
+        <li>We keep no prompts or responses at the Gateway, and neither do the providers</li>
         <li>We offer only open-weight models</li>
-        <li>We can move a model to another provider without breaking anyone&rsquo;s work</li>
+        <li>Each person gets a monthly allowance</li>
       </ul>
     </div>
     <figure class="stage blank-stage" aria-hidden="true"></figure>
@@ -353,14 +340,14 @@
   <div class="footer-slider">
     <button class="footer-arrow" id="btn-prev" aria-label="Previous slide">&#8592;</button>
     <div class="slider-track">
-      <input type="range" id="slide-scrubber" min="1" max="20" value="1" aria-label="Navigate to slide">
+      <input type="range" id="slide-scrubber" min="1" max="19" value="1" aria-label="Navigate to slide">
       <div class="slider-progress"></div>
       <div class="slider-thumb"></div>
     </div>
     <button class="footer-arrow" id="btn-next" aria-label="Next slide">&#8594;</button>
     <button class="footer-arrow" id="btn-fullscreen" aria-label="Toggle fullscreen" title="Toggle fullscreen (F)">&#9974;</button>
     <div class="footer-meta">
-      <span id="slider-counter">1 / 20</span>
+      <span id="slider-counter">1 / 19</span>
       <span class="kbd">Space</span>
       <a href="https://ailab.gc.cuny.edu/" target="_blank" rel="noopener" class="footer-deck-link">ailab.gc.cuny.edu</a>
     </div>
