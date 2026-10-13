@@ -8,23 +8,23 @@ Times are targets. The four sections run about 25 minutes, which leaves about 35
 |---|---|---|---|---|
 | 1 | `title` | all | CUNY AI Lab | ACH title slide, retitled |
 | 2 | `break-luke` | Luke, Matt | Context | new divider |
-| 3 | `matt-1` | Matt | The CUNY Context | ACH 3, verbatim (optional) |
-| 4 | `luke-precursors` | Luke | Precursors to the CUNY AI Lab | ACH 17 (Zach's flowchart), relabeled (optional) |
-| 5 | `break-stefano` | Stefano | How the Lab Decides What to Build and Buy | new divider |
-| 6 | `stefano-1` | Stefano | How Requests Become Tools | retreat outline II.A, IV |
-| 7 | `stefano-2` | Stefano | What We Buy and What We Run | retreat outline V.A |
+| 3 | `matt-1` | Matt | CUNY and the Graduate Center | ACH 3, retitled (optional) |
+| 4 | `luke-precursors` | Luke | Projects Before the CUNY AI Lab | ACH 17 (Zach's flowchart), relabeled (optional) |
+| 5 | `break-stefano` | Stefano | Infrastructure Decisions and Procurement | new divider |
+| 6 | `stefano-1` | Stefano | Handling Requests | retreat outline II.A, IV |
+| 7 | `stefano-2` | Stefano | Services We Buy and Run | retreat outline V.A |
 | 8 | `break-steve` | Steve | The CAIL Gateway and the Studios | new divider |
-| 9 | `steve-gateway` | Steve | One Model Service for People and Applications | five-slide deck 01, redrawn in HTML |
-| 10 | `steve-access` | Steve | One Application for Access | five-slide deck 02 |
-| 11 | `steve-choices` | Steve | Choices Built into the Gateway | retreat outline III, five-slide deck 03 |
+| 9 | `steve-gateway` | Steve | The CAIL Gateway | five-slide deck 01, redrawn in HTML |
+| 10 | `steve-access` | Steve | Getting Access | five-slide deck 02 |
+| 11 | `steve-choices` | Steve | Gateway Design Decisions | retreat outline III, five-slide deck 03 |
 | 12 | `steve-4` | Steve | Agent Studio and Site Studio | ACH 39, bullets rewritten |
-| 13 | `zach-intro` | Zach | The Sandbox, the Tools, and Who Uses Them | ACH 16, retitled |
-| 14 | `zach-2` | Zach | What is the CUNY AI Lab Sandbox? | ACH 19, verbatim |
-| 15 | `zach-4` | Zach | Evaluating and Comparing Open-Weight Models | ACH 21, verbatim |
-| 16 | `zach-5` | Zach | Supporting Purpose-Built, Custom Models | ACH 22, verbatim |
-| 17 | `zach-8` | Zach | Workshopping Project Pilots: AmigAI | ACH 25, verbatim |
+| 13 | `zach-intro` | Zach | Apps and Outreach | ACH 16, retitled |
+| 14 | `zach-2` | Zach | The CAIL Sandbox | ACH 19, retitled |
+| 15 | `zach-4` | Zach | Comparing Open-Weight Models | ACH 21, retitled |
+| 16 | `zach-5` | Zach | Configurations for Courses | ACH 22, retitled |
+| 17 | `zach-8` | Zach | AmigAI in Spanish Courses | ACH 25, retitled |
 | 18 | `zach-tools` | Zach | Tools Portal | ACH 38, new screenshot and bullets |
-| 19 | `zach-people` | Zach | Who Uses It | new |
+| 19 | `zach-people` | Zach | Access and Outreach | new |
 | 20 | `qa` | all | Discussion | ACH 47, retitled |
 
 ## Spoken notes
