@@ -154,6 +154,22 @@
 .reveal .gw-box p { font-size: 15pt; line-height: 1.3; margin: 0; color: var(--fg); }
 .reveal .gw-box p + p { color: var(--muted); font-size: 13pt; }
 .reveal .gw-core { border: 2px solid var(--accent); }
+/* A box hanging under one column, and a bracket gathering every column. */
+.reveal .gw-stem { display: flex; flex-direction: column; gap: 6px; }
+.reveal .gw-stem .gw-arrow { line-height: 1; }
+.reveal .gw-line {
+  justify-self: center;
+  width: 0;
+  margin: -10px 0 -17px;
+  border-left: 1.5px solid #c9cfd6;
+}
+.reveal .gw-merge {
+  height: 16px;
+  margin: -10px calc((100% - 36px) / 8 - 1.5px) 0 calc((100% - 36px) / 8);
+  border: 1.5px solid #c9cfd6;
+  border-top: 0;
+  border-radius: 0 0 10px 10px;
+}
 .reveal .gw-note {
   margin: 0 0 2px;
   font-size: 13pt;
