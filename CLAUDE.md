@@ -37,8 +37,9 @@ reveal.js speaker notes inside `index.html`; press `S` to open the speaker view.
 - `.principles` (a `<dl>` in a `.card`, slide 3): the website's four guiding
   principles as `<dt>`, what the Lab does about each as `<dd>`.
 - `.side`: bullets left, picture or diagram right.
-- `.map`: two parallel four-step paths (slide 5), after the public systems map.
-  Filled boxes are run by the Lab, dashed ones by someone else.
+- `.hosts` (slide 5): an inline SVG of where the tools run. Navy boxes are run
+  by the Lab; solid lines go through the Gateway, dashed ones straight to a
+  provider.
 - `.figure` with an `<img class="shot">`, or an `.r-stack` of images with
   `class="fragment"` for click-through steps.
 

@@ -12,7 +12,7 @@ Times are targets. The four sections run about 25 minutes, which leaves about 35
 | 2 | Stefano | Infrastructure Decisions | new opener |
 | 3 | Stefano | Guiding Principles | the four principles on ailab.gc.cuny.edu, each beside a practice; working outline III in notes |
 | 4 | Stefano | Working from the Ground Up | rewritten October 13: bottom-up operations; diagram redrawn from the ACH "CALI to CAIL" chart (13_cali_to_cail.png) with the four centers at equal weight |
-| 5 | Stefano | Services We Buy and Run | working outline V.A; parallel diagram after cuny-ai-lab.github.io/systems-map, bullets moved to notes |
+| 5 | Stefano | Where the Tools Run | hosting diagram (Cloudflare Workers, AWS, New Media Lab) with the application/front door and request/Lab staff ways in; hosting from cail-knowledge-base, October 12 |
 | 6 | Stefano | Sustaining and Sharing the Work | working outline V.B; position paper |
 | 7 | Steve | The CAIL Gateway, Access and Agent Tools | new opener |
 | 8 | Steve | The CAIL Gateway | five-slide Gateway deck 01 and 03, merged |
@@ -30,7 +30,7 @@ Times are targets. The four sections run about 25 minutes, which leaves about 35
 | 20 | Zach | Access and Outreach | new |
 | 21 | all | Discussion | ACH 47 |
 
-Stefano's section carries the commitments and the long view. Steve's Gateway slide shows where those commitments become working rules, so it does not repeat them. Open weights and zero retention live on slide 3, under the website's Transparency and Privacy by Design; provider switching is spoken on slide 8.
+Stefano's section carries the commitments and the long view. Steve's Gateway slide shows where those commitments become working rules, so it does not repeat them. Open weights and zero retention live on slide 3, under the website's Transparency and Privacy by Design; provider switching is spoken on slide 8. Slide 5 names the providers.
 
 ## Spoken notes
 
