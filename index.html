@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="src/styles.css?v=20260624r" />
-  <link rel="stylesheet" href="src/ach-accents.css?v=20261013b" />
+  <link rel="stylesheet" href="src/ach-accents.css?v=20261013c" />
 </head>
 <body>
 <div id="image-lightbox" class="lightbox" aria-hidden="true">
@@ -192,19 +192,26 @@
           </div>
         </div>
       </div>
-      <div class="walk-step frag studio-shot front" role="group" aria-label="Agent Studio: describe a research or build task in one prompt">
+      <div class="walk-step frag studio-shot front" role="group" aria-label="Agent Studio workspace: a literature scan on generative AI in higher education, with notes, a chart of works per year, a table of most-cited articles, and the chat beside them">
         <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span class="win-name">Agent Studio</span></div>
-        <div class="as-body">
-          <div class="as-logo"><span class="as-bolt" aria-hidden="true">&#9889;</span> Agent Studio</div>
-          <h3 class="as-head">What would you like to work on?</h3>
-          <p class="as-sub">Search APIs, analyze data, create visualizations, or build tools.</p>
-          <div class="as-prompt"><span>Ask anything or describe what you want to build&hellip;</span><span class="as-go" aria-hidden="true">&rarr;</span></div>
-          <div class="as-try">Try these</div>
-          <div class="as-chips"><span>Search papers</span><span>Analyze trends</span><span>Find books</span><span>Build a tool</span></div>
-          <p class="as-foot">Built for the CUNY community</p>
-        </div>
+        <img class="as-shot" src="images/tools/agent-studio-workspace.webp?v=20261013" alt="" />
       </div>
     </figure>
+  </section>
+
+
+  <section class="slide placeholder-slide crowded" data-slide="steve-pi" aria-label="Steve, CAIL Pi">
+    <div class="content">
+      <div class="label">Stephen Zweibel</div>
+      <h1>CAIL Pi</h1>
+      <ul class="arrow-bullets">
+        <li>Pi is an open-source coding agent that runs in a terminal</li>
+        <li>One command installs it and connects it to the Lab's models</li>
+        <li>People use their own Lab key and monthly allowance</li>
+        <li>We teach with it in this fall's vibe-coding workshops</li>
+      </ul>
+    </div>
+    <figure class="stage blank-stage" aria-hidden="true"></figure>
   </section>
 
 
@@ -308,7 +315,7 @@
   <div class="footer-slider">
     <button class="footer-arrow" id="btn-prev" aria-label="Previous slide">&#8592;</button>
     <div class="slider-track">
-      <input type="range" id="slide-scrubber" min="1" max="16" value="1" aria-label="Navigate to slide">
+      <input type="range" id="slide-scrubber" min="1" max="17" value="1" aria-label="Navigate to slide">
       <div class="slider-progress"></div>
       <div class="slider-thumb"></div>
     </div>

@@ -1619,3 +1619,13 @@ body.overview section.slide[data-slide="break-stefano"] { border-top: 2px solid 
 .gw-arrow { text-align: center; color: var(--muted); line-height: 1; font-size: clamp(18px, 1.8vw, 28px); }
 [data-slide="zach-people"] .content { gap: clamp(8px, 1.4vh, 16px); }
 [data-slide="zach-people"] .content ul { max-width: none !important; }
+
+/* steve-4: real Agent Studio workspace screenshot inside the window chrome. */
+.steve-toggle .as-shot {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  object-fit: contain;
+  object-position: top center;
+  background: #0d1117;
+}

@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 The HTML slide deck for the **CUNY AI Lab session on October 14, 2026** (about
 4:15 to 5:20): context from Luke Waltzer and Matthew K. Gold (no slides), then
-Stefano Morello, Stephen Zweibel, and Zach Muhlbauer, then discussion. 16 slides. It
+Stefano Morello, Stephen Zweibel, and Zach Muhlbauer, then discussion. 17 slides. It
 remixes the ACH 2026 deck (`../ach-2026`) and keeps that deck's theme, the
 **`cuny-ai-lab/cali-narst` theme** (https://cuny-ai-lab.github.io/cali-narst/), a
 custom dark deck, not reveal.js.
