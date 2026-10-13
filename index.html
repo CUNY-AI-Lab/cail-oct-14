@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
-  <link rel="stylesheet" href="styles.css?v=20261013t">
+  <link rel="stylesheet" href="styles.css?v=20261013u">
 </head>
 <body>
   <div class="reveal">
@@ -49,7 +49,7 @@
           </dl>
         </div>
         <aside class="notes">The four principles published on the Lab website (ailab.gc.cuny.edu), each with something we already do.
-- Privacy by Design, "we use providers that don't retain or train on user data": cloud models run only on zero-retention hosts, and material we shouldn't send out goes to the GPU server in the New Media Lab (slide 5). Faculty and researchers can use the service without adding their work to a provider's training data.
+- Privacy by Design, "we use providers that don't retain or train on user data": cloud models run only on zero-retention hosts, and material we shouldn't send out goes to the GPU server in the New Media Lab (slide 6). Faculty and researchers can use the service without adding their work to a provider's training data.
 - Transparency, "we prioritize open-weight models that can be examined and understood": click "Model Registry" to open it over the slide; Esc or the X closes it. The Model Registry (ailab.gc.cuny.edu/models) lists each model with its license, capabilities and known limits. Published weights let us get the same model from more than one provider. We offer a closed model only for a specific reason.
 - Environmental Accountability, "tools include visibility into computational costs": the Sandbox shows energy and carbon estimates under each response. They cover inference only, not training.
 - Criticality, "AI literacy over AI dependency": criticality is built into the infrastructure, not added as a lesson on top. Across the tools we try to make the technology legible and keep people doing the thinking, in the classroom and about AI itself. Examples to pick from: visible prompts and side-by-side comparison in the Sandbox, Agent Studio keeping sources and drafts in view, the Registry's stated limits, and published code anyone can inspect.</aside>
@@ -92,29 +92,24 @@ The diagram is a lighter version of the ACH "CALI to CAIL" chart, with the four 
       <section class="stefano">
         <h2>Infrastructure</h2>
         <div class="hosts">
-          <svg viewBox="0 0 1168 488" role="img" aria-label="Two ways in and three places the tools run. People sign in with CUNY Login, apply, then pass the front door into the cloud tools; for local work, people send a request that Lab staff review. On Cloudflare Workers: PDF Accessibility, Agent Studio, Site Studio and Media Tools, all calling models through the Model Gateway, itself a Cloudflare Worker. On AWS: the Sandbox, which calls the Gateway and also connects directly to Amazon Bedrock. In the New Media Lab: a media pipeline that runs on the Lab's own GPU server. With a Lab key, from wherever people run them: CAIL Pi and API access, both calling the Gateway. The Gateway sends requests to Cloudflare Workers AI and Amazon Bedrock.">
+          <svg viewBox="0 0 1168 488" role="img" aria-label="People sign in with CUNY Login, apply, then pass the front door. On Cloudflare Workers: PDF Accessibility, Agent Studio, Site Studio and Media Tools, all calling models through the Model Gateway, itself a Cloudflare Worker. On AWS: the Sandbox, which calls the Gateway and also connects directly to Amazon Bedrock. With a Lab key: CAIL Pi, which runs through API access, and API access itself, which calls the Gateway. The Gateway sends requests to Cloudflare Workers AI and Amazon Bedrock.">
             <defs>
               <marker id="hz-in" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="hz-head"/></marker>
               <marker id="hz-out" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="hz-head-out"/></marker>
             </defs>
 
-            <!-- Ways in: apply and pass the front door, or ask Lab staff -->
+            <!-- Way in -->
             <rect class="hz-provider hz-ext" x="0" y="0" width="154" height="56" rx="10"/>
             <text class="hz-name" x="77" y="35">CUNY Login</text>
             <path class="hz-line" d="M154 28 H180" marker-end="url(#hz-in)"/>
             <rect class="hz-provider" x="186" y="0" width="150" height="56" rx="10"/>
             <text class="hz-name" x="261" y="35">Application</text>
             <path class="hz-line" d="M336 28 H362" marker-end="url(#hz-in)"/>
-            <rect class="hz-core" x="368" y="0" width="524" height="56" rx="10"/>
-            <text class="hz-core-name" x="630" y="35">Front door</text>
-            <rect class="hz-provider" x="912" y="0" width="112" height="56" rx="10"/>
-            <text class="hz-name" x="968" y="35">Request</text>
-            <path class="hz-line" d="M1024 28 H1042" marker-end="url(#hz-in)"/>
-            <rect class="hz-core" x="1048" y="0" width="120" height="56" rx="10"/>
-            <text class="hz-core-name" x="1108" y="35">Lab staff</text>
+            <rect class="hz-core" x="368" y="0" width="800" height="56" rx="10"/>
+            <text class="hz-core-name" x="768" y="35">Front door</text>
             <path class="hz-line" d="M420 56 V86" marker-end="url(#hz-in)"/>
             <path class="hz-line" d="M807 56 V86" marker-end="url(#hz-in)"/>
-            <path class="hz-line" d="M1108 56 V86" marker-end="url(#hz-in)"/>
+            <path class="hz-line" d="M1040 56 V86" marker-end="url(#hz-in)"/>
 
             <!-- Hosting zones -->
             <rect class="hz-zone" x="0" y="92" width="702" height="238" rx="14"/>
@@ -122,7 +117,7 @@ The diagram is a lighter version of the ACH "CALI to CAIL" chart, with the four 
             <rect class="hz-zone" x="722" y="92" width="170" height="238" rx="14"/>
             <text class="hz-label" x="738" y="132">AWS</text>
             <rect class="hz-zone" x="912" y="92" width="256" height="238" rx="14"/>
-            <text class="hz-label" x="930" y="132">New Media Lab</text>
+            <text class="hz-label" x="930" y="132">With a Lab key</text>
 
             <!-- Tools -->
             <rect class="hz-tool" x="20" y="150" width="190" height="52" rx="10"/>
@@ -136,19 +131,20 @@ The diagram is a lighter version of the ACH "CALI to CAIL" chart, with the four 
             <rect class="hz-tool" x="738" y="150" width="138" height="52" rx="10"/>
             <text class="hz-name" x="807" y="183">Sandbox</text>
             <rect class="hz-tool" x="930" y="150" width="220" height="52" rx="10"/>
-            <text class="hz-name" x="1040" y="183">Media pipeline</text>
+            <text class="hz-name" x="1040" y="183">CAIL Pi</text>
+            <rect class="hz-tool" x="930" y="252" width="220" height="56" rx="10"/>
+            <text class="hz-name" x="1040" y="287">API access</text>
+            <path class="hz-line" d="M1040 202 V246" marker-end="url(#hz-in)"/>
 
             <!-- Run by the Lab -->
             <rect class="hz-core" x="20" y="252" width="662" height="56" rx="10"/>
             <text class="hz-core-name" x="351" y="287">Model Gateway</text>
-            <rect class="hz-core" x="930" y="252" width="220" height="56" rx="10"/>
-            <text class="hz-core-name" x="1040" y="287">GPU server</text>
             <path class="hz-line" d="M115 202 V246" marker-end="url(#hz-in)"/>
             <path class="hz-line" d="M294 202 V246" marker-end="url(#hz-in)"/>
             <path class="hz-line" d="M450 202 V246" marker-end="url(#hz-in)"/>
             <path class="hz-line" d="M610 202 V246" marker-end="url(#hz-in)"/>
             <path class="hz-line" d="M738 176 H712 V280 H688" marker-end="url(#hz-in)"/>
-            <path class="hz-line" d="M1040 202 V246" marker-end="url(#hz-in)"/>
+            <path class="hz-line" d="M1040 308 V346 H670 V314" marker-end="url(#hz-in)"/>
 
             <!-- Commercial providers -->
             <rect class="hz-zone hz-zone-out" x="228" y="388" width="508" height="100" rx="14"/>
@@ -157,15 +153,6 @@ The diagram is a lighter version of the ACH "CALI to CAIL" chart, with the four 
             <rect class="hz-provider" x="492" y="406" width="220" height="64" rx="10"/>
             <text class="hz-name" x="602" y="445">Amazon Bedrock</text>
 
-            <!-- With a Lab key: CAIL Pi and API access, from wherever people run them -->
-            <rect class="hz-zone" x="820" y="358" width="348" height="130" rx="14"/>
-            <text class="hz-label" x="840" y="396">With a Lab key</text>
-            <rect class="hz-tool" x="840" y="416" width="140" height="52" rx="10"/>
-            <text class="hz-name" x="910" y="449">CAIL Pi</text>
-            <rect class="hz-tool" x="994" y="416" width="154" height="52" rx="10"/>
-            <text class="hz-name" x="1071" y="449">API access</text>
-            <path class="hz-line" d="M1110 358 V342 H670 V314" marker-end="url(#hz-in)"/>
-
             <!-- Through the Gateway -->
             <path class="hz-line" d="M362 308 V400" marker-end="url(#hz-in)"/>
             <path class="hz-line" d="M560 308 V400" marker-end="url(#hz-in)"/>
@@ -173,16 +160,48 @@ The diagram is a lighter version of the ACH "CALI to CAIL" chart, with the four 
             <path class="hz-direct" d="M807 202 V370 H660 V400" marker-end="url(#hz-out)"/>
           </svg>
         </div>
-        <aside class="notes">Two ways in, three hosting arrangements, and model calls that cross them. Solid lines go through the Gateway or are run by the Lab; dashed lines go straight to a provider.
-- Ways in: for the cloud tools, people sign in with CUNY Login, apply (on their own or for a class, slide 9), and the front door then checks CUNY Login, access and allowance on every visit. For local work, people send a request and Lab staff review it before anything touches the GPU server.
+        <aside class="notes">One way in, the places the cloud tools run, and model calls that cross them. Solid lines go through the Gateway or are run by the Lab; dashed lines go straight to a provider. The local pipeline is on the next slide.
+- Ways in: for the cloud tools, people sign in with CUNY Login, apply (on their own or for a class, slide 10), and the front door then checks CUNY Login, access and allowance on every visit.
 - Cloudflare Workers: PDF Accessibility, Agent Studio, Site Studio, Media Tools, and the Model Gateway itself, plus the sign-in front door. These tools reach models through the Gateway. The self-service Media Tools run here; speaker labels run in a Cloudflare container with no outside model.
-- With a Lab key: CAIL Pi runs on a person's own computer; API access works from any code or app, on a laptop, a server or another project. Both call the Gateway with the person's Lab key and allowance.
+- With a Lab key: API access works from any code or app, on a laptop, a server or another project, with the person's Lab key and allowance. CAIL Pi is one thing it serves: a coding agent in the terminal that reaches the Lab's models through API access.
 - AWS: the Sandbox (Open WebUI on ECS). It calls the Gateway and also keeps a direct Bedrock connection. The public website is also on AWS (Amplify).
-- New Media Lab: the local media pipeline (transcription, speaker labels, image description, OCR) runs on our own GPU server and sends nothing out; it is for material that shouldn't leave the GC, and Lab staff review requests for it. AI Use Disclosure (not drawn) is a static page on the same server and calls no model.
 - The Gateway serves only Workers AI and Amazon Bedrock, open-weight models with zero data retention. We no longer use OpenRouter or Fireworks.
-The conundrum: hosting and model calls don't line up. The AWS-hosted Sandbox reaches Bedrock both through and around the Gateway, and the local pipeline never leaves our hardware.
+The conundrum: hosting and model calls don't line up. The AWS-hosted Sandbox reaches Bedrock both through and around the Gateway.
 Say aloud what fits the room: Cloudflare is an Enterprise account, and the AWS contract is close but not yet signed.
 Source: cail-knowledge-base (October 12) and the cail-gateway and cail-tools-admission repos. The Sandbox's direct Bedrock connection comes from the knowledge base, not a live check.</aside>
+      </section>
+
+      <section class="stefano">
+        <h2>The Local Pipeline</h2>
+        <div class="side" style="grid-template-columns: 1fr 1fr; gap: 56px;">
+          <ul>
+            <li>We keep material that shouldn&rsquo;t leave the GC on our own hardware</li>
+            <li>Lab staff review each request</li>
+            <li>We run transcription, speaker labels, image description and OCR on a GPU server in the New Media Lab</li>
+          </ul>
+          <div class="hosts">
+            <svg viewBox="0 0 520 414" role="img" aria-label="People send a request, Lab staff review it, and the media pipeline runs on the GPU server in the New Media Lab. Nothing goes to an outside provider.">
+              <defs>
+                <marker id="lp-in" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="hz-head"/></marker>
+              </defs>
+              <rect class="hz-provider" x="0" y="0" width="230" height="56" rx="10"/>
+              <text class="hz-name" x="115" y="35">Request</text>
+              <path class="hz-line" d="M230 28 H284" marker-end="url(#lp-in)"/>
+              <rect class="hz-core" x="290" y="0" width="230" height="56" rx="10"/>
+              <text class="hz-core-name" x="405" y="35">Lab staff</text>
+              <path class="hz-line" d="M405 56 V112" marker-end="url(#lp-in)"/>
+
+              <rect class="hz-zone" x="0" y="118" width="520" height="296" rx="14"/>
+              <text class="hz-label" x="24" y="160">New Media Lab</text>
+              <rect class="hz-tool" x="24" y="190" width="472" height="64" rx="10"/>
+              <text class="hz-name" x="260" y="229">Media pipeline</text>
+              <path class="hz-line" d="M260 254 V320" marker-end="url(#lp-in)"/>
+              <rect class="hz-core" x="24" y="326" width="472" height="64" rx="10"/>
+              <text class="hz-core-name" x="260" y="365">GPU server</text>
+            </svg>
+          </div>
+        </div>
+        <aside class="notes">The same kinds of jobs as Media Tools, for material that shouldn't leave the GC: transcription, speaker labels, image description and OCR. People send a request; Lab staff review it and run the job on the GPU server in the New Media Lab, over a private network that only Lab staff use. Nothing goes to an outside provider.</aside>
       </section>
 
       <section class="stefano">
@@ -215,7 +234,7 @@ Source: cail-knowledge-base (October 12) and the cail-gateway and cail-tools-adm
           <p>Vibe Coding, Sandbox Series, co-working sessions</p>
         </div>
         <aside class="notes">Other universities have asked how CAIL provides model access and decides what to build. Commons In A Box is the CUNY precedent for packaging academic software that other institutions can run and change. CAIL hasn't assembled that kind of package yet.
-Access: all Graduate Center students, faculty and staff can apply. Across the rest of CUNY, access comes mostly through classes (a few faculty and staff from other campuses have individual access). Class access: we open a class when the instructor brings a critical approach to AI and can support their own students, or when we know we can support the course ourselves. Our staff is small; graduate student fellows help us extend that support. Steve says more about class access in a moment (slide 9).
+Access: all Graduate Center students, faculty and staff can apply. Across the rest of CUNY, access comes mostly through classes (a few faculty and staff from other campuses have individual access). Class access: we open a class when the instructor brings a critical approach to AI and can support their own students, or when we know we can support the course ourselves. Our staff is small; graduate student fellows help us extend that support. Steve says more about class access in a moment (slide 10).
 Community of practice, our plan to scale. It includes, among others, graduate student fellows (a February to June 2026 cohort of four, and a 2026–27 call at $10,000 per fellow) test tools, support faculty and their classes, write documentation and help run workshops. Workshop series so far: Vibe Coding, run in spring 2026 (as Coding with Generative AI) and again in fall 2026 (foundations, building a prototype, a bring-your-own-project clinic); in fall 2026 also the Sandbox Series (getting started, knowledge collections, skills and tools) and three drop-in co-working sessions (October 29, November 17, December 3), all in the New Media Lab.
 Procurement: buying for a state university is slow and complicated. Every vendor sees CUNY as an appealing contract. The partners worth having understand the work we do and the limits CUNY works under, and are willing to find creative solutions inside them.</aside>
       </section>
