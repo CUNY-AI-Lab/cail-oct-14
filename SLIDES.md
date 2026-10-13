@@ -12,7 +12,7 @@ Times are targets. The four sections run about 25 minutes, which leaves about 35
 | 2 | Stefano | Infrastructure Decisions | new opener |
 | 3 | Stefano | Guiding Principles | the four principles on ailab.gc.cuny.edu, each beside a practice; working outline III in notes |
 | 4 | Stefano | Working from the Ground Up | rewritten October 13: bottom-up operations; diagram redrawn from the ACH "CALI to CAIL" chart (13_cali_to_cail.png) with the four centers at equal weight |
-| 5 | Stefano | Where the Tools Run | hosting diagram (Cloudflare Workers, AWS, New Media Lab) with the application/front door and request/Lab staff ways in; hosting from cail-knowledge-base, October 12 |
+| 5 | Stefano | Infrastructure | hosting diagram (Cloudflare Workers, AWS, New Media Lab) with the application/front door and request/Lab staff ways in; hosting from cail-knowledge-base, October 12 |
 | 6 | Stefano | Sustaining and Sharing the Work | working outline V.B; position paper |
 | 7 | Steve | The CAIL Gateway, Access and Agent Tools | new opener |
 | 8 | Steve | The CAIL Gateway | five-slide Gateway deck 01 and 03, merged |
