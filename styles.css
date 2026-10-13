@@ -1,26 +1,27 @@
-/* Dark theme carried over from the ACH 2026 deck (cali-narst palette):
- * Newsreader headings, IBM Plex Sans text, a presenter accent on each
- * section. Font sizes in pt; reveal.js scales the 1280x720 slide. */
+/* Light version of the ACH 2026 deck's look: Newsreader headings, IBM Plex
+ * Sans text, arrow bullets, a presenter accent on each section. Accents are
+ * darkened from the ACH pastels to keep 5:1 contrast on white. Font sizes in
+ * pt; reveal.js scales the 1280x720 slide. */
 
 @import url('https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap');
 
 :root {
-  --bg: #0f1319;
-  --fg: rgba(232, 238, 245, 0.94);
-  --body: rgba(218, 225, 232, 0.84);
-  --muted: rgba(196, 206, 220, 0.72);
-  --stroke: rgba(180, 200, 220, 0.13);
-  --card: rgba(180, 200, 220, 0.03);
-  --accent: #8aa8c7;
+  --bg: #ffffff;
+  --fg: #14181f;
+  --body: #2b3138;
+  --muted: #5b6470;
+  --stroke: #e1e5ea;
+  --card: #f5f6f8;
+  --accent: #3f6188;
   --font-display: "Newsreader", "Iowan Old Style", Georgia, serif;
   --font-body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
   --font-mono: "IBM Plex Mono", Menlo, monospace;
 }
 
 /* Presenter accents, as in the ACH deck. */
-.reveal section.stefano { --accent: #c9a6cf; }
-.reveal section.steve { --accent: #8fd5c3; }
-.reveal section.zach { --accent: #e8c89f; }
+.reveal section.stefano { --accent: #7a4a88; }
+.reveal section.steve { --accent: #1d7563; }
+.reveal section.zach { --accent: #8f5f1c; }
 
 .reveal-viewport { background: var(--bg); }
 
@@ -28,7 +29,6 @@
   font-family: var(--font-body);
   font-size: 32px;
   color: var(--fg);
-  -webkit-font-smoothing: antialiased;
 }
 
 .reveal strong, .reveal b { font-weight: 600; }
@@ -129,7 +129,7 @@
   margin: 0;
   border-radius: 10px;
   border: 1px solid var(--stroke);
-  box-shadow: 0 20px 54px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 12px 34px rgba(20, 24, 31, 0.18);
 }
 .reveal .figure .r-stack,
 .reveal .side .r-stack { width: 100%; height: 100%; }
@@ -145,7 +145,7 @@
   gap: 12px;
 }
 .reveal .gw-box {
-  border: 1px solid rgba(180, 200, 220, 0.28);
+  border: 1px solid #c9cfd6;
   border-radius: 10px;
   background: var(--card);
   padding: 12px 14px;
@@ -169,11 +169,12 @@
   right: 28px;
   height: 26px;
   z-index: 10;
-  opacity: 0.9;
+  filter: brightness(0);
+  opacity: 0.85;
 }
 
 .reveal .controls { color: var(--muted); }
-.reveal .progress { color: #8fd5c3; }
+.reveal .progress { color: #1d7563; }
 .reveal .slide-number {
   left: 16px;
   right: auto;

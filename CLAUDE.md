@@ -8,7 +8,7 @@ The reveal.js slide deck for the **CUNY AI Lab session on October 14, 2026**
 (about 4:15 to 5:20): context from Luke Waltzer and Matthew K. Gold (no slides),
 then Stefano Morello, Stephen Zweibel and Zach Muhlbauer, then discussion.
 18 slides. It reuses images from the ACH 2026 deck (`../ach-2026`) and a
-version of its dark cali-narst look.
+light version of its cali-narst look.
 
 `SLIDES.md` is the manifest (order, sources, open items). Spoken notes are
 reveal.js speaker notes inside `index.html`; press `S` to open the speaker view.
@@ -16,10 +16,13 @@ reveal.js speaker notes inside `index.html`; press `S` to open the speaker view.
 ## Files
 
 - `index.html` — the deck. Reveal.js 5.1.0 and its notes plugin load from
-  jsDelivr. Each slide is a `<section id="…">`.
-- `styles.css` — the dark theme: Newsreader headings, IBM Plex Sans text, arrow
-  bullets, and a presenter accent set by a class on each section (`stefano`,
-  `steve`, `zach`). Sizes in pt on a 1280×720 slide. Bump the `?v=` on its `<link>` after every edit, or the
+  jsDelivr. Each slide is a `<section>` with no `id`, so URLs use slide numbers
+  (`#/3`, one-based, matching the on-screen counter). Adding an `id` would put
+  that name in the URL instead.
+- `styles.css` — the light theme: Newsreader headings, IBM Plex Sans text, arrow
+  bullets, light gray cards, and a presenter accent set by a class on each
+  section (`stefano`, `steve`, `zach`). The accents are the ACH pastels
+  darkened to at least 5:1 contrast on white. Sizes in pt on a 1280×720 slide. Bump the `?v=` on its `<link>` after every edit, or the
   Pages CDN serves the old file.
 - `images/` — Sandbox screenshots (`zm-step*`, `owui_*`), the AmigAI figure, and
   `tools/` (Tools page, Agent Studio workspace, Site Studio mock-up).
