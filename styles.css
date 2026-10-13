@@ -283,3 +283,13 @@
 }
 .reveal .map-key-core { background: var(--accent); }
 .reveal .map-key-out { margin-left: 22px; border: 1.5px dashed #b4bcc6; }
+
+/* Picture column with a small caption under the stacked screenshots. */
+.reveal .pics { display: flex; flex-direction: column; height: 520px; }
+.reveal .pics .r-stack { flex: 1; min-height: 0; height: auto; }
+.reveal .pics .caption {
+  margin: 8px 0 0;
+  font-size: 11pt;
+  color: var(--muted);
+  text-align: right;
+}

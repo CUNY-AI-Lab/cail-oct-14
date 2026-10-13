@@ -7,7 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 The reveal.js slide deck for the **CUNY AI Lab session on October 14, 2026**
 (about 4:15 to 5:20): context from Luke Waltzer and Matthew K. Gold (no slides),
 then Stefano Morello, Stephen Zweibel and Zach Muhlbauer, then discussion.
-18 slides. It reuses images from the ACH 2026 deck (`../ach-2026`) and a
+21 slides. It reuses images from the ACH 2026 deck (`../ach-2026`) and a
 light version of its cali-narst look.
 
 `SLIDES.md` is the manifest (order, sources, open items). Spoken notes are
@@ -25,7 +25,9 @@ reveal.js speaker notes inside `index.html`; press `S` to open the speaker view.
   darkened to at least 5:1 contrast on white. Sizes in pt on a 1280×720 slide. Bump the `?v=` on its `<link>` after every edit, or the
   Pages CDN serves the old file.
 - `images/` — Sandbox screenshots (`zm-step*`, `owui_*`), the AmigAI figure, and
-  `tools/` (Tools page, Agent Studio workspace, Site Studio mock-up).
+  `tools/` (Tools page, Agent Studio workspace, Site Studio mock-up), and
+  `access/` (application form, admin and instructor screens; sample data, see
+  `SLIDES.md`).
 
 ## Layouts
 

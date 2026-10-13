@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
-  <link rel="stylesheet" href="styles.css?v=20261013g">
+  <link rel="stylesheet" href="styles.css?v=20261013h">
 </head>
 <body>
   <div class="reveal">
@@ -125,7 +125,7 @@ Buying one AI product still leaves a university responsible for data protection,
 
       <section class="opener steve">
         <div class="card">
-          <h1>The CAIL Gateway and Agent Tools</h1>
+          <h1>The CAIL Gateway, Access and Agent Tools</h1>
           <p class="name">Stephen Zweibel</p>
           <p>Mina Rees Library, CUNY Graduate Center</p>
         </div>
@@ -161,6 +161,77 @@ Buying one AI product still leaves a university responsible for data protection,
 - We can move a model to another provider without anyone changing their tools.
 - On Workers we pay only for the requests that come in. An always-on container on AWS, which is how the Sandbox runs, costs money every hour whether or not anyone is using it.
 Providers are deliberately unnamed. Production currently serves Workers AI and Bedrock; OpenRouter is no longer behind the Gateway. The Sandbox still has older direct connections outside the Gateway, so the diagram shows the Gateway path, not every Sandbox route.</aside>
+      </section>
+
+      <section class="steve">
+        <h2>Applying for Access</h2>
+        <div class="side" style="grid-template-columns: 1.1fr 1.6fr;">
+          <ul>
+            <li>People apply on their own or for a whole class</li>
+            <li>Everyone signs in with CUNY Login first</li>
+            <li>We review each application and set an allowance</li>
+            <li>Instructors share one link, and students join with it</li>
+          </ul>
+          <div class="pics">
+            <div class="r-stack">
+              <img class="fragment fade-out" data-fragment-index="1" src="images/access/apply.webp" alt="The Lab application form on the public website: apply for your own access or for a class you teach">
+              <img class="fragment fade-in" data-fragment-index="1" src="images/access/admin-queue.webp" alt="The administration queue: a class application and an individual request waiting for a decision, with quota and access-end controls">
+            </div>
+            <p class="caption">Administration screens show sample data</p>
+          </div>
+        </div>
+        <aside class="notes">Advance once: the public application form, then the administration queue.
+- The form is the live page at ailab.gc.cuny.edu/request-access. One application covers the Sandbox, API keys, the Studios and Media Tools.
+- Students at other campuses get in through a class. The instructor applies once, and after approval shares a class link.
+- In the queue we approve or decline, pick the allowance (standard $5 or plus $20 every 30 days) and set when access ends. A decline reason is emailed.
+- The queue screenshot comes from a local copy of the admission system with invented people and example.edu addresses, not real applicants.</aside>
+      </section>
+
+      <section class="steve">
+        <h2>Class Overview for Instructors</h2>
+        <div class="side" style="grid-template-columns: 1.1fr 1.6fr;">
+          <ul>
+            <li>Instructors see who has joined their class</li>
+            <li>They see each student&rsquo;s estimated spending</li>
+            <li>They can replace or close the class link</li>
+            <li>They can withdraw a student</li>
+          </ul>
+          <div class="pics">
+            <div class="r-stack">
+              <img class="fragment fade-out" data-fragment-index="1" src="images/access/teacher-class.webp" alt="An instructor's class page: capacity 24, 11 joined, 1 reserved, 12 remaining, and an open reusable class link">
+              <img class="fragment fade-in" data-fragment-index="1" src="images/access/teacher-roster.webp" alt="The class roster: each student marked joined, with estimated spending such as $2.10 of $5.00 used">
+            </div>
+            <p class="caption">Sample data</p>
+          </div>
+        </div>
+        <aside class="notes">Advance once: the class summary, then the roster.
+- This is the real My classes page instructors get, shown with an invented class and students.
+- The spending figure is each person's estimated Lab spending this period across everything they do in the Lab, not only this class. The estimate lags a little.
+- Instructors manage their own class link: replace it if it leaks, close it when the class is full.</aside>
+      </section>
+
+      <section class="steve">
+        <h2>Administration</h2>
+        <div class="side" style="grid-template-columns: 1.1fr 1.6fr;">
+          <ul>
+            <li>We see every person&rsquo;s access, allowance and end date</li>
+            <li>We see each class with its teachers and students</li>
+            <li>We approve, renew and withdraw access in one place</li>
+            <li>We can do the same work from Claude or Codex through an MCP server</li>
+          </ul>
+          <div class="pics">
+            <div class="r-stack">
+              <img class="fragment fade-out" data-fragment-index="1" src="images/access/admin-people.webp" alt="The People view: each member's access role, allowance per 30 days and access end date">
+              <img class="fragment fade-in" data-fragment-index="1" src="images/access/admin-class.webp" alt="A class in the administration view: dates, places joined, the teacher, and the student roster">
+            </div>
+            <p class="caption">Sample data</p>
+          </div>
+        </div>
+        <aside class="notes">Advance once: People, then one class.
+- Allowances: standard $5, plus $20, administrator $50, each per 30 days. Spending is an estimate from Gateway analytics.
+- The CAIL Admin MCP lets an administrator connect Claude or Codex to the same system. They sign in with CUNY Login, and every action checks again that they are still an administrator.
+- It has about 60 actions: reviewing requests and class applications, rosters and class links, allowance resets, and diagnostics.
+- These screens come from a local copy with invented people, not real Lab members.</aside>
       </section>
 
       <section class="steve">
