@@ -29,7 +29,7 @@ Times are targets. The four sections run about 25 minutes, which leaves about 35
 
 **Steve, slide 6.** Providers are deliberately unnamed. Production currently serves Workers AI and Bedrock; OpenRouter is no longer behind the Gateway. The Sandbox still has older direct connections outside the Gateway, so the diagram shows the Gateway path, not every Sandbox route.
 
-**Steve, slide 7.** We made each of these choices. A vendor would make them differently.
+**Steve, slide 7.** We made each of these choices. A vendor would make them differently. On Workers we pay only for the requests that come in. An always-on container on AWS, which is how the Sandbox runs, costs money every hour whether or not anyone is using it.
 
 **Steve, slide 8, closing.** We can connect the Gateway to any provider that meets these rules, including a public one. Empire AI is the obvious candidate in New York. Keep this to a sentence or two.
 
