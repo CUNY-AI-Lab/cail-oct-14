@@ -11,7 +11,7 @@ Times are targets. The four sections run about 25 minutes, which leaves about 35
 | 1 | all | CUNY AI Lab | ACH title slide |
 | 2 | Stefano | Infrastructure Decisions | new opener |
 | 3 | Stefano | Guiding Principles | the four principles on ailab.gc.cuny.edu, each beside a practice; working outline III in notes |
-| 4 | Stefano | Working from the Ground Up | rewritten October 13: bottom-up operations rooted in the centers |
+| 4 | Stefano | Working from the Ground Up | rewritten October 13: bottom-up operations; diagram redrawn from the ACH "CALI to CAIL" chart (13_cali_to_cail.png) with the four centers at equal weight |
 | 5 | Stefano | Services We Buy and Run | working outline V.A; parallel diagram after cuny-ai-lab.github.io/systems-map, bullets moved to notes |
 | 6 | Stefano | Sustaining and Sharing the Work | working outline V.B; position paper |
 | 7 | Steve | The CAIL Gateway, Access and Agent Tools | new opener |
