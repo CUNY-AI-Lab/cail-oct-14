@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0f1319" />
+  <title>CUNY AI Lab — October 14, 2026</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="src/styles.css?v=20260624r" />
+  <link rel="stylesheet" href="src/ach-accents.css?v=20261013b" />
+</head>
+<body>
+<div id="image-lightbox" class="lightbox" aria-hidden="true">
+  <button id="lightbox-close" class="lightbox-close" aria-label="Close zoomed image">×</button>
+  <figure class="lightbox-figure">
+    <img id="lightbox-image" src="" alt="">
+    <figcaption id="lightbox-caption" class="lightbox-caption"></figcaption>
+  </figure>
+</div>
+<a href="#slide-content" class="skip-link">Skip to slide content</a>
+<div id="slide-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+<header role="banner">
+  <div class="bar"><div class="kbd" id="kbdSwipe">Swipe</div></div>
+  <a href="https://ailab.gc.cuny.edu/" target="_blank" rel="noopener" class="header-deck-link">ailab.gc.cuny.edu</a>
+  <a href="https://ailab.gc.cuny.edu/" target="_blank" rel="noopener" class="header-cail-link" aria-label="CUNY AI Lab">
+    <img src="images/cail-logo-white.png" alt="" aria-hidden="true" class="header-cail-logo">
+  </a>
+</header>
+
+<main id="slide-content" role="main" aria-label="Presentation slides">
+
+  <section class="slide slide-title" data-slide="title" aria-label="Title slide">
+    <figure class="title-map-wrap stage">
+      <div class="stage-fill title-art-shell" aria-hidden="true">
+        <canvas id="title-molnar" class="title-molnar"></canvas>
+      </div>
+      <div class="title-overlay">
+        <div class="title-card title-card-contrast">
+          <h1>CUNY AI Lab</h1>
+          <p class="panelists">Luke Waltzer, Matthew K. Gold, Stefano Morello, Stephen Zweibel, and Zach Muhlbauer</p>
+          <p class="institution">CUNY Graduate Center · October 14, 2026</p>
+        </div>
+      </div>
+    </figure>
+  </section>
+
+
+  <!-- ===================== CONTEXT · LUKE AND MATT ===================== -->
+
+  <section class="slide placeholder-slide crowded" data-slide="break-luke" aria-label="Luke Waltzer and Matthew K. Gold, section opening">
+    <div class="content">
+      <div class="label">Luke Waltzer and Matthew K. Gold</div>
+      <h1>Context</h1>
+      <p class="institution">CUNY AI Lab · Teaching and Learning Center · GC Digital Initiatives</p>
+    </div>
+    <figure class="stage blank-stage" aria-hidden="true"></figure>
+  </section>
+
+  <section class="slide placeholder-slide odd-layout" data-slide="matt-1" aria-label="Matthew K. Gold, the CUNY context">
+    <div class="content">
+      <div class="label">Matthew K. Gold</div>
+      <h1>The CUNY Context</h1>
+      <ul class="arrow-bullets">
+        <li>The largest urban public university</li>
+        <li>Mission: to educate &ldquo;the children of the whole people&rdquo; of New York City</li>
+        <li>The CUNY Graduate Center as a central node</li>
+      </ul>
+    </div>
+    <figure class="stage figure-stage">
+      <img src="images/matt-cuny-context.png" alt="CUNY: 1 University, 26 Colleges across the five boroughs">
+    </figure>
+  </section>
+
+  <section class="slide placeholder-slide figure-hero" data-slide="luke-precursors" aria-label="Luke, Precursors to the CUNY AI Lab">
+    <div class="content">
+      <div class="label">Luke Waltzer</div>
+      <h1>Precursors to the CUNY AI Lab</h1>
+    </div>
+    <figure class="stage figure-stage">
+      <img src="images/13_cali_to_cail.png?v=20260625g" alt="Flowchart: Teaching and Learning Center (TLC) sits to the left of four precursors: Teach@CUNY AI Toolkit (2023), Teaching and Learning Center (TLC) Workshops (2023–2024), Communities of Practice (2024–2025), and Critical AI Literacy Institute (CALI 1, 2025). These converge into the need for institutional capacity to provide shared access to faculty- and staff-made AI tools and resources. Graduate Center Digital Initiatives, Mina Rees Library, and American Social History Project / New Media Lab contribute to that need. The flow then moves to the Proposal (Spring 2025), then CUNY AI Lab Year 1 (Fall 2025–Spring 2026).">
+    </figure>
+  </section>
+
+
+  <!-- ===================== STEFANO MORELLO ===================== -->
+
+  <section class="slide placeholder-slide crowded" data-slide="break-stefano" aria-label="Stefano Morello, section opening">
+    <div class="content">
+      <div class="label">Stefano Morello</div>
+      <h1>How the Lab Decides What to Build and Buy</h1>
+      <p class="institution">CUNY AI Lab · American Social History Project / Center for Media and Learning</p>
+    </div>
+    <figure class="stage blank-stage" aria-hidden="true"></figure>
+  </section>
+
+  <section class="slide placeholder-slide crowded" data-slide="stefano-1" aria-label="Stefano, how requests become tools">
+    <div class="content">
+      <div class="label">Stefano Morello</div>
+      <h1>How Requests Become Tools</h1>
+      <ul class="arrow-bullets">
+        <li>Faculty, students and librarians bring us problems</li>
+        <li>First we check whether something we have fits</li>
+        <li>Then model access, a workshop, or a new tool</li>
+        <li>What we learn shapes the next models and tools</li>
+      </ul>
+    </div>
+    <figure class="stage blank-stage" aria-hidden="true"></figure>
+  </section>
+
+  <section class="slide placeholder-slide crowded" data-slide="stefano-2" aria-label="Stefano, what we buy and what we run">
+    <div class="content">
+      <div class="label">Stefano Morello</div>
+      <h1>What We Buy and What We Run</h1>
+      <ul class="arrow-bullets">
+        <li>We buy inference and hosting from outside providers</li>
+        <li>Only providers that keep nothing and train on nothing</li>
+        <li>A little of our own hardware, like a transcription server</li>
+        <li>We run the layer in between</li>
+      </ul>
+    </div>
+    <figure class="stage blank-stage" aria-hidden="true"></figure>
+  </section>
+
+
+  <!-- ===================== STEPHEN ZWEIBEL ===================== -->
+
+  <section class="slide placeholder-slide crowded" data-slide="break-steve" aria-label="Stephen Zweibel, section opening">
+    <div class="content">
+      <div class="label">Stephen Zweibel</div>
+      <h1>The CAIL Gateway and the Studios</h1>
+      <p class="institution">CUNY AI Lab · Mina Rees Library, CUNY Graduate Center</p>
+    </div>
+    <figure class="stage blank-stage" aria-hidden="true"></figure>
+  </section>
+
+  <section class="slide placeholder-slide odd-layout" data-slide="steve-gateway" aria-label="Steve, one model service for people and applications">
+    <div class="content">
+      <div class="label">Stephen Zweibel</div>
+      <h1>One Model Service for People and Applications</h1>
+      <ul class="arrow-bullets">
+        <li>One key works with every model</li>
+        <li>We add and remove models</li>
+        <li>Nothing goes straight from a person to a provider</li>
+      </ul>
+    </div>
+    <div class="stage gw-flow-stage">
+      <div class="gw-flow" role="img" aria-label="Lab tools, personal API keys and approved CUNY applications connect to the CAIL Gateway, which connects to zero-retention model providers and other routes">
+        <div class="gw-row gw-sources">
+          <div class="gw-box"><strong>Lab tools</strong><span>Sandbox, Studios, Media Tools</span></div>
+          <div class="gw-box"><strong>Personal API keys</strong><span>Researchers&rsquo; own code</span></div>
+          <div class="gw-box"><strong>Approved applications</strong><span>Other CUNY projects</span></div>
+        </div>
+        <div class="gw-arrow" aria-hidden="true">&darr;</div>
+        <div class="gw-row"><div class="gw-box gw-core"><strong>CAIL Gateway</strong><span>Checks the person, applies the allowance, admits the model</span></div></div>
+        <div class="gw-arrow" aria-hidden="true">&darr;</div>
+        <div class="gw-row gw-targets">
+          <div class="gw-box"><strong>Model providers</strong><span>Zero retention, open weights</span></div>
+          <div class="gw-box gw-open"><strong>Other routes</strong><span>Local models and other services</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide placeholder-slide crowded" data-slide="steve-access" aria-label="Steve, one application for access">
+    <div class="content">
+      <div class="label">Stephen Zweibel</div>
+      <h1>One Application for Access</h1>
+      <ul class="arrow-bullets">
+        <li>Apply for yourself, or for a whole class</li>
+        <li>Students join through one instructor link</li>
+        <li>One account for the Sandbox, Studios, tools and API key</li>
+        <li>One monthly allowance across all of it</li>
+      </ul>
+    </div>
+    <figure class="stage blank-stage" aria-hidden="true"></figure>
+  </section>
+
+  <section class="slide placeholder-slide crowded" data-slide="steve-choices" aria-label="Steve, choices built into the Gateway">
+    <div class="content">
+      <div class="label">Stephen Zweibel</div>
+      <h1>Choices Built into the Gateway</h1>
+      <ul class="arrow-bullets">
+        <li>Usage records carry pseudonyms, not names</li>
+        <li>No prompts or responses kept, here or at the provider</li>
+        <li>Only open-weight models</li>
+        <li>A model can move to another provider without breaking anything</li>
+      </ul>
+    </div>
+    <figure class="stage blank-stage" aria-hidden="true"></figure>
+  </section>
+
+  <section class="slide placeholder-slide figure-side steve-tool-slide" data-slide="steve-4" aria-label="Steve, Agent Studio and Site Studio">
+    <div class="content">
+      <div class="label">Stephen Zweibel</div>
+      <h1>Agent Studio and Site Studio</h1>
+      <ul class="arrow-bullets">
+        <li>Handing off a task instead of chatting</li>
+        <li>Agent Studio for research across sources, files and drafts</li>
+        <li>Site Studio for academic websites, previewed before publishing</li>
+        <li>Same login, allowance and data rules</li>
+      </ul>
+    </div>
+    <figure class="stage walk-stage steve-toggle" aria-label="Site Studio and Agent Studio, shown one at a time">
+      <div class="walk-step studio-shot back" role="group" aria-label="Site Studio: editing a personal academic website by chatting with AI, with the live page preview on the right">
+        <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span class="win-name">Site Studio</span></div>
+        <div class="ss-split">
+          <div class="ss-chat">
+            <div class="ss-projbar">
+              <span class="ss-proj">zach-muhlbauer</span>
+              <span class="ss-publish">Publish</span>
+            </div>
+            <div class="ss-msgs">
+              <div class="ss-msg ss-msg-ai">
+                Both updates are done:
+                <ul class="ss-updates">
+                  <li><strong>Bio shortened</strong> &mdash; trimmed to one clean sentence that captures your research focus</li>
+                  <li><strong>Photo updated</strong> &mdash; your actual photo now shows in place of the placeholder</li>
+                </ul>
+                The subtitle still says &ldquo;Assistant Professor, Department of Sociology&rdquo; &mdash; want to update that to reflect your actual role and department?
+              </div>
+              <div class="ss-msg ss-msg-user">PhD candidate in English / Co-Founder of the CUNY AI Lab</div>
+              <div class="ss-file"><span class="ss-file-ic" aria-hidden="true">&#9656;</span> file <code>index.html</code> <span class="ss-check" aria-hidden="true">&#10003;</span></div>
+              <div class="ss-msg ss-msg-ai">Done! Subtitle now reads &ldquo;PhD Candidate in English &middot; Co-Founder, CUNY AI Lab.&rdquo; Want to update any of the nav links (Email, CV, Research, Teaching) with real URLs?</div>
+            </div>
+            <div class="ss-input"><span>Ask a follow-up&hellip;</span><span class="ss-send" aria-hidden="true">&#10148;</span></div>
+          </div>
+          <div class="ss-preview">
+            <div class="ss-avatar" aria-hidden="true">ZM</div>
+            <h3 class="ss-name">Zach Muhlbauer</h3>
+            <p class="ss-role">PhD Candidate in English &middot; Co-Founder, CUNY AI Lab</p>
+            <p class="ss-bio">My research explores digital public spheres, literacy technologies, critical AI studies, creative coding, and electronic literature &mdash; with a particular focus on how generative AI is reshaping composition and coding classrooms, and what students&rsquo; everyday literacy practices reveal about our shifting knowledge landscape.</p>
+            <div class="ss-nav"><span>Email</span><span>CV</span><span>Research</span><span>Teaching</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="walk-step frag studio-shot front" role="group" aria-label="Agent Studio: describe a research or build task in one prompt">
+        <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span class="win-name">Agent Studio</span></div>
+        <div class="as-body">
+          <div class="as-logo"><span class="as-bolt" aria-hidden="true">&#9889;</span> Agent Studio</div>
+          <h3 class="as-head">What would you like to work on?</h3>
+          <p class="as-sub">Search APIs, analyze data, create visualizations, or build tools.</p>
+          <div class="as-prompt"><span>Ask anything or describe what you want to build&hellip;</span><span class="as-go" aria-hidden="true">&rarr;</span></div>
+          <div class="as-try">Try these</div>
+          <div class="as-chips"><span>Search papers</span><span>Analyze trends</span><span>Find books</span><span>Build a tool</span></div>
+          <p class="as-foot">Built for the CUNY community</p>
+        </div>
+      </div>
+    </figure>
+  </section>
+
+
+  <!-- ===================== ZACH MUHLBAUER ===================== -->
+
+  <section class="slide placeholder-slide crowded" data-slide="zach-intro" aria-label="Zach Muhlbauer, section opening">
+    <div class="content">
+      <div class="label">Zach Muhlbauer</div>
+      <h1>The Sandbox, the Tools, and Who Uses Them</h1>
+      <p class="institution">CUNY AI Lab · CUNY Graduate Center</p>
+    </div>
+    <figure class="stage blank-stage" aria-hidden="true"></figure>
+  </section>
+
+  <section class="slide placeholder-slide figure-side" data-slide="zach-2" aria-label="Zach, What is the CUNY AI Lab Sandbox">
+    <div class="content">
+      <div class="label">Zach Muhlbauer</div>
+      <h1>What is the CUNY AI Lab Sandbox?</h1>
+    </div>
+    <figure class="stage walk-stage" aria-label="Signing in to the Sandbox, step by step">
+      <img class="walk-step" src="images/zm-step1-signin.png" alt="Step 1: sign in to the CUNY AI Lab Sandbox">
+      <img class="walk-step frag" src="images/zm-step2-chat.png" alt="Step 2: Sandbox chat landing">
+      <img class="walk-step frag" src="images/zm-step3-models.png" alt="Step 3: choosing a model in the Sandbox">
+    </figure>
+  </section>
+
+  <section class="slide placeholder-slide figure-side" data-slide="zach-4" aria-label="Zach, Evaluating and Comparing Open-Weight Models">
+    <div class="content">
+      <div class="label">Zach Muhlbauer</div>
+      <h1>Evaluating and Comparing Open-Weight Models</h1>
+    </div>
+    <figure class="stage walk-stage" aria-label="Two model comparisons in the Sandbox, shown in turn">
+      <img class="walk-step" src="images/owui_comparison_a.png" alt="Model comparison in the Sandbox, prompt one">
+      <img class="walk-step frag" src="images/owui_comparison_b.png" alt="Model comparison in the Sandbox, prompt two">
+    </figure>
+  </section>
+
+  <section class="slide placeholder-slide figure-side" data-slide="zach-5" aria-label="Zach, Supporting Purpose-Built Custom Models">
+    <div class="content">
+      <div class="label">Zach Muhlbauer</div>
+      <h1>Supporting Purpose-Built, Custom Models</h1>
+    </div>
+    <figure class="stage figure-stage">
+      <img src="images/owui_model_cards.png" alt="Course-specific model configurations">
+    </figure>
+  </section>
+
+  <section class="slide placeholder-slide figure-hero" data-slide="zach-8" aria-label="Zach, Workshopping Project Pilots AmigAI">
+    <div class="content">
+      <div class="label">Zach Muhlbauer</div>
+      <h1>Workshopping Project Pilots: AmigAI</h1>
+    </div>
+    <figure class="stage figure-stage">
+      <img src="images/19_amigai_build.png" alt="AmigAI adapted across three sections">
+    </figure>
+  </section>
+
+  <section class="slide placeholder-slide figure-side steve-tool-slide" data-slide="zach-tools" aria-label="Zach, tools portal">
+    <div class="content">
+      <div class="label">Zach Muhlbauer</div>
+      <h1>Tools Portal</h1>
+      <ul class="arrow-bullets">
+        <li><a href="https://ailab.gc.cuny.edu/tools/" target="_blank" rel="noopener">ailab.gc.cuny.edu/tools</a></li>
+        <li>Transcription, image description and OCR</li>
+        <li>PDF accessibility checks</li>
+        <li>A free, public AI Use Disclosure tool</li>
+      </ul>
+    </div>
+    <figure class="stage figure-stage steve-tool-shot">
+      <img class="framed" src="images/tools/tools-media-2026-10.png?v=20261013a" alt="The CUNY AI Lab Tools page, Media Processing category, listing Media Tools (transcription, image description and OCR) and PDF Accessibility">
+    </figure>
+  </section>
+
+  <section class="slide placeholder-slide crowded" data-slide="zach-people" aria-label="Zach, who uses it">
+    <div class="content">
+      <div class="label">Zach Muhlbauer</div>
+      <h1>Who Uses It</h1>
+      <ul class="arrow-bullets">
+        <li>Graduate Center students, faculty and staff</li>
+        <li>Selected faculty and staff from other campuses</li>
+        <li>Students elsewhere at CUNY through a class</li>
+        <li>Fall workshops and a second fellows cohort</li>
+      </ul>
+    </div>
+    <figure class="stage blank-stage" aria-hidden="true"></figure>
+  </section>
+
+
+  <!-- ===================== DISCUSSION ===================== -->
+
+  <section class="slide placeholder-slide crowded qa-slide" data-slide="qa" aria-label="Discussion">
+    <div class="content">
+      <h1>Discussion</h1>
+    </div>
+    <figure class="stage blank-stage" aria-hidden="true"></figure>
+  </section>
+
+</main>
+
+<footer class="sticky-footer">
+  <div class="footer-slider">
+    <button class="footer-arrow" id="btn-prev" aria-label="Previous slide">&#8592;</button>
+    <div class="slider-track">
+      <input type="range" id="slide-scrubber" min="1" max="20" value="1" aria-label="Navigate to slide">
+      <div class="slider-progress"></div>
+      <div class="slider-thumb"></div>
+    </div>
+    <button class="footer-arrow" id="btn-next" aria-label="Next slide">&#8594;</button>
+    <button class="footer-arrow" id="btn-fullscreen" aria-label="Toggle fullscreen" title="Toggle fullscreen (F)">&#9974;</button>
+    <div class="footer-meta">
+      <span id="slider-counter">1 / 20</span>
+      <span class="kbd">Space</span>
+      <a href="https://ailab.gc.cuny.edu/" target="_blank" rel="noopener" class="footer-deck-link">ailab.gc.cuny.edu</a>
+    </div>
+  </div>
+</footer>
+
+<script src="src/slides.js"></script>
+<script src="src/ach-fit.js?v=20260624s"></script>
+<script src="src/ocr-layers.js?v=20260626d"></script>
+<script>
+(function () {
+  // Title background adapted from the Creative Clawing Molnar sketch.
+  function initTitleMolnar(canvas) {
+    if (!canvas || canvas.dataset.init) return;
+    canvas.dataset.init = '1';
+    var ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    var width = 1;
+    var height = 1;
+    var dpr = 1;
+    var pointerX = -1;
+    var pointerY = -1;
+    var grid = [];
+    var running = false;
+    var onScreen = true;
+    var reduceMotion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+    function resize() {
+      var rect = canvas.getBoundingClientRect();
+      dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      width = Math.max(1, rect.width);
+      height = Math.max(1, rect.height);
+      canvas.width = Math.max(1, Math.floor(width * dpr));
+      canvas.height = Math.max(1, Math.floor(height * dpr));
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      generate();
+      paint();
+    }
+
+    function generate() {
+      grid = [];
+      var cols = 24;
+      var rows = 24;
+      var cellW = width / cols;
+      var cellH = height / rows;
+      for (var row = 0; row < rows; row++) {
+        for (var col = 0; col < cols; col++) {
+          grid.push({
+            x: col * cellW + cellW / 2,
+            y: row * cellH + cellH / 2,
+            w: cellW * 0.7,
+            h: cellH * 0.7,
+            baseAngle: (Math.random() - 0.5) * 0.15,
+            seed: Math.random()
+          });
+        }
+      }
+    }
+
+    function setPointer(clientX, clientY) {
+      var rect = canvas.getBoundingClientRect();
+      pointerX = clientX - rect.left;
+      pointerY = clientY - rect.top;
+      if (reduceMotion) paint();
+    }
+
+    function paint() {
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.fillStyle = '#0a0a0a';
+      ctx.fillRect(0, 0, width, height);
+      ctx.strokeStyle = '#c0c0c0';
+      ctx.lineWidth = 1;
+
+      var radius = Math.min(width, height) * 0.25;
+      for (var i = 0; i < grid.length; i++) {
+        var item = grid[i];
+        var dx = pointerX - item.x;
+        var dy = pointerY - item.y;
+        var dist = Math.sqrt(dx * dx + dy * dy);
+        var influence = Math.max(0, 1 - dist / radius);
+        var disruption = influence * influence;
+        var angle = item.baseAngle + disruption * (item.seed - 0.5) * Math.PI * 1.5;
+        var scale = 1 - disruption * 0.4 * item.seed;
+        var ox = disruption * (item.seed - 0.5) * 12;
+        var oy = disruption * (item.seed - 0.5) * 12;
+
+        ctx.save();
+        ctx.translate(item.x + ox, item.y + oy);
+        ctx.rotate(angle);
+        ctx.globalAlpha = 0.4 + 0.6 * (1 - disruption * 0.5);
+        ctx.strokeRect(-item.w * scale / 2, -item.h * scale / 2, item.w * scale, item.h * scale);
+        ctx.restore();
+      }
+      ctx.globalAlpha = 1;
+    }
+
+    function frame() {
+      if (!running) return;
+      paint();
+      requestAnimationFrame(frame);
+    }
+
+    function startLoop() {
+      if (running || document.hidden || !onScreen) return;
+      if (reduceMotion) { paint(); return; }
+      running = true;
+      requestAnimationFrame(frame);
+    }
+
+    function stopLoop() { running = false; }
+
+    canvas.addEventListener('pointermove', function(e) { setPointer(e.clientX, e.clientY); });
+    canvas.addEventListener('pointerleave', function() {
+      pointerX = -1;
+      pointerY = -1;
+      if (reduceMotion) paint();
+    });
+    canvas.addEventListener('click', function() {
+      generate();
+      paint();
+    });
+    window.addEventListener('resize', resize);
+    if (window.visualViewport) window.visualViewport.addEventListener('resize', resize);
+    window.addEventListener('orientationchange', function() { requestAnimationFrame(resize); });
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) stopLoop(); else startLoop();
+    });
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          var becomingVisible = entry.isIntersecting && !onScreen;
+          onScreen = entry.isIntersecting;
+          if (onScreen) {
+            if (becomingVisible || canvas.width <= 1 || canvas.height <= 1) resize();
+            startLoop();
+          } else { stopLoop(); }
+        });
+      }, { threshold: 0 });
+      io.observe(canvas);
+    }
+    canvas.__deckResize = resize;
+    resize();
+    if (canvas.getBoundingClientRect().width > 1) startLoop();
+  }
+  function initAllMolnar() {
+    var canvases = document.querySelectorAll('.title-molnar');
+    for (var i = 0; i < canvases.length; i++) initTitleMolnar(canvases[i]);
+  }
+  window.addEventListener('load', initAllMolnar);
+})();
+</script>
+</body>
+</html>

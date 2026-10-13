@@ -1,0 +1,1621 @@
+/* ACH 2026 panel — presenter accents + panel layouts.
+   Extends the CALI-NARST theme for this panel's five presenters, mirroring the
+   theme's own [data-slide]-prefix accent pattern (styles.css §568-581, 824-831).
+   Matt takes pale blue; Luke reuses the theme's sage; Zach reuses the theme's
+   gold; Azucena takes lavender; Steve takes the bright mint. Loaded after
+   styles.css, so rules here win on equal specificity. */
+:root {
+  --accent-matt:  #c9d5e8;  /* pale blue   — Matthew Gold  */
+  --accent-azu:   #c9a6cf;  /* lavender    — Azucena García Gutiérrez */
+  --accent-steve: #8fd5c3;  /* bright mint — Stephen Zweibel */
+  /* --accent-luke (sage) and --accent-zach (gold) come from the theme. */
+}
+
+/* Section-break accents */
+[data-slide="break-matt"]  { --break-accent: var(--accent-matt); }
+[data-slide="break-luke"]  { --break-accent: var(--accent-luke); }
+[data-slide="break-zach"]  { --break-accent: var(--accent-zach); }
+[data-slide="break-azu"]   { --break-accent: var(--accent-azu); }
+[data-slide="break-steve"] { --break-accent: var(--accent-steve); }
+
+/* Per-slide label color */
+[data-slide^="matt-"]  .content .label { color: var(--accent-matt); }
+[data-slide^="luke-"]  .content .label { color: var(--accent-luke); }
+[data-slide^="zach-"]  .content .label { color: var(--accent-zach); }
+[data-slide^="azu-"]   .content .label { color: var(--accent-azu); }
+[data-slide^="steve-"] .content .label { color: var(--accent-steve); }
+
+/* Per-slide left accent rule on the content card */
+[data-slide^="matt-"]  .content { box-shadow: inset 3px 0 0 0 color-mix(in oklab, var(--accent-matt) 75%, transparent); }
+[data-slide^="luke-"]  .content { box-shadow: inset 3px 0 0 0 color-mix(in oklab, var(--accent-luke) 75%, transparent); }
+[data-slide^="zach-"]  .content { box-shadow: inset 3px 0 0 0 color-mix(in oklab, var(--accent-zach) 75%, transparent); }
+[data-slide^="azu-"]   .content { box-shadow: inset 3px 0 0 0 color-mix(in oklab, var(--accent-azu) 75%, transparent); }
+[data-slide^="steve-"] .content { box-shadow: inset 3px 0 0 0 color-mix(in oklab, var(--accent-steve) 75%, transparent); }
+
+/* Overview-mode top borders */
+body.overview section.slide[data-slide^="matt-"],
+body.overview section.slide[data-slide="break-matt"]  { border-top: 2px solid var(--accent-matt) !important; }
+body.overview section.slide[data-slide^="luke-"],
+body.overview section.slide[data-slide="break-luke"]  { border-top: 2px solid var(--accent-luke) !important; }
+body.overview section.slide[data-slide^="zach-"],
+body.overview section.slide[data-slide="break-zach"]  { border-top: 2px solid var(--accent-zach) !important; }
+body.overview section.slide[data-slide^="azu-"],
+body.overview section.slide[data-slide="break-azu"]   { border-top: 2px solid var(--accent-azu) !important; }
+body.overview section.slide[data-slide^="steve-"],
+body.overview section.slide[data-slide="break-steve"] { border-top: 2px solid var(--accent-steve) !important; }
+
+/* ── Title slide: the theme's --fs-title runs up to 120px, which overpowered
+   this long panel title. Bring it down to a calmer display size. ── */
+.slide-title .title-card h1 { font-size: clamp(30px, 4vw, 64px); }
+.slide-title .title-overlay { pointer-events: none; }
+.slide-title .title-card { pointer-events: auto; }
+.title-molnar {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  touch-action: none;
+}
+
+/* ── Figure-hero: a minimal title line on top, the image foregrounded across
+   nearly the whole slide below. The label + title are stripped to bare text
+   (no card, tight) and the slide's bottom padding is reclaimed so the stage
+   runs almost header-to-footer — height is what sizes these wide images, since
+   they're contain-fit. The stage is transparent/borderless so any letterboxing
+   falls on the slide's own dark ground rather than a hard black box. ── */
+@media (min-width: 720px) {
+  section.slide.placeholder-slide.figure-hero {
+    padding-bottom: calc(6px + var(--footer-h));
+    gap: 4px;
+  }
+  .placeholder-slide.figure-hero { flex-direction: column; align-items: stretch; }
+  .placeholder-slide.figure-hero > .content {
+    flex: 0 0 auto; width: 100%; min-height: 0;
+    padding: 0 clamp(8px, 1vw, 16px) 2px;
+    background: transparent; border: none; box-shadow: none; backdrop-filter: none;
+  }
+  .placeholder-slide.figure-hero > .content .label { margin-bottom: 2px; }
+  .placeholder-slide.figure-hero > .content h1 {
+    font-size: clamp(18px, 2vw, 30px); line-height: 1.05; margin-bottom: 0;
+  }
+  .placeholder-slide.figure-hero > .stage {
+    flex: 1 1 auto; width: 100%; min-height: 0;
+    background: transparent; border: none;
+  }
+}
+.placeholder-slide.figure-hero .content h1 { margin-bottom: 0; }
+.figure-hero > .stage > img,
+.figure-hero .figure-stage > img,
+.figure-side > .stage > img,
+.figure-side .figure-stage > img {
+  width: 100%; height: 100%; object-fit: contain; object-position: center;
+}
+
+/* ── Scrollable content (overflow fallback) ──
+   The theme clips `.content` (`overflow:hidden`) and, on text-only slides, pins
+   it to the slide height (`flex:1 1 100%`). So when content can't fit — a dense
+   board, or any slide on a short/narrow viewport — the overflow was clipped AND
+   unreachable: mobile keeps --fit at 1 (ach-fit.js skips shrinking below 720px),
+   and desktop floors --fit at 0.58. Let `.content` scroll its own overflow so
+   nothing is lost. --fit still shrinks first on wide screens, so the scrollbar
+   only appears as a fallback when the slide genuinely can't fit at min scale. ── */
+.placeholder-slide .content {
+  overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch;
+}
+
+/* ── Figure-side: horizontal variant of figure-hero, for wide UI screenshots.
+   A narrow title rail on the left; the screenshot fills the right column at the
+   full slide height, so ~16:9 shots run edge-to-edge in height instead of
+   losing a band to a stacked title. Charts keep figure-hero (they need width). */
+@media (min-width: 720px) {
+  section.slide.placeholder-slide.figure-side {
+    flex-direction: row; align-items: stretch;
+    gap: clamp(6px, 0.9vw, 16px);
+    padding-bottom: calc(6px + var(--footer-h));
+  }
+  .placeholder-slide.figure-side > .content {
+    flex: 0 0 25%; max-width: 25%; min-width: 0;
+    justify-content: center;
+    padding: 0 0 0 clamp(6px, 0.8vw, 16px);
+    background: transparent; border: none; box-shadow: none; backdrop-filter: none;
+  }
+  .placeholder-slide.figure-side > .content .label { margin-bottom: 5px; }
+  .placeholder-slide.figure-side > .content h1 {
+    font-size: clamp(26px, 2.7vw, 40px); line-height: 1.12; margin: 0;
+  }
+  .placeholder-slide.figure-side > .content li {
+    font-size: calc(clamp(14px, 1.25vw, 18px) * var(--fit, 1));
+    line-height: 1.34; margin-bottom: 7px;
+  }
+  .placeholder-slide.figure-side > .stage {
+    flex: 1 1 auto; min-width: 0; min-height: 0;
+    background: transparent; border: none;
+  }
+}
+
+/* Balance two-column slides (Luke / Azucena interactions): center the text
+   column against its figure so a fuller stack (title + subtitle + label + list)
+   isn't top-heavy with the last item crammed against the card's bottom edge. */
+@media (min-width: 720px) {
+  .placeholder-slide.odd-layout > .content,
+  .placeholder-slide.even-layout > .content { justify-content: center; }
+}
+
+/* Two-up image gallery inside a figure-hero stage (kept for any genuine 2-up):
+   both screenshots sit side by side, each filling its half. */
+.figure-hero .stage.gallery-2 {
+  display: flex; flex-direction: row; align-items: center; justify-content: center;
+  gap: clamp(6px, 1vw, 14px); background: transparent; border: none; padding: 0;
+}
+.figure-hero .stage.gallery-2 > img {
+  flex: 1 1 0; min-width: 0; width: 50%; height: 100%;
+  object-fit: contain; object-position: center;
+  border-radius: 8px; border: 1px solid rgba(180,200,220,0.08);
+}
+
+/* Zach: horizontal website spread inserted after the CALI-to-CAIL lineage slide.
+   The Team panel is a gallery: leadership is visible first, fellows appears on
+   the next fragment advance. */
+section.slide.cail-site-slide {
+  flex-direction: column;
+  align-items: stretch;
+  padding: clamp(18px, 2.2vh, 28px) clamp(18px, 2.4vw, 42px);
+  gap: 0;
+  overflow: hidden;
+}
+body:has(section.cail-site-slide.active) header,
+body:has(section.cail-site-slide.active) .sticky-footer {
+  opacity: 0;
+  pointer-events: none;
+}
+.cail-site-stage {
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.cail-site-shot {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 8px;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.cail-site-shot.frag,
+.cail-site-shot.frag.visible {
+  transform: none;
+}
+@media (max-width: 719px) {
+  section.slide.cail-site-slide {
+    padding: 12px 10px;
+  }
+}
+
+/* Final links slide: a compact text gallery. */
+.links-reading-slide {
+  --links-accent: var(--accent-steve);
+}
+.links-reading-slide .content {
+  flex: 1 1 100%;
+  max-width: none;
+  min-height: 0;
+  padding: clamp(22px, 3.6vh, 42px) clamp(26px, 4vw, 58px);
+  overflow: hidden;
+}
+.links-reading-slide .content .label {
+  color: var(--links-accent);
+}
+.links-reading-slide .content h1 {
+  font-size: calc(clamp(33px, 4.1vw, 58px) * var(--fit, 1));
+  line-height: 0.98;
+  margin-bottom: clamp(10px, 1.2vh, 16px);
+}
+.links-reading-slide .stage {
+  display: none;
+}
+.text-gallery-shell {
+  position: relative;
+  /* tall enough for the largest page (page 3 = 10 tiles → 4 rows) so the
+     absolutely-stacked pages never clip a bottom row. The max has to clear 4
+     rows of full-size tiles on a tall display (≈116px each); the vh term keeps
+     it modest on short viewports. */
+  min-height: clamp(372px, 60vh, 564px);
+  overflow: hidden;
+}
+.text-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(9px, 1vw, 14px);
+  align-content: start;
+}
+.text-gallery-page {
+  transition: opacity 0.34s ease, transform 0.34s ease;
+}
+/* Pages 2 and 3 stack over page 1 and reveal one click at a time (each is a
+   .frag); the page being left behind slides out. Lets the bigger 3-column tiles
+   spread the full reading list across more pages instead of cramming one grid. */
+.text-gallery-page-2,
+.text-gallery-page-3 {
+  position: absolute;
+  inset: 0;
+}
+.text-gallery-page-2.frag,
+.text-gallery-page-3.frag {
+  opacity: 0;
+  transform: translateX(-42px);
+  pointer-events: none;
+}
+.text-gallery-page-2.frag.visible,
+.text-gallery-page-3.frag.visible {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+/* page 1 retires once page 2 (and beyond) is shown */
+.text-gallery-shell:has(.text-gallery-page-2.visible) .text-gallery-page-1 {
+  opacity: 0;
+  transform: translateX(42px);
+  pointer-events: none;
+}
+/* page 2 retires once page 3 is shown */
+.text-gallery-shell:has(.text-gallery-page-3.visible) .text-gallery-page-2 {
+  opacity: 0;
+  transform: translateX(42px);
+  pointer-events: none;
+}
+.text-tile {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: clamp(92px, 13vh, 116px);
+  min-width: 0;
+  padding: clamp(11px, 1.05vw, 15px);
+  border: 1px solid rgba(190, 210, 220, 0.12);
+  border-radius: 7px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.052), rgba(255, 255, 255, 0.022)),
+    rgba(12, 17, 23, 0.58);
+  color: rgba(245, 249, 252, 0.94);
+  text-decoration: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  -webkit-user-select: none;
+  user-select: none;
+}
+.text-tile:hover {
+  border-color: color-mix(in oklab, var(--links-accent) 54%, transparent);
+}
+.link-tile {
+  background:
+    linear-gradient(180deg, color-mix(in oklab, var(--links-accent) 18%, transparent), rgba(255, 255, 255, 0.02)),
+    rgba(12, 17, 23, 0.62);
+}
+.tile-kicker {
+  display: block;
+  width: fit-content;
+  margin-bottom: 0.46em;
+  font-family: var(--font-mono);
+  font-size: calc(clamp(9px, 0.72vw, 11px) * var(--fit, 1));
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--links-accent) 82%, white 18%);
+}
+.text-tile strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: calc(clamp(14px, 1.3vw, 19px) * var(--fit, 1));
+  font-weight: 500;
+  line-height: 1.1;
+  color: rgba(245, 249, 252, 0.96);
+  text-wrap: balance;
+}
+.text-tile span:not(.tile-kicker),
+.text-tile code {
+  display: block;
+  margin-top: 0.4em;
+  font-size: calc(clamp(11px, 0.95vw, 14px) * var(--fit, 1));
+  line-height: 1.2;
+  color: rgba(229, 236, 242, 0.78);
+  text-wrap: pretty;
+  overflow-wrap: anywhere;
+}
+.text-tile em {
+  color: rgba(234, 240, 245, 0.86);
+}
+@media (max-width: 1100px) and (min-width: 720px) and (max-height: 620px) {
+  .links-reading-slide .content {
+    padding: clamp(14px, 2.8vh, 18px) clamp(18px, 3.2vw, 34px);
+    overflow: hidden;
+  }
+  .links-reading-slide .content h1 {
+    font-size: calc(clamp(26px, 3.4vw, 38px) * var(--fit, 1));
+    margin-bottom: 8px;
+  }
+  .text-gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 7px;
+  }
+  .text-gallery-shell {
+    min-height: 318px;
+  }
+  .text-tile {
+    min-height: 70px;
+    padding: 8px 9px;
+    border-radius: 6px;
+  }
+  .tile-kicker {
+    margin-bottom: 0.3em;
+    font-size: calc(8px * var(--fit, 1));
+  }
+  .text-tile strong {
+    font-size: calc(12.5px * var(--fit, 1));
+    line-height: 1.06;
+  }
+  .text-tile span:not(.tile-kicker),
+  .text-tile code {
+    margin-top: 0.26em;
+    font-size: calc(10px * var(--fit, 1));
+    line-height: 1.12;
+  }
+}
+@media (max-width: 719px) {
+  .links-reading-slide .content {
+    padding: 18px 16px;
+    overflow-y: auto;
+  }
+  .text-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .text-gallery-shell {
+    min-height: 620px;
+  }
+  .text-tile {
+    min-height: 78px;
+  }
+}
+
+/* Stepped image walkthrough (works in figure-hero or figure-side): each
+   screenshot is a .frag stacked over the last, so clicking advances the steps.
+   Transparent so the shots foreground on the slide ground, not a black box. */
+.figure-hero .stage.walk-stage,
+.figure-side .stage.walk-stage { background: transparent; border: none; }
+.figure-hero .stage .walk-step,
+.figure-side .stage .walk-step {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: contain; object-position: center;
+  background: transparent;
+}
+.figure-hero .stage .walk-step.frag,
+.figure-side .stage .walk-step.frag { transform: none; }
+.figure-hero .stage .walk-step.frag.visible,
+.figure-side .stage .walk-step.frag.visible { transform: none; }
+
+/* ── Text-only (crowded) slides — Azucena & Steve, plus Matt/Luke placeholders.
+   The theme top-aligns crowded content, so sparse slides hung empty at the
+   bottom and three-quote slides spilled under the footer. Center the content
+   vertically and size Azucena's quotes so up to three fit cleanly. ── */
+@media (min-width: 720px) {
+  .placeholder-slide.crowded .content { justify-content: center; }
+}
+[data-slide^="azu-"] .content,
+[data-slide^="steve-"] .content { gap: clamp(8px, 1.4vh, 16px); }
+
+/* The theme caps crowded-slide lists at 52ch, which wraps our slightly-longer
+   bullets early and strands the right half of the card empty. Give them more
+   room so single-line bullets stay on one line (long ones still wrap). */
+[data-slide^="azu-"] .content ul,
+[data-slide^="steve-"] .content ul { max-width: none !important; }
+
+[data-slide^="azu-"] .content blockquote {
+  margin-top: 0;
+  padding: clamp(9px, 1.1vh, 14px) clamp(13px, 1.2vw, 18px);
+  font-size: calc(clamp(14px, 1.45vw, 19px) * var(--fit, 1));
+  line-height: 1.4;
+}
+[data-slide^="azu-"] .content blockquote cite {
+  display: block; margin-top: 0.45em;
+  font-style: normal; font-family: var(--font-mono);
+  font-size: 0.72em; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--accent-azu); opacity: 0.85;
+}
+
+/* ── Azucena — sample exchange (Interactions slide) ──
+   AmigAI's guided prompt and the student's reply sit in two side-by-side
+   containers (not stacked bubbles), so each keeps a readable column width and
+   the long Spanish lines don't run full-bleed. Each card carries a mono speaker
+   tag; AmigAI is neutral, the student lavender. Sizes carry `--fit`. ── */
+/* Interactions (azu-5): the chat thread lives in the right-hand stage as a
+   vertical thread — AmigAI on top aligned left, the student reply lower and
+   aligned right, like a messaging app. The stage itself is transparent so the
+   bubbles float on the slide ground. */
+.azu-chat-stage {
+  background: transparent; border: none; box-shadow: none;
+  display: flex; align-items: stretch; justify-content: center;
+  padding: clamp(6px, 1vw, 18px);
+}
+[data-slide^="azu-"] .azu-chat {
+  display: flex; flex-direction: column; justify-content: center;
+  gap: clamp(22px, 6vh, 64px);
+  width: 100%; max-width: none;
+}
+.azu-chat .chat-msg { display: flex; flex-direction: column; min-width: 0; max-width: 88%; }
+.azu-chat .chat-amigai  { align-self: flex-start; align-items: flex-start; }
+.azu-chat .chat-student { align-self: flex-end;   align-items: flex-end; }
+.azu-chat .chat-who {
+  font-family: var(--font-mono);
+  font-size: calc(clamp(10px, 0.85vw, 12px) * var(--fit, 1));
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent-azu); opacity: 0.85;
+  margin: 0 0.2em 0.35em;
+}
+.azu-chat .chat-amigai  .chat-who { text-align: left;  }
+.azu-chat .chat-student .chat-who { text-align: right; }
+.azu-chat .chat-bubble {
+  margin: 0; flex: 1 1 auto;
+  padding: clamp(11px, 1.3vh, 16px) clamp(14px, 1.2vw, 18px);
+  font-size: calc(clamp(14px, 1.4vw, 18px) * var(--fit, 1));
+  line-height: 1.42; text-align: left; border-radius: 14px;
+}
+.azu-chat .chat-amigai .chat-bubble {
+  background: rgba(180, 200, 220, 0.09);
+  border: 1px solid rgba(180, 200, 220, 0.18);
+}
+.azu-chat .chat-student .chat-bubble {
+  background: rgba(201, 166, 207, 0.16);
+  border: 1px solid rgba(201, 166, 207, 0.34);
+}
+@media (max-width: 720px) {
+  .azu-chat .chat-msg { max-width: 100%; }
+  .azu-chat .chat-amigai, .azu-chat .chat-student { align-self: stretch; align-items: stretch; }
+  .azu-chat .chat-student .chat-who { text-align: left; }
+}
+
+/* ── Azucena — components restored from her source deck ────────────────────
+   Her slides carried colored sub-labels, check-mark lists ("Fundamental
+   Components" / "Conclusions"), and two "First Impressions" boards that lay
+   student quotes out in 3- and 2-column grids. Rebuilt here in the dark
+   theme so no quote, header, or image is lost. ── */
+
+/* Colored sub-label under a slide title (her teal/green subheads) */
+[data-slide^="azu-"] .content h2.azu-sub {
+  font-family: var(--font-mono);
+  font-size: calc(var(--fs-label) * var(--fit, 1));
+  letter-spacing: 0.14em; text-transform: uppercase;
+  font-weight: 600;
+  color: var(--accent-azu); opacity: 0.9;
+  margin: 0.1em 0 0.7em;
+  max-width: none !important;   /* override theme's 52ch cap so the one-line subtitle doesn't wrap */
+}
+
+/* Check-mark lists (Classroom Application, Conclusions) */
+[data-slide^="azu-"] .content ul.check-bullets {
+  list-style: none; padding-left: 0; max-width: none !important;
+}
+[data-slide^="azu-"] .content ul.check-bullets > li {
+  position: relative; padding-left: 1.7em; margin-bottom: 0.55em;
+}
+[data-slide^="azu-"] .content ul.check-bullets > li::before {
+  content: "\2713"; position: absolute; left: 0; top: 0.02em;
+  color: var(--accent-azu); font-weight: 700;
+}
+
+/* A screenshot framed inside a transparent figure-hero/side stage (the light
+   transcript shot needs an edge so it doesn't float as a bare white block). */
+.figure-hero .figure-stage > img.framed,
+.figure-side .figure-stage > img.framed {
+  border-radius: 10px; border: 1px solid rgba(180,200,220,0.14);
+}
+
+/* ── First Impressions — quote boards ──
+   Three thematic columns on a wide viewport, stacked to one column for medium
+   and small viewports. Compact: moderate quote type, tight gaps (`--fit` still
+   trims a dense board if it would overflow). Content is verbatim, not edited. */
+.placeholder-slide.azu-impressions .content {
+  flex-basis: 100%; min-width: 0;
+  justify-content: flex-start;   /* top-align; override the crowded-slide centering */
+  padding: clamp(14px,2vw,28px) clamp(14px,2vw,30px);
+}
+.azu-impressions .content h1 { margin-bottom: 0.04em; }
+.azu-impressions .impressions-sub {
+  font-family: var(--font-mono); font-size: var(--fs-label);
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--accent-azu); opacity: 0.8;
+  margin: 0 0 clamp(5px, 0.7vh, 9px);
+}
+.quote-cols { display: grid; gap: clamp(10px, 1vw, 18px); align-items: stretch; }
+.azu-impressions .quote-cols { flex: 1 1 auto; }
+.quote-cols.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.quote-cols.cols-2 { grid-template-columns: repeat(2, 1fr); }
+.quote-col { display: flex; flex-direction: column; gap: clamp(6px, 0.7vh, 11px); min-width: 0; justify-content: flex-start; }
+.quote-col .col-head {
+  flex: 0 0 auto;
+  font-family: var(--font-sans); font-weight: 600;
+  /* NOT scaled by --fit: the dense 3-col positive board shrinks --fit more than
+     the 2-col negative one, which made its headers smaller. Pinned, both boards'
+     headers render the same size; the quotes (which keep --fit) absorb the fit. */
+  font-size: clamp(17px, 1.65vw, 25px); line-height: 1.22;
+  color: var(--accent-azu);
+  padding-bottom: 5px;
+  border-bottom: 1px solid color-mix(in oklab, var(--accent-azu) 28%, transparent);
+}
+/* Content-sized quote cards: each hugs its own text (the earlier equal-height
+   grow left big boxes wrapped around small text), in normal block flow so the
+   citation runs INLINE at the end of the quote — saving a whole line. Type is
+   large; padding/gaps are tight so even the dense column fits before --fit
+   trims, keeping the quotes readable rather than shrunk. */
+.azu-impressions .quote-col blockquote {
+  flex: 0 0 auto; display: block; margin: 0;
+  padding: clamp(7px, 0.8vh, 11px) clamp(11px, 0.85vw, 15px);
+  font-size: calc(clamp(18px, 1.9vw, 30px) * var(--fit, 1)); line-height: 1.33;
+}
+.azu-impressions .quote-col blockquote cite {
+  display: inline; margin-left: 0.5em; font-size: 0.7em; white-space: nowrap;
+}
+/* 3-up / 2-up on wide; stack vertically for medium and small viewports. */
+@media (max-width: 1024px) {
+  .quote-cols.cols-3, .quote-cols.cols-2 { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .placeholder-slide.azu-impressions .content {
+    padding: 10px 12px;
+    overflow: hidden;
+  }
+  .azu-impressions .content h1 {
+    font-size: clamp(26px, 6.8vw, 34px);
+    line-height: 1.02;
+  }
+  .azu-impressions .impressions-sub {
+    font-size: 10px;
+    line-height: 1.1;
+    margin-bottom: 5px;
+  }
+  .quote-cols {
+    gap: 6px;
+  }
+  .quote-col {
+    gap: 4px;
+  }
+  .quote-col .col-head {
+    font-size: 14px;
+    line-height: 1.15;
+    padding-bottom: 3px;
+  }
+  .azu-impressions .quote-col blockquote {
+    padding: 5px 7px;
+    font-size: calc(11.5px * var(--fit, 1));
+    line-height: 1.18;
+  }
+  .azu-impressions .quote-col blockquote cite {
+    font-size: 0.62em;
+  }
+}
+
+/* Numbered step-grid — imported verbatim from the cali-brooklyn deck's
+   styles.css (§236-247) so Luke's "CALI as an Intervention" slide renders as it
+   does at its source. Not part of the cali-narst theme we vendored. */
+.step-grid {
+  position: relative; width: 100%;
+  display: flex; flex-direction: column; gap: 6px; justify-content: center;
+  padding: clamp(12px,2vw,24px);
+}
+.step-row {
+  display: flex; gap: 12px; align-items: center; padding: 12px 14px;
+  border-bottom: 1px solid rgba(180,200,220,0.06);
+}
+.step-row:last-child { border-bottom: none; }
+.step-num { width: 28px; height: 28px; border-radius: 50%; background: var(--part); color: #fff; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; }
+.step-text { font-size: clamp(15px,1.8vw,22px); color: rgba(218,225,232,0.86); line-height: 1.4; }
+
+/* Panel emblem (ach26.svg): gold hands + lightbulb in the header. The theme's
+   .header-logo inverts dark wordmarks for the dark header; this mark is already
+   light/gold, so cancel the invert and let it keep its color. */
+.header-logo.brand-mark { filter: none; opacity: 0.95; }
+.header-logo.brand-mark:hover { opacity: 1; }
+
+/* CUNY AI Lab wordmark, moved to the header's top-right (opposite the emblem). */
+.header-cail-link {
+  margin-left: auto; pointer-events: auto;
+  display: inline-flex; line-height: 0; flex-shrink: 0;
+  transition: opacity 0.2s ease;
+}
+.header-cail-logo {
+  height: clamp(16px, 1.9vw, 26px); width: auto; display: block;
+  opacity: 0.82; object-fit: contain; transition: opacity 0.2s ease;
+}
+.header-cail-link:hover .header-cail-logo { opacity: 1; }
+
+/* Mobile: when slides stack to a single column (<720px), stage images keep
+   their intrinsic width (flex items default to min-width:auto) and overflow the
+   viewport — text and screenshots run off the right edge. Pin them to the
+   column width and let height follow the aspect ratio. */
+@media (max-width: 720px) {
+  section.slide { overflow-x: hidden; }
+  /* Both columns must shrink below their content's intrinsic size, or a wide
+     image/chart drags the stacked column past the viewport. */
+  .placeholder-slide > .content,
+  .placeholder-slide > .stage {
+    flex-shrink: 1 !important; min-width: 0 !important; max-width: 100% !important;
+  }
+  .placeholder-slide > .stage { width: 100%; }
+  /* The image is itself a flex item (figure-stage is a column flex), so it keeps
+     min-width:auto = its intrinsic width and gets clipped by the stage's
+     overflow:hidden. Pin it to the column width. Selector specificity matches
+     the theme's `.figure-hero .figure-stage > img` (0,3,1) so height:100% loses. */
+  .placeholder-slide .figure-stage > img,
+  .placeholder-slide .stage > img,
+  .figure-hero .figure-stage > img,
+  .figure-side .figure-stage > img {
+    width: 100% !important; height: auto !important;
+    min-width: 0 !important; max-width: 100% !important;
+    object-fit: contain;
+  }
+}
+
+/* The "Swipe" hint is for touch only, but the theme keys it to viewport width —
+   so a desktop user in a narrow window still sees it. Hide it on any device with
+   a real mouse/trackpad (fine pointer + hover), regardless of width. Touch
+   devices keep the theme's behavior. */
+@media (hover: hover) and (pointer: fine) {
+  #kbdSwipe { display: none; }
+}
+
+/* Footer scrubber: run it from the far left to the nav controls. The theme's
+   left gutter (clamp 90-130px) reserved room for the footer logo, which now
+   lives in the header — drop it; and remove the centered max-width so the track
+   uses the full width. The arrows/fullscreen/counter cluster sits on the right. */
+.sticky-footer { padding-left: clamp(16px, 2vw, 28px); }
+.footer-slider { max-width: none; }
+
+/* A small category label that sits above a list (e.g. Luke's "Tracks" over the
+   three CALI tracks). The theme's h3 is smaller than the body list items, which
+   inverts the hierarchy on wide screens — read it as a quiet label instead. */
+.content .list-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(218, 225, 232, 0.5);
+  margin: 0.5em 0 0.55em;
+}
+
+/* Blank placeholder slides for Matt & Luke: faint "to be drafted" affordance. */
+.blank-note {
+  margin-top: 0.4em;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: 0.04em;
+  color: rgba(201, 213, 232, 0.42);
+}
+.blank-stage {
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(201, 213, 232, 0.30);
+  font-family: var(--font-mono); font-size: var(--fs-caption);
+  letter-spacing: 0.06em;
+}
+
+/* Luke / Azucena image+text slides: when the layout stacks on narrow viewports,
+   give the text primacy — the full text card first, the photo secondary and
+   height-capped, so the image can't overlap or bury the bullets. */
+@media (max-width: 720px) {
+  .placeholder-slide.odd-layout,
+  .placeholder-slide.even-layout { flex-direction: column !important; }
+  .placeholder-slide.odd-layout > .content,
+  .placeholder-slide.even-layout > .content {
+    flex: 0 0 auto !important; order: 0; overflow: visible !important;
+  }
+  .placeholder-slide.odd-layout > .stage,
+  .placeholder-slide.even-layout > .stage {
+    flex: 0 0 auto !important; order: 1; max-height: 46vh;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Auto-fit + responsive sizing (added for the Azucena rebuild)
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Auto-fit type. ach-fit.js lowers `--fit` on a slide's `.content` when its
+   text overflows the slide box; these rules re-state the theme's type tokens
+   multiplied by that factor (identical selectors, loaded later, so they win on
+   source order). Default `--fit:1` ⇒ no change to slides that already fit. ── */
+.content { --fit: 1; }
+.content h1 { font-size: calc(var(--fs-display) * var(--fit, 1)); }
+.content h2 { font-size: calc(var(--fs-heading) * var(--fit, 1)); }
+.content li { font-size: calc(var(--fs-body) * var(--fit, 1)); }
+.content blockquote { font-size: calc(var(--fs-quote) * var(--fit, 1)); }
+.placeholder-slide.dense .content h2 { font-size: calc(var(--fs-dense-h2) * var(--fit, 1)); }
+.placeholder-slide.dense .content li { font-size: calc(var(--fs-dense-li) * var(--fit, 1)); }
+.placeholder-slide.lw2.dense .content li { font-size: calc(var(--fs-body) * var(--fit, 1)); }
+
+/* ── Content must never hug the fixed header. The theme sets the slide's
+   top padding to exactly the header height; add a small guaranteed gap so a
+   presenter's name/label always sits clear of the header, even when a slide is
+   content-heavy. (Title/break slides keep their own framing.) ── */
+@media (min-width: 720px) {
+  section.slide.placeholder-slide:not(.figure-hero) {
+    padding-top: calc(var(--header-h) + clamp(8px, 1.6vh, 22px));
+  }
+}
+
+/* ── Illustration stage (Azucena's dartboard): blend the cut-out into the slide
+   ground instead of boxing it in the theme's dark card, and pad it so the art
+   is fully contained (never clipped by the card edge). ── */
+.placeholder-slide .stage.illus {
+  background: transparent; border: none;
+}
+.placeholder-slide .stage.illus {
+  display: flex; align-items: center; justify-content: center;
+  padding: clamp(8px, 1.8vw, 28px);
+}
+.placeholder-slide .stage.illus > img {
+  width: auto; height: auto;
+  max-width: 100%; max-height: 100%;
+  object-fit: contain; object-position: center;
+  flex: 0 1 auto; min-height: 0; padding: 0;
+}
+
+/* ── Interactive word-bubbles (Azucena, Classroom Application) — replaces the
+   stock thinking-person clip-art. Speech bubbles carry the guiding questions
+   AmigAI asks; they drift gently and lift on hover/focus. ── */
+.stage.bubble-cloud {
+  background: transparent; border: none;
+  position: relative; overflow: visible;
+  display: block;
+}
+.bubble-cloud .bubble {
+  position: absolute;
+  font-family: var(--font-body);
+  font-size: calc(clamp(13px, 1.15vw, 18px) * var(--fit, 1));
+  line-height: 1.25;
+  color: rgba(244, 240, 248, 0.96);
+  background: color-mix(in oklab, var(--accent-azu) 22%, rgba(20, 24, 32, 0.92));
+  border: 1px solid color-mix(in oklab, var(--accent-azu) 45%, transparent);
+  border-radius: 16px;
+  padding: 0.5em 0.85em;
+  white-space: nowrap;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.35);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+  animation: bubble-float 7s ease-in-out infinite;
+  cursor: default;
+}
+/* the little speech tail */
+.bubble-cloud .bubble::after {
+  content: ""; position: absolute; bottom: -7px; left: 22px;
+  width: 14px; height: 14px;
+  background: inherit; border-right: inherit; border-bottom: inherit;
+  border-radius: 0 0 5px 0; transform: rotate(28deg);
+}
+.bubble-cloud .bubble:hover,
+.bubble-cloud .bubble:focus-visible {
+  transform: translateY(-4px) scale(1.06);
+  background: color-mix(in oklab, var(--accent-azu) 34%, rgba(20, 24, 32, 0.92));
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  outline: none;
+}
+.bubble-cloud .b1 { top: 8%;  left: 6%;  animation-delay: 0s;    }
+.bubble-cloud .b2 { top: 30%; right: 6%; animation-delay: 0.8s;  }
+.bubble-cloud .b3 { top: 50%; left: 12%; animation-delay: 1.6s;  }
+.bubble-cloud .b4 { top: 70%; right: 10%; animation-delay: 2.4s; }
+.bubble-cloud .b5 { top: 86%; left: 28%; animation-delay: 3.2s;  }
+@keyframes bubble-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-7px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bubble-cloud .bubble { animation: none; }
+}
+
+/* ── Interactive JSON card (Azucena, Conclusions) — replaces the stock clipboard
+   clip-art. The findings read as a small syntax-highlighted object; the
+   limitations array is a native <details> the presenter can expand. ── */
+.stage.json-card {
+  background: #0b0f15; border: 1px solid rgba(180, 200, 220, 0.12);
+  border-radius: 14px; overflow: auto;
+  display: flex; align-items: center;
+  padding: clamp(14px, 2vw, 30px);
+}
+.json-card pre {
+  margin: 0; width: 100%;
+  font-family: var(--font-mono);
+  font-size: calc(clamp(12px, 1.05vw, 16px) * var(--fit, 1));
+  line-height: 1.6; color: rgba(218, 225, 232, 0.9);
+  white-space: pre; tab-size: 2;
+}
+.json-card .j-key  { color: var(--accent-azu); }
+.json-card .j-str  { color: #8fd5c3; }
+.json-card .j-pun  { color: rgba(218, 225, 232, 0.5); }
+.json-card details { display: inline; }
+.json-card summary {
+  display: inline; cursor: pointer; list-style: none;
+  color: #8fd5c3; outline: none;
+}
+.json-card summary::-webkit-details-marker { display: none; }
+.json-card summary::after {
+  content: " ▸"; color: var(--accent-azu); font-size: 0.85em;
+}
+.json-card details[open] summary::after { content: " ▾"; }
+.json-card details[open] summary { color: rgba(218, 225, 232, 0.5); }
+.json-card .j-arr { display: block; padding-left: 2.4ch; }
+
+/* ── Large viewports: let UI screenshots (figure-side, e.g. the sign-in
+   walkthrough on slide 17) take more of the width by narrowing the title rail. */
+@media (min-width: 1200px) {
+  .placeholder-slide.figure-side > .content {
+    flex-basis: 22%; max-width: 22%;
+  }
+}
+
+/* ── Narrow viewports: text gains primacy over the image / visualization.
+   Between the stacking breakpoint and ~1040px the columns stay side-by-side but
+   the text column widens and the visual shrinks; once stacked (<720px) the
+   bubble-cloud and json-card join the photos in being height-capped and
+   secondary to the text. ── */
+@media (min-width: 720px) and (max-width: 1040px) {
+  .placeholder-slide.odd-layout  > .content { flex-basis: 58%; }
+  .placeholder-slide.odd-layout  > .stage   { flex-basis: 42%; }
+  .placeholder-slide.even-layout > .content { flex: 0 1 46%; }
+  .placeholder-slide.even-layout > .stage   { flex: 1 1 54%; }
+  .placeholder-slide.figure-side > .content { flex-basis: 40%; max-width: 40%; }
+}
+@media (max-width: 720px) {
+  .placeholder-slide.odd-layout  > .stage.illus,
+  .placeholder-slide.even-layout > .stage.illus,
+  .placeholder-slide > .stage.bubble-cloud,
+  .placeholder-slide > .stage.json-card { max-height: 38vh; order: 1; }
+  .placeholder-slide > .content { order: 0; }
+  /* the bubbles' absolute scatter needs a real box once it's height-capped */
+  .stage.bubble-cloud { min-height: 34vh; }
+}
+
+/* ── No mid-word auto-hyphenation ──
+   The theme sets `hyphens: auto` on slide body text, which breaks long words
+   like "tech-nology" mid-word. Force whole-word wrapping instead. */
+.placeholder-slide .content,
+.placeholder-slide .content p,
+.placeholder-slide .content li,
+.placeholder-slide .content blockquote {
+  -webkit-hyphens: manual;
+  hyphens: manual;
+}
+
+/* ── Tighter eyebrow→title gap (general) ──
+   The theme's .content .label margin-bottom (14px) leaves too much air between
+   the presenter eyebrow and the slide title; pull it in across all layouts.
+   (figure-hero keeps its own 2px; figure-side set to 5px above.) */
+.placeholder-slide .content .label { margin-bottom: 6px; }
+
+/* ── Matt's long pull-quote (slide 3) ──
+   It's ~85 words; at the generic blockquote size it overflows narrow/short
+   windows (and ach-fit stops shrinking below 720px). Give .big-quote a tighter
+   base size + leading, and a firmer clamp under 720px, so it stays in-frame.
+   On large viewports ach-fit still scales it via the --fit multiplier. */
+.placeholder-slide .content blockquote.big-quote {
+  font-size: calc(var(--fs-quote-tight) * var(--fit, 1));
+  line-height: 1.4;
+}
+@media (max-width: 720px) {
+  .placeholder-slide .content blockquote.big-quote {
+    font-size: var(--fs-quote-dense);
+    line-height: 1.32;
+    padding: 0.7em 0.85em;
+  }
+}
+
+/* ── Matt slide 3: auto-rotating DH-platforms gallery ──
+   Like Luke's animated GIF, the four CUNY DH-platform screenshots (Academic
+   Commons, Manifold, Debates in the DH, Commons In A Box) crossfade in the
+   figure stage on a CSS-only timer — no JS, so it can't fight slide nav. */
+.mkg-gallery { position: relative; }
+.mkg-gallery img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: contain; object-position: center;
+  opacity: 0;
+  animation: mkgCycle 18s infinite;
+}
+.mkg-gallery img:nth-child(2) { animation-delay: 4.5s; }
+.mkg-gallery img:nth-child(3) { animation-delay: 9s; }
+.mkg-gallery img:nth-child(4) { animation-delay: 13.5s; }
+@keyframes mkgCycle {
+  0%   { opacity: 0; }
+  3%   { opacity: 1; }
+  22%  { opacity: 1; }
+  28%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mkg-gallery img { animation: none; }
+  .mkg-gallery img:nth-child(1) { opacity: 1; }
+}
+
+/* ── Image slides: tighter bullets ──
+   On text+figure slides the theme's --fs-body (~30px at 1440) makes bullets
+   wrap several lines deep beside the image. Pull the bullet size down on the
+   side-by-side layouts so the list stays compact (image gets the width). */
+.placeholder-slide.odd-layout > .content li,
+.placeholder-slide.even-layout > .content li {
+  font-size: calc(clamp(18px, 1.8vw, 25px) * var(--fit, 1));
+  line-height: 1.36;
+  margin-bottom: 8px;
+}
+
+/* ── Vertically center the step-grid in its stage (Luke's Intervention) ──
+   The odd-layout stage holding a numbered step-grid top-aligned the rows; center
+   them so they sit beside the centered title column. */
+.placeholder-slide.odd-layout > .stage:has(> .step-grid) {
+  display: flex; flex-direction: column; justify-content: center;
+}
+
+
+/* ── Matt's image slides: larger type, roomier rail ──
+   The default figure-side rail is narrow (keeps Zach's wide screenshots big),
+   but Matt's slides 6/7 need readable title + bullets, so widen the rail and
+   raise the type for Matt only. Slide 3's map also gets a bit more width. */
+@media (min-width: 720px) {
+  [data-slide^="matt-"].placeholder-slide.figure-side > .content {
+    flex: 0 0 32%; max-width: 32%;
+  }
+  [data-slide^="matt-"].placeholder-slide.figure-side > .content h1 {
+    font-size: clamp(26px, 2.7vw, 40px);
+  }
+  [data-slide^="matt-"].placeholder-slide.figure-side > .content li {
+    font-size: calc(clamp(17px, 1.6vw, 23px) * var(--fit, 1));
+  }
+  [data-slide="matt-1"].placeholder-slide.odd-layout .content { flex: 0 1 45%; }
+  [data-slide="matt-1"].placeholder-slide.odd-layout .stage { flex: 1 1 55%; }
+
+  [data-slide="matt-5"].placeholder-slide.figure-side > .content {
+    flex-basis: 33%; max-width: 33%;
+    padding: clamp(22px, 2.1vw, 34px) clamp(22px, 2.3vw, 36px);
+    background: rgba(180, 200, 220, 0.025);
+    border: 1px solid rgba(180, 200, 220, 0.08);
+    border-radius: 16px;
+    box-shadow: inset 3px 0 0 0 color-mix(in oklab, var(--accent-matt) 70%, transparent);
+    backdrop-filter: blur(6px);
+  }
+
+  [data-slide="matt-6"].placeholder-slide.odd-layout > .content {
+    flex: 0 1 44%;
+    padding-inline: clamp(22px, 2.2vw, 32px);
+  }
+  [data-slide="matt-6"].placeholder-slide.odd-layout > .stage {
+    flex: 1 1 56%;
+  }
+  [data-slide="matt-6"].placeholder-slide.odd-layout > .stage > img {
+    transform: scale(1.08);
+    transform-origin: center top;
+  }
+  [data-slide="matt-6"].placeholder-slide.odd-layout > .content h1 {
+    font-size: calc(clamp(26px, 2.75vw, 37px) * var(--fit, 1));
+  }
+  [data-slide="matt-6"].placeholder-slide.odd-layout > .content li {
+    font-size: calc(clamp(15px, 1.3vw, 18px) * var(--fit, 1));
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+  [data-slide="matt-6"] .guidelines-link {
+    margin: clamp(7px, 1vw, 12px) 0 0 1.65em;
+    font-family: var(--font-mono);
+    font-size: calc(clamp(10.5px, 0.8vw, 12.25px) * var(--fit, 1));
+    line-height: 1.35;
+    letter-spacing: 0.04em;
+    color: rgba(218, 225, 232, 0.58);
+  }
+  [data-slide="matt-6"] .guidelines-link a {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 1px;
+    color: color-mix(in oklab, var(--accent-matt) 72%, #dce6f1);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  [data-slide="matt-6"] .guidelines-link span {
+    display: block;
+    overflow-wrap: normal;
+  }
+}
+
+@media (min-width: 720px) and (max-width: 1040px) {
+  [data-slide="matt-6"].placeholder-slide.odd-layout > .content { flex-basis: 48%; }
+  [data-slide="matt-6"].placeholder-slide.odd-layout > .stage { flex-basis: 52%; }
+}
+
+@media (max-width: 720px) {
+  [data-slide="matt-5"].placeholder-slide.figure-side > .content {
+    padding: clamp(18px, 5vw, 28px) clamp(20px, 5vw, 30px);
+  }
+  [data-slide="matt-5"].placeholder-slide.figure-side > .content h1 {
+    font-size: clamp(30px, 7.8vw, 40px);
+  }
+  [data-slide="matt-5"].placeholder-slide.figure-side > .content li {
+    font-size: clamp(18px, 4.6vw, 20px);
+    line-height: 1.28;
+    margin-bottom: 7px;
+  }
+  [data-slide="matt-6"] .guidelines-link {
+    margin: 5px 0 0 1.75em;
+    font-family: var(--font-mono);
+    font-size: clamp(10.5px, 2.25vw, 12px);
+    line-height: 1.35;
+    letter-spacing: 0.03em;
+    color: rgba(218, 225, 232, 0.6);
+  }
+  [data-slide="matt-6"] .guidelines-link a {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 1px;
+    color: color-mix(in oklab, var(--accent-matt) 72%, #dce6f1);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  [data-slide="matt-6"] .guidelines-link span {
+    display: block;
+    overflow-wrap: normal;
+  }
+}
+
+@media (max-width: 820px) {
+  section.slide[data-slide="matt-5"].placeholder-slide.figure-side {
+    flex-direction: column !important;
+    align-items: stretch;
+    gap: 12px;
+  }
+  [data-slide="matt-5"].placeholder-slide.figure-side > .content {
+    flex: 0 0 auto;
+    width: auto;
+    max-width: 100%;
+    justify-content: flex-start;
+    overflow-y: visible;
+  }
+  [data-slide="matt-5"].placeholder-slide.figure-side > .stage {
+    flex: 0 0 auto;
+    min-height: 0;
+    max-height: min(40vh, 310px);
+    background: #080b10;
+    border: 1px solid rgba(180, 200, 220, 0.05);
+    border-radius: 16px;
+  }
+}
+
+/* ── In-slide links (Steve's tool URLs) ──
+   Subtle underline that inherits the body color, brightening to the slide's
+   presenter accent on hover/focus. (Clicking a slide only acts in overview
+   mode, so these links never advance the deck.) */
+.placeholder-slide .content a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: color-mix(in oklab, currentColor 45%, transparent);
+  transition: color 0.15s ease;
+}
+[data-slide^="matt-"]  .content a:hover, [data-slide^="matt-"]  .content a:focus-visible { color: var(--accent-matt);  text-decoration-color: currentColor; }
+[data-slide^="luke-"]  .content a:hover, [data-slide^="luke-"]  .content a:focus-visible { color: var(--accent-luke);  text-decoration-color: currentColor; }
+[data-slide^="zach-"]  .content a:hover, [data-slide^="zach-"]  .content a:focus-visible { color: var(--accent-zach);  text-decoration-color: currentColor; }
+[data-slide^="azu-"]   .content a:hover, [data-slide^="azu-"]   .content a:focus-visible { color: var(--accent-azu);   text-decoration-color: currentColor; }
+[data-slide^="steve-"] .content a:hover, [data-slide^="steve-"] .content a:focus-visible { color: var(--accent-steve); text-decoration-color: currentColor; }
+
+/* ── Section openers (break-*) now use the crowded intro style (like zach-intro),
+   so give them the presenter label color + content accent bar by exact id. */
+[data-slide="break-matt"]  .content .label { color: var(--accent-matt); }
+[data-slide="break-luke"]  .content .label { color: var(--accent-luke); }
+[data-slide="break-steve"] .content .label { color: var(--accent-steve); }
+[data-slide="break-matt"]  .content { box-shadow: inset 3px 0 0 0 color-mix(in oklab, var(--accent-matt) 75%, transparent); }
+[data-slide="break-luke"]  .content { box-shadow: inset 3px 0 0 0 color-mix(in oklab, var(--accent-luke) 75%, transparent); }
+[data-slide="break-steve"] .content { box-shadow: inset 3px 0 0 0 color-mix(in oklab, var(--accent-steve) 75%, transparent); }
+
+/* Stephen: tool screenshots. These slides need enough text rail for live
+   delivery while letting the CAIL tool interfaces read as actual products. */
+@media (min-width: 720px) {
+  section.slide.placeholder-slide.figure-side.steve-tool-slide {
+    gap: clamp(12px, 1.4vw, 24px);
+  }
+
+  .placeholder-slide.figure-side.steve-tool-slide > .content {
+    flex: 0 0 31%;
+    max-width: 31%;
+  }
+
+  .placeholder-slide.figure-side.steve-tool-slide > .content h1 {
+    font-size: clamp(30px, 3.2vw, 52px);
+  }
+
+  .placeholder-slide.figure-side.steve-tool-slide > .content li {
+    font-size: calc(clamp(16px, 1.55vw, 23px) * var(--fit, 1));
+    line-height: 1.36;
+  }
+
+  .placeholder-slide.figure-side.steve-tool-slide > .stage {
+    flex: 1 1 69%;
+    min-width: 0;
+    padding: clamp(4px, 0.7vw, 10px);
+  }
+
+  /* steve-4 carries two windows, so the text rail gives up a little width. */
+  section.placeholder-slide.figure-side.steve-tool-slide[data-slide="steve-4"] > .content {
+    flex-basis: 24%;
+    max-width: 24%;
+  }
+  section.placeholder-slide.figure-side.steve-tool-slide[data-slide="steve-4"] > .stage {
+    flex-basis: 76%;
+    padding: clamp(2px, 0.4vw, 6px);
+  }
+}
+
+.steve-tool-shot {
+  background:
+    linear-gradient(180deg, rgba(180,200,220,0.04), rgba(180,200,220,0.015));
+  border: 1px solid rgba(180,200,220,0.08);
+}
+
+.figure-side .figure-stage.steve-tool-shot > img.framed {
+  border-radius: 12px;
+  border: 1px solid rgba(180,200,220,0.18);
+  background: #fff;
+  box-shadow: 0 20px 54px rgba(0,0,0,0.34);
+}
+
+/* steve-4: Site Studio and Agent Studio shown ONE AT A TIME, each filling the
+   stage. The two screenshots never paired cleanly side by side — one is a dense
+   app, the other a sparse prompt — so they're staged as walk-steps instead: Site
+   is the base, Agent is a `.frag` that swaps in on Space / arrow / click. Each
+   reads large and crisp with no matching-scale compromise. `.walk-step` (shared
+   rule below) supplies the absolute, full-stage positioning; these rules add the
+   window chrome and contain the screenshot inside it. */
+.steve-toggle { position: relative; }
+
+/* Selector outweighs the shared `.figure-side .stage .walk-step` rule (which
+   forces a transparent background) so each window is OPAQUE — otherwise the
+   revealed Agent window is see-through and the Site title bar bleeds through it. */
+.figure-side .stage.steve-toggle .walk-step.studio-shot {
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(180,200,220,0.18);
+  background: #0a0d12;
+  box-shadow: 0 22px 60px rgba(0,0,0,0.5);
+}
+
+.figure-side .stage.steve-toggle .walk-step.studio-shot.front {
+  border-color: color-mix(in oklab, var(--accent-steve) 42%, rgba(180,200,220,0.18));
+}
+
+.studio-shot .win-bar {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  height: clamp(24px, 2.4vw, 32px);
+  padding: 0 13px;
+  background: linear-gradient(180deg, rgba(143,213,195,0.12), rgba(143,213,195,0.03));
+  border-bottom: 1px solid rgba(180,200,220,0.12);
+}
+
+.studio-shot .dots { display: inline-flex; gap: 6px; flex: 0 0 auto; }
+
+.studio-shot .dots i {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: rgba(180,200,220,0.32);
+}
+
+.studio-shot .win-name {
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-steve);
+}
+
+/* ── steve-4 studio mockups (real, accessible HTML — no screenshots) ──────────
+   Each window's body fills under the title bar. Site Studio is a split view (AI
+   chat/editor left, the live page preview right); Agent Studio is a centered
+   prompt. Type scales with the viewport so it reads at projection size and on a
+   laptop alike. Real text → screen-reader legible and infinitely scalable. */
+.steve-toggle .ss-split,
+.steve-toggle .as-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* Site Studio — split: chat editor | live preview */
+.steve-toggle .ss-split {
+  display: grid;
+  grid-template-columns: minmax(0, 41%) minmax(0, 59%);
+  grid-template-rows: minmax(0, 1fr);   /* bound the row so each panel can manage its own overflow */
+}
+.steve-toggle .ss-chat {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(7px, 0.95vh, 15px);
+  padding: clamp(12px, 1.35vw, 24px);
+  background: linear-gradient(180deg, #0f1a2b, #0b1320);
+  border-right: 1px solid rgba(180, 200, 220, 0.12);
+  font-family: var(--font-sans);
+  color: rgba(236, 243, 248, 0.92);
+}
+.steve-toggle .ss-projbar {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  margin-bottom: clamp(2px, 0.6vh, 8px);
+}
+/* message list fills the panel and anchors to the bottom (newest by the input,
+   like a chat scrolled to the end); if the thread is taller than the panel, the
+   oldest message clips at the top instead of pushing the input off-screen. */
+.steve-toggle .ss-msgs {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: clamp(7px, 0.95vh, 15px);
+}
+.steve-toggle .ss-updates {
+  margin: clamp(5px, 0.7vh, 9px) 0;
+  padding-left: 0.7em;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4px, 0.5vh, 7px);
+  border-left: 2px solid color-mix(in oklab, var(--accent-steve) 42%, transparent);
+}
+.steve-toggle .ss-updates li { padding-left: 0.45em; }
+.steve-toggle .ss-updates strong { color: rgba(245, 250, 252, 0.97); font-weight: 600; }
+.steve-toggle .ss-proj {
+  font-family: var(--font-mono);
+  font-size: clamp(11px, 0.9vw, 16px);
+  padding: clamp(5px, 0.5vw, 9px) clamp(9px, 0.8vw, 14px);
+  border: 1px solid rgba(180, 200, 220, 0.18);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(236, 243, 248, 0.86);
+}
+.steve-toggle .ss-publish {
+  font-size: clamp(11px, 0.9vw, 16px);
+  font-weight: 600;
+  padding: clamp(5px, 0.5vw, 9px) clamp(11px, 0.95vw, 16px);
+  border-radius: 8px;
+  background: var(--accent-steve);
+  color: #06241c;
+}
+.steve-toggle .ss-msg {
+  font-size: clamp(12px, 1vw, 18px);
+  line-height: 1.34;
+  padding: clamp(9px, 0.9vw, 15px) clamp(11px, 1vw, 16px);
+  border-radius: 12px;
+}
+.steve-toggle .ss-msg-user {
+  border-left: 3px solid var(--accent-steve);
+  background: color-mix(in oklab, var(--accent-steve) 14%, rgba(12, 17, 23, 0.6));
+  color: rgba(240, 247, 250, 0.95);
+}
+.steve-toggle .ss-msg-ai {
+  border: 1px solid rgba(180, 200, 220, 0.1);
+  background: rgba(255, 255, 255, 0.045);
+  color: rgba(225, 234, 240, 0.9);
+}
+.steve-toggle .ss-file {
+  display: inline-flex; align-items: center; gap: 7px; align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: clamp(10px, 0.8vw, 14px);
+  padding: clamp(5px, 0.5vw, 9px) clamp(8px, 0.75vw, 13px);
+  border: 1px solid color-mix(in oklab, var(--accent-steve) 30%, rgba(180, 200, 220, 0.16));
+  border-radius: 8px;
+  background: rgba(143, 213, 195, 0.06);
+  color: rgba(225, 234, 240, 0.85);
+}
+.steve-toggle .ss-file code { color: rgba(236, 243, 248, 0.95); }
+.steve-toggle .ss-check { color: var(--accent-steve); font-weight: 700; }
+.steve-toggle .ss-input {
+  margin-top: auto;
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  font-size: clamp(12px, 0.95vw, 17px);
+  padding: clamp(10px, 1vw, 16px) clamp(12px, 1.1vw, 18px);
+  border: 1px solid rgba(180, 200, 220, 0.16);
+  border-radius: 12px;
+  background: rgba(8, 12, 18, 0.6);
+  color: rgba(200, 212, 222, 0.6);
+}
+.steve-toggle .ss-send {
+  flex: 0 0 auto;
+  display: inline-grid; place-items: center;
+  width: clamp(26px, 2.2vw, 38px); height: clamp(26px, 2.2vw, 38px);
+  border-radius: 9px;
+  background: var(--accent-steve); color: #06241c;
+}
+.steve-toggle .ss-preview {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center;
+  gap: clamp(6px, 0.9vh, 14px);
+  padding: clamp(16px, 1.8vw, 40px) clamp(18px, 2vw, 48px);
+  background: linear-gradient(180deg, #fbfbf9, #f1f1ec);
+  color: #1c2024;
+}
+.steve-toggle .ss-avatar {
+  display: grid; place-items: center;
+  width: clamp(62px, 6.8vw, 120px); height: clamp(62px, 6.8vw, 120px);
+  border-radius: 50%;
+  font-family: var(--font-sans); font-weight: 600; letter-spacing: 0.04em;
+  font-size: clamp(22px, 2.4vw, 44px);
+  background: linear-gradient(150deg, #3a5f54, #1f3a33); color: #fff;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+}
+.steve-toggle .ss-name {
+  font-family: var(--font-display); font-weight: 600;
+  font-size: clamp(22px, 2.3vw, 42px); line-height: 1.05; margin: 0;
+  color: #14181c;
+}
+.steve-toggle .ss-role {
+  font-size: clamp(12px, 1.05vw, 19px); color: #4a525a; margin: 0;
+}
+.steve-toggle .ss-bio {
+  font-size: clamp(12px, 1.05vw, 19px); line-height: 1.45;
+  margin: clamp(2px, 0.5vh, 8px) 0 0; max-width: 42ch; color: #2c333a;
+}
+.steve-toggle .ss-nav {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: clamp(7px, 0.7vw, 12px); margin-top: clamp(4px, 0.8vh, 12px);
+}
+.steve-toggle .ss-nav span {
+  font-size: clamp(12px, 1vw, 17px); font-weight: 500;
+  padding: clamp(7px, 0.7vw, 12px) clamp(13px, 1.2vw, 22px);
+  border: 1px solid #d2d2cb; border-radius: 8px;
+  background: #fff; color: #20262b;
+}
+
+/* Agent Studio — centered prompt */
+.steve-toggle .as-body {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center;
+  gap: clamp(8px, 1.05vh, 17px);
+  padding: clamp(18px, 2.2vw, 54px);
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgba(143, 213, 195, 0.05), transparent 60%),
+    #0a0f16;
+  color: rgba(236, 243, 248, 0.92);
+}
+.steve-toggle .as-logo {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: clamp(13px, 1.05vw, 19px); color: rgba(236, 243, 248, 0.8);
+}
+.steve-toggle .as-bolt {
+  display: inline-grid; place-items: center;
+  width: 1.7em; height: 1.7em; border-radius: 7px;
+  background: rgba(255, 255, 255, 0.9); color: #0a0f16;
+}
+.steve-toggle .as-head {
+  font-family: var(--font-display); font-weight: 500;
+  font-size: clamp(24px, 2.7vw, 50px); line-height: 1.05; margin: 0; color: #fff;
+}
+.steve-toggle .as-sub {
+  font-size: clamp(13px, 1.15vw, 21px); color: rgba(214, 224, 232, 0.72); margin: 0;
+}
+.steve-toggle .as-prompt {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  width: min(86%, 760px); margin-top: clamp(6px, 1vh, 16px);
+  font-size: clamp(13px, 1.1vw, 20px);
+  padding: clamp(12px, 1.2vw, 20px) clamp(14px, 1.3vw, 22px);
+  border: 1px solid rgba(180, 200, 220, 0.22); border-radius: 14px;
+  background: rgba(10, 14, 20, 0.7); color: rgba(200, 212, 222, 0.55);
+}
+.steve-toggle .as-go {
+  flex: 0 0 auto;
+  display: inline-grid; place-items: center;
+  width: clamp(28px, 2.3vw, 40px); height: clamp(28px, 2.3vw, 40px);
+  border-radius: 9px; background: rgba(255, 255, 255, 0.92); color: #0a0f16;
+}
+.steve-toggle .as-try {
+  font-size: clamp(11px, 0.9vw, 15px); color: rgba(200, 212, 222, 0.6);
+  margin-top: clamp(2px, 0.6vh, 8px);
+}
+.steve-toggle .as-chips {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: clamp(7px, 0.7vw, 12px);
+}
+.steve-toggle .as-chips span {
+  font-size: clamp(12px, 1vw, 17px);
+  padding: clamp(7px, 0.7vw, 12px) clamp(12px, 1.1vw, 20px);
+  border: 1px solid rgba(180, 200, 220, 0.2); border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03); color: rgba(225, 234, 240, 0.85);
+}
+.steve-toggle .as-foot {
+  font-size: clamp(10px, 0.8vw, 14px); color: rgba(200, 212, 222, 0.45);
+  margin: clamp(4px, 0.8vh, 12px) 0 0;
+}
+
+@media (max-width: 720px) {
+  section.slide.placeholder-slide.figure-side.steve-tool-slide {
+    gap: 10px;
+  }
+
+  .placeholder-slide.figure-side.steve-tool-slide > .content {
+    flex: 0 0 auto !important;
+    overflow: visible !important;
+  }
+
+  .placeholder-slide.figure-side.steve-tool-slide > .content .label {
+    margin-bottom: 8px;
+  }
+
+  .placeholder-slide.figure-side.steve-tool-slide > .content h1 {
+    font-size: clamp(24px, 7vw, 30px);
+    line-height: 1.08;
+    margin-bottom: 10px;
+  }
+
+  .placeholder-slide.figure-side.steve-tool-slide > .content li {
+    font-size: 18px;
+    line-height: 1.28;
+    margin-bottom: 6px;
+  }
+
+  .placeholder-slide.figure-side.steve-tool-slide > .stage {
+    flex: 0 0 auto !important;
+    min-height: 0;
+    height: min(25vh, 210px);
+  }
+
+  .placeholder-slide.figure-side.steve-tool-slide .figure-stage > img.framed {
+    height: 100% !important;
+    object-fit: contain;
+  }
+
+  /* steve-4 toggle: the single full-stage window wants more room than the
+     single-shot tool slides; the walk-steps fill it and tap swaps Site -> Agent. */
+  .placeholder-slide.figure-side.steve-tool-slide > .stage.steve-toggle {
+    height: min(64vh, 460px) !important;
+    flex: 0 0 auto !important;
+  }
+  /* the split needs a touch more breathing room on a phone; trim type a hair so
+     the longer thread + full bio fit without clipping the input or bio tail. */
+  .steve-toggle .ss-chat { padding: 10px; gap: 5px; }
+  .steve-toggle .ss-preview { padding: 12px 12px; gap: 5px; }
+  .steve-toggle .ss-msg { font-size: 11px; line-height: 1.28; padding: 7px 9px; }
+  .steve-toggle .ss-bio { font-size: 11.5px; line-height: 1.34; }
+
+  .steve-toggle .studio-shot .win-bar {
+    height: 22px;
+    padding: 0 10px;
+  }
+
+  .steve-toggle .studio-shot .win-name {
+    font-size: 11px;
+  }
+
+  .steve-toggle .studio-shot .dots i {
+    width: 7px;
+    height: 7px;
+  }
+}
+
+/* ── Q&A & Discussion closing slide — large, centered title. ── */
+.qa-slide .content {
+  align-items: center; justify-content: center; text-align: center;
+  box-shadow: none;
+}
+.qa-slide .content h1 {
+  font-size: clamp(40px, 7vw, 104px);
+  text-align: center; max-width: none; line-height: 1.04;
+}
+
+/* ── Ladder-slide header (CALI Goals): match the cali-narst origin ──
+   ach-fit shrinks --fit-aware text, but the ladder rungs aren't --fit-aware, so
+   the h1 collapsed while the rungs stayed huge. Pin the h1 to full display size
+   (no --fit) so the header reads at the source scale. */
+.placeholder-slide.ladder-slide .content h1 { font-size: var(--fs-display); }
+
+
+/* ── CALI 1 / CALI 2 (luke-5/6): top-align so the differing bullet counts don't
+   shift the block vertically — label/title/subtitle line up on both. Needs to
+   outrank `.placeholder-slide.odd-layout > .content { justify-content:center }`
+   (0,3,0), so we carry the same two classes plus the [data-slide] hook (0,4,0). ── */
+.placeholder-slide.odd-layout[data-slide="luke-5"] > .content,
+.placeholder-slide.odd-layout[data-slide="luke-6"] > .content { justify-content: flex-start; }
+
+/* ── CALI 1 / CALI 2 (luke-5/6): lock --fit to 1 on both. ach-fit.js sets a
+   per-slide --fit on .content, and it was landing on different values for the
+   two slides (4 bullets vs 3) — so even with fonts pinned, the em-based margins
+   scaled differently and the inter-element spacing diverged. Both fit at full
+   scale (there's empty space below the content on each), so forcing --fit:1
+   makes the vertical rhythm identical. !important beats ach-fit's inline style;
+   the .content { overflow-y:auto } fallback covers any short-viewport edge case. */
+.placeholder-slide[data-slide="luke-5"] > .content,
+.placeholder-slide[data-slide="luke-6"] > .content { --fit: 1 !important; }
+
+/* ── CALI 1 / CALI 2 (luke-5/6): lock both columns to an identical 50/50 split.
+   The theme's stage is `flex: 1 1 50%`, so the wider photo's intrinsic width
+   grew its stage past 50% and shrank the text column — that's why the two
+   slides lost parity. Pinning both columns + min-width:0 stops the image from
+   dictating the split (scoped to the ≥720px row layout; narrow still stacks).
+   `cover` then makes both differently-shaped photos full-bleed in the same box. */
+@media (min-width: 720px) {
+  [data-slide="luke-5"] > .content, [data-slide="luke-6"] > .content { flex: 0 0 50%; max-width: 50%; min-width: 0; }
+  [data-slide="luke-5"] > .stage,   [data-slide="luke-6"] > .stage   { flex: 0 0 50%; max-width: 50%; min-width: 0; }
+}
+[data-slide="luke-5"] .figure-stage > img,
+[data-slide="luke-6"] .figure-stage > img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center;
+}
+
+/* ── CALI 1 / CALI 2 (luke-5/6): pin text sizes (no --fit) so the differing
+   bullet counts can't make ach-fit shrink one more than the other. ── */
+[data-slide="luke-5"] .content h1, [data-slide="luke-6"] .content h1 { font-size: var(--fs-display); }
+[data-slide="luke-5"] .content h2, [data-slide="luke-6"] .content h2 { font-size: var(--fs-heading); }
+[data-slide="luke-5"] .content li, [data-slide="luke-6"] .content li { font-size: clamp(18px, 1.8vw, 25px); }
+
+/* ── CALI 1 / CALI 2 (luke-5/6): tight, identical vertical rhythm — smaller
+   margins + line-heights between the label, title, subtitle, list-label, and
+   bullets so the 4-bullet slide fits at full scale (no scroll) and both slides
+   read with the same spacing. ── */
+/* styles.css:1202 sets `[data-slide="luke-5"] .content { gap: 0.6em }` on CALI 1
+   ONLY (never mirrored to luke-6) — a stray flex row-gap that added ~12.6px of
+   "extra line" after every element, so CALI 1 never matched CALI 2. Zero it on
+   both; spacing is then driven purely by the matched margins below. */
+[data-slide="luke-5"] .content, [data-slide="luke-6"] .content { gap: 0; }
+[data-slide="luke-5"] .content .label, [data-slide="luke-6"] .content .label { margin-bottom: 6px; }
+[data-slide="luke-5"] .content h1, [data-slide="luke-6"] .content h1 { margin: 0 0 6px; line-height: 1.05; }
+[data-slide="luke-5"] .content h2, [data-slide="luke-6"] .content h2 { margin: 0 0 8px; line-height: 1.15; }
+[data-slide="luke-5"] .content .list-label, [data-slide="luke-6"] .content .list-label { margin: 0 0 7px; }
+[data-slide="luke-5"] .content ul.parallel-points, [data-slide="luke-6"] .content ul.parallel-points { margin: 0; }
+[data-slide="luke-5"] .content li, [data-slide="luke-6"] .content li { margin-bottom: 7px; line-height: 1.22; }
+
+/* ── OCR text layers (selectable text inside screenshots) ──
+   ocr-layers.js drops a transparent <svg class="ocr-layer"> over each OCR-backed
+   figure image; its words are positioned from OCR and track the contain-fit image
+   (preserveAspectRatio meet) as it scales. The layer is click-through (clicks reach
+   the image for the lightbox) but its glyphs accept pointer events so text can be
+   dragged-over, highlighted, and copied. Invisible — no effect on how slides look. */
+.stage .ocr-layer {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 2;
+}
+.stage .ocr-layer text { fill: transparent; pointer-events: auto; cursor: text; }
+.stage .ocr-layer:not(.ocr-active) text { pointer-events: none; }
+.stage .ocr-layer ::selection { background: rgba(224,153,30,0.32); }
+.walk-stage .ocr-layer { opacity: 0; transition: opacity 0.35s ease; }
+.walk-stage .ocr-layer.ocr-active { opacity: 1; }
+.mkg-gallery .ocr-gallery-layer { opacity: 0; animation: mkgCycle 18s infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .mkg-gallery .ocr-gallery-layer { animation: none; opacity: 0; }
+  .mkg-gallery .ocr-gallery-layer[data-ocr-index="0"] { opacity: 1; }
+}
+
+/* ===================== October 14, 2026 deck additions ===================== */
+/* Stefano Morello's section uses the lavender accent (Azucena's in the ACH deck). */
+:root { --accent-stefano: #c9a6cf; }
+[data-slide="break-stefano"] { --break-accent: var(--accent-stefano); }
+[data-slide^="stefano-"] .content .label { color: var(--accent-stefano); }
+[data-slide^="stefano-"] .content { box-shadow: inset 3px 0 0 0 color-mix(in oklab, var(--accent-stefano) 75%, transparent); gap: clamp(8px, 1.4vh, 16px); }
+[data-slide^="stefano-"] .content ul { max-width: none !important; }
+body.overview section.slide[data-slide^="stefano-"],
+body.overview section.slide[data-slide="break-stefano"] { border-top: 2px solid var(--accent-stefano) !important; }
+
+/* Gateway diagram (steve-gateway): who connects -> Gateway -> where models run. */
+.gw-flow-stage { display: flex; align-items: center; justify-content: center; }
+.gw-flow {
+  width: 100%; display: flex; flex-direction: column; align-items: stretch;
+  gap: clamp(6px, 1vh, 12px); padding: clamp(12px, 2vw, 28px);
+}
+.gw-row { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: clamp(8px, 1vw, 16px); }
+.gw-box {
+  border: 1px solid var(--stroke); background: var(--card);
+  padding: clamp(10px, 1.2vw, 18px); display: flex; flex-direction: column; gap: 4px;
+}
+.gw-box strong { font-family: var(--font-body); font-weight: 600; color: var(--fg); font-size: calc(clamp(16px, 1.5vw, 24px) * var(--fit, 1)); }
+.gw-box span { color: var(--muted); line-height: 1.35; font-size: calc(clamp(13px, 1.15vw, 19px) * var(--fit, 1)); }
+.gw-core { align-items: center; text-align: center; border-color: color-mix(in oklab, var(--accent-steve) 60%, transparent); background: color-mix(in oklab, var(--accent-steve) 9%, transparent); }
+.gw-core strong { color: var(--accent-steve); }
+.gw-open { border-style: dashed; }
+.gw-arrow { text-align: center; color: var(--muted); line-height: 1; font-size: clamp(18px, 1.8vw, 28px); }
+[data-slide="zach-people"] .content { gap: clamp(8px, 1.4vh, 16px); }
+[data-slide="zach-people"] .content ul { max-width: none !important; }
