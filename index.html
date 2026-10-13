@@ -170,7 +170,7 @@ Buying one AI product still leaves a university responsible for data protection,
             <li>We connect the Lab&rsquo;s tools to it</li>
             <li>We choose which models to offer</li>
             <li>We give each person and app a monthly allowance</li>
-            <li>We run it on Cloudflare Workers and pay per request</li>
+            <li>We run it on Cloudflare Workers</li>
           </ul>
           <div class="gw" role="img" aria-label="Diagram: lab tools, personal API keys and approved CUNY applications above the CAIL Gateway; model providers below it">
             <div class="gw-row">
@@ -191,7 +191,7 @@ Buying one AI product still leaves a university responsible for data protection,
         <aside class="notes">The Gateway is where Stefano's commitments become working rules.
 - Researchers can call every model from their own code with one key.
 - We can move a model to another provider without anyone changing their tools.
-- On Workers we pay only for the requests that come in. An always-on container on AWS, which is how the Sandbox runs, costs money every hour whether or not anyone is using it.
+- Nothing sits idle on Workers. The Sandbox runs on an always-on container on AWS, which costs money every hour whether or not anyone is using it.
 Providers are deliberately unnamed. Production currently serves Workers AI and Bedrock; OpenRouter is no longer behind the Gateway. The Sandbox still has older direct connections outside the Gateway, so the diagram shows the Gateway path, not every Sandbox route.</aside>
       </section>
 
