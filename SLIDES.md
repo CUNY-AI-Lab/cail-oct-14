@@ -13,7 +13,7 @@ Times are targets. The four sections run about 25 minutes, which leaves about 35
 | 3 | Stefano | Guiding Principles | the four principles on ailab.gc.cuny.edu, each beside a practice; working outline III in notes |
 | 4 | Stefano | Working from the Ground Up | rewritten October 13: bottom-up operations; diagram redrawn from the ACH "CALI to CAIL" chart (13_cali_to_cail.png) with the four centers at equal weight |
 | 5 | Stefano | Infrastructure | hosting diagram (Cloudflare Workers, AWS, New Media Lab) with the application/front door and request/Lab staff ways in; hosting from cail-knowledge-base, October 12 |
-| 6 | Stefano | The Local Pipeline | split from slide 5: request, Lab staff review, media pipeline on the New Media Lab GPU server |
+| 6 | Stefano | The Local Pipeline | split from slide 5; Dell workstation in the NML over Tailscale (router, faster-whisper via Speaches, pyannote 3.1, Docling for PDF Accessibility, RTX 5000 Ada), from cail-knowledge-base "Local AI Hardware and NML Capacity" and "Dell Pro Max Tower T2" |
 | 7 | Stefano | Sustaining and Sharing the Work | working outline V.B; position paper |
 | 8 | Steve | The CAIL Gateway, Access and Agent Tools | new opener |
 | 9 | Steve | The CAIL Gateway | five-slide Gateway deck 01 and 03, merged |

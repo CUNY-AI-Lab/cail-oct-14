@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
-  <link rel="stylesheet" href="styles.css?v=20261013u">
+  <link rel="stylesheet" href="styles.css?v=20261013v">
 </head>
 <body>
   <div class="reveal">
@@ -174,27 +174,53 @@ Source: cail-knowledge-base (October 12) and the cail-gateway and cail-tools-adm
       <section class="stefano">
         <h2>The Local Pipeline</h2>
         <div class="hosts">
-          <svg viewBox="0 0 1168 236" role="img" aria-label="People send a request, Lab staff review it, and the media pipeline runs on the GPU server in the New Media Lab. Nothing goes to an outside provider.">
+          <svg viewBox="0 0 1168 376" role="img" aria-label="A request goes to Lab staff, who reach the Dell workstation in the New Media Lab over the Lab's Tailscale network. There a router calls faster-whisper, served by Speaches, for transcription and pyannote 3.1 for speaker labels. PDF Accessibility also reaches Docling on the same machine over Tailscale. Everything runs on an NVIDIA RTX 5000 Ada GPU with 32 GB of memory. Nothing goes to an outside provider.">
             <defs>
               <marker id="lp-in" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="hz-head"/></marker>
             </defs>
-            <rect class="hz-provider" x="0" y="112" width="190" height="60" rx="10"/>
-            <text class="hz-name" x="95" y="149">Request</text>
-            <path class="hz-line" d="M190 142 H236" marker-end="url(#lp-in)"/>
-            <rect class="hz-core" x="242" y="112" width="190" height="60" rx="10"/>
-            <text class="hz-core-name" x="337" y="149">Lab staff</text>
-            <path class="hz-line" d="M432 142 H478" marker-end="url(#lp-in)"/>
 
-            <rect class="hz-zone" x="484" y="0" width="684" height="236" rx="14"/>
-            <text class="hz-label" x="508" y="44">New Media Lab</text>
-            <rect class="hz-tool" x="508" y="112" width="290" height="60" rx="10"/>
-            <text class="hz-name" x="653" y="149">Media pipeline</text>
-            <path class="hz-line" d="M798 142 H848" marker-end="url(#lp-in)"/>
-            <rect class="hz-core" x="854" y="112" width="290" height="60" rx="10"/>
-            <text class="hz-core-name" x="999" y="149">GPU server</text>
+            <!-- The workstation, drawn first so lines run over it -->
+            <rect class="hz-zone" x="548" y="0" width="620" height="376" rx="14"/>
+            <text class="hz-label" x="572" y="44">Dell workstation, New Media Lab</text>
+
+            <!-- Ways in -->
+            <rect class="hz-provider" x="0" y="110" width="150" height="56" rx="10"/>
+            <text class="hz-name" x="75" y="145">Request</text>
+            <path class="hz-line" d="M150 138 H174" marker-end="url(#lp-in)"/>
+            <rect class="hz-core" x="180" y="110" width="180" height="56" rx="10"/>
+            <text class="hz-core-name" x="270" y="145">Lab staff</text>
+            <rect class="hz-tool" x="180" y="226" width="180" height="56" rx="10"/>
+            <text class="hz-name" x="270" y="261">PDF Accessibility</text>
+            <path class="hz-line" d="M360 138 H386" marker-end="url(#lp-in)"/>
+            <path class="hz-line" d="M360 254 H386" marker-end="url(#lp-in)"/>
+
+            <!-- Private network -->
+            <rect class="hz-provider hz-ext" x="392" y="110" width="120" height="172" rx="10"/>
+            <text class="hz-name" x="452" y="203">Tailscale</text>
+            <path class="hz-line" d="M512 138 H566" marker-end="url(#lp-in)"/>
+            <path class="hz-line" d="M512 254 H794" marker-end="url(#lp-in)"/>
+
+            <!-- The workstation -->
+            <rect class="hz-core" x="572" y="110" width="170" height="56" rx="10"/>
+            <text class="hz-core-name" x="657" y="145">Router</text>
+            <path class="hz-line" d="M742 138 H770 V100 H794" marker-end="url(#lp-in)"/>
+            <path class="hz-line" d="M770 138 V176 H794" marker-end="url(#lp-in)"/>
+            <rect class="hz-tool" x="800" y="74" width="344" height="52" rx="10"/>
+            <text class="hz-name" x="972" y="107">faster-whisper (Speaches)</text>
+            <rect class="hz-tool" x="800" y="150" width="344" height="52" rx="10"/>
+            <text class="hz-name" x="972" y="183">pyannote 3.1</text>
+            <rect class="hz-tool" x="800" y="228" width="344" height="52" rx="10"/>
+            <text class="hz-name" x="972" y="261">Docling</text>
+            <rect class="hz-core" x="572" y="300" width="572" height="52" rx="10"/>
+            <text class="hz-core-name" x="858" y="333">NVIDIA RTX 5000 Ada, 32 GB</text>
           </svg>
         </div>
-        <aside class="notes">We keep material that shouldn't leave the GC on our own hardware. The same kinds of jobs as Media Tools, for material that shouldn't leave the GC: transcription, speaker labels, image description and OCR. People send a request; Lab staff review it and run the job on the GPU server in the New Media Lab, over a private network that only Lab staff use. Nothing goes to an outside provider.</aside>
+        <aside class="notes">Our answer for material that shouldn't leave the GC, such as identifiable research data. It became a standing service on September 25, when a principal investigator asked for an IRB-approvable way to transcribe focus-group audio.
+- People send a request; Lab staff run the job on the Dell Pro Max workstation in the New Media Lab (Windows 11 with WSL2 and Docker), which is reachable only over the Lab's Tailscale network.
+- A small router calls faster-whisper, served by Speaches on the GPU, for the transcript and pyannote speaker-diarization 3.1 for speaker labels, then lines the two up. Model weights were downloaded once at installation; no audio leaves the machine and nothing needs the network while it runs. The temporary working copy is deleted whether the job succeeds or fails.
+- The same machine runs Docling for PDF Accessibility, which reaches it over Tailscale from Cloudflare.
+- GPU: NVIDIA RTX 5000 Ada with 32 GB of memory, about 128 GB of system memory.
+If asked about confidential data: the workstation itself then falls under CUNY's host controls (disk encryption, MFA, per-user audit logs, patching, physical security, backups). Those answers are still being confirmed before anything goes to an IRB.</aside>
       </section>
 
       <section class="stefano">

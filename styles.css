@@ -238,6 +238,11 @@
   text-anchor: middle;
   fill: var(--fg);
 }
+.reveal .hosts .hz-model {
+  font-size: 19px;
+  text-anchor: end;
+  fill: var(--muted);
+}
 .reveal .hosts .hz-core { fill: #1d3a83; }
 .reveal .hosts .hz-core-name {
   font-size: 22px;
