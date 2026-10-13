@@ -10,7 +10,7 @@ Times are targets. The four sections run about 25 minutes, which leaves about 35
 |---|---|---|---|
 | 1 | all | CUNY AI Lab | ACH title slide |
 | 2 | Stefano | Infrastructure Decisions | new opener |
-| 3 | Stefano | Our Commitments | working outline III; position paper "AI Infrastructure for CUNY, by CUNY" |
+| 3 | Stefano | Guiding Principles | the four principles on ailab.gc.cuny.edu, each beside a practice; working outline III in notes |
 | 4 | Stefano | Handling Requests | working outline II.A, IV |
 | 5 | Stefano | Services We Buy and Run | working outline V.A; parallel diagram after cuny-ai-lab.github.io/systems-map, bullets moved to notes |
 | 6 | Stefano | Sustaining and Sharing the Work | working outline V.B; position paper |
@@ -30,7 +30,7 @@ Times are targets. The four sections run about 25 minutes, which leaves about 35
 | 20 | Zach | Access and Outreach | new |
 | 21 | all | Discussion | ACH 47 |
 
-Stefano's section carries the commitments and the long view. Steve's Gateway slide shows where those commitments become working rules, so it does not repeat them. Open weights and zero retention live on slide 3; provider switching is spoken on slide 8.
+Stefano's section carries the commitments and the long view. Steve's Gateway slide shows where those commitments become working rules, so it does not repeat them. Open weights and zero retention live on slide 3, under the website's Transparency and Privacy by Design; provider switching is spoken on slide 8.
 
 ## Spoken notes
 

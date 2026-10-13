@@ -294,3 +294,33 @@
   color: var(--muted);
   text-align: right;
 }
+
+/* Guiding principles (slide 3): the website's principle names beside what
+ * the Lab does about each, split by hairlines. */
+.reveal .principles {
+  display: grid;
+  grid-template-columns: 326px 1fr;
+  margin: 0;
+}
+.reveal .principles dt,
+.reveal .principles dd {
+  margin: 0;
+  padding: 15px 0;
+  border-top: 1px solid var(--stroke);
+}
+.reveal .principles dt:first-of-type,
+.reveal .principles dt:first-of-type + dd { border-top: 0; padding-top: 0; }
+.reveal .principles dt:last-of-type,
+.reveal .principles dd:last-of-type { padding-bottom: 0; }
+.reveal .principles dt {
+  font-family: var(--font-display);
+  padding-right: 36px;
+  font-size: 23pt;
+  line-height: 1.2;
+  color: var(--accent);
+}
+.reveal .principles dd {
+  font-size: 19pt;
+  line-height: 1.4;
+  color: var(--body);
+}

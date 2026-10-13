@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
-  <link rel="stylesheet" href="styles.css?v=20261013i">
+  <link rel="stylesheet" href="styles.css?v=20261013j">
 </head>
 <body>
   <div class="reveal">
@@ -36,20 +36,23 @@
 
       <section class="stefano">
         <div class="card">
-          <h2>Our Commitments</h2>
-          <ul>
-            <li>We use only providers that don&rsquo;t keep or train on what people send</li>
-            <li>We publish each model&rsquo;s license, abilities and limits</li>
-            <li>Faculty decide whether AI belongs in their courses</li>
-            <li>We prefer open software and open-weight models</li>
-          </ul>
+          <h2>Guiding Principles</h2>
+          <dl class="principles">
+            <dt>Privacy by Design</dt>
+            <dd>We send work only to zero-retention hosts, or keep it on our own GPU server</dd>
+            <dt>Transparency</dt>
+            <dd>We favor open-weight models and list each one&rsquo;s license, abilities and limits in the Model Registry</dd>
+            <dt>Environmental Accountability</dt>
+            <dd>We show estimated energy and carbon under every Sandbox response</dd>
+            <dt>Criticality</dt>
+            <dd>We teach how models work in workshops, and students compare them side by side</dd>
+          </dl>
         </div>
-        <aside class="notes">From the September 4 working outline, section III.
-- Privacy: faculty and researchers can use the service without adding their work to a provider's training data.
-- Transparency: the Model Registry (ailab.gc.cuny.edu/models) lists each model with its license, capabilities and known limits.
-- Environmental accountability: the Sandbox shows energy and carbon estimates under each response. They cover inference only, not training.
-- Faculty can examine a model before deciding, change a planned activity, or leave AI out entirely.
-- Published weights let us get the same model from more than one provider. We offer a closed model only for a specific reason.</aside>
+        <aside class="notes">The four principles published on the Lab website (ailab.gc.cuny.edu), each with something we already do.
+- Privacy by Design, "we use providers that don't retain or train on user data": cloud models run only on zero-retention hosts, and material we shouldn't send out goes to the GPU server in the New Media Lab (slide 5). Faculty and researchers can use the service without adding their work to a provider's training data.
+- Transparency, "we prioritize open-weight models that can be examined and understood": the Model Registry (ailab.gc.cuny.edu/models) lists each model with its license, capabilities and known limits. Published weights let us get the same model from more than one provider. We offer a closed model only for a specific reason.
+- Environmental Accountability, "tools include visibility into computational costs": the Sandbox shows energy and carbon estimates under each response. They cover inference only, not training.
+- Criticality, "AI literacy over AI dependency": fall workshops and the fellows cohort, side-by-side model comparison in the Sandbox (slide 16), and course configurations students can question (slide 17).</aside>
       </section>
 
       <section class="stefano">
