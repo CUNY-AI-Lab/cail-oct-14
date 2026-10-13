@@ -1,6 +1,6 @@
 # October 14, 2026 deck: slide manifest
 
-CUNY AI Lab session, October 14, 2026, about 4:15 to 5:20. The audience is Aankit Patel (CUNY Central) and visiting guests. The format is informal, with questions invited throughout. Luke and Matt open with context, without slides. This deck remixes the ACH 2026 deck (`../ach-2026`) and two internal sources: the September 4 retreat "CUNY AI Infrastructure — Working Outline" and the August 15 five-slide Gateway overview, both in Drive.
+CUNY AI Lab session, October 14, 2026, about 4:15 to 5:20. The audience is Aankit Patel (CUNY Central) and visiting guests. The format is informal, with questions invited throughout. Luke and Matt open with context, without slides. This reveal.js deck remixes slides from the ACH 2026 deck (`../ach-2026`) and two internal sources: the September 4 retreat "CUNY AI Infrastructure — Working Outline" and the August 15 five-slide Gateway overview, both in Drive.
 
 Times are targets. The four sections run about 25 minutes, which leaves about 35 minutes for discussion.
 
@@ -26,23 +26,10 @@ Times are targets. The four sections run about 25 minutes, which leaves about 35
 
 ## Spoken notes
 
-**Stefano, slide 4.** The slide does not name vendors. Say aloud what fits the room. Cloudflare is an Enterprise account. The AWS contract is close but not yet signed.
-
-**Steve, slide 6.** Providers are deliberately unnamed. Production currently serves Workers AI and Bedrock; OpenRouter is no longer behind the Gateway. The Sandbox still has older direct connections outside the Gateway, so the diagram shows the Gateway path, not every Sandbox route.
-
-**Steve, slide 7.** We made each of these choices. A vendor would make them differently. On Workers we pay only for the requests that come in. An always-on container on AWS, which is how the Sandbox runs, costs money every hour whether or not anyone is using it.
-
-**Steve, slide 8.** Site Studio is still the HTML mock-up from the ACH deck. The Agent Studio workspace is a real screenshot of the current app, taken October 13 from a local run. The panels hold real OpenAlex results (search "generative AI" "higher education"), placed there directly rather than produced by the agent, and the prompt in the chat box was typed for the picture, not sent.
-
-**Steve, slide 9.** Stefano maintains CAIL Pi and can take questions on it. The released version (0.3.0) is one `npx` command that installs Pi and asks for the person's Lab API key. A version that signs in with CUNY Login in the browser is in progress and not released. The terminal is the barrier for many people; Agent Studio and Site Studio offer agent help in the browser instead.
-
-**Steve, slide 9, closing.** We can connect the Gateway to any provider that meets these rules, including a public one. Empire AI is the obvious candidate in New York. Keep this to a sentence or two.
-
-**Zach, slides 11–14.** Use the ACH talk track (`../ach-2026/SLIDES.md`, "Zach — talk track"), except for its "Transparency and Privacy by Design" lines. That slide is not in this deck, and its provider list (OpenRouter, Google) and admin-readable chat claim are out of date or disputed.
-
-**Zach, slide 16.** One number fits if wanted: about 200 people had access in late September, roughly a third of them through classes.
+Spoken notes live in the deck as reveal.js speaker notes (`<aside class="notes">` in `index.html`). Press `S` during the talk to open the speaker view.
 
 ## Open items
 
+- Slides 12 and 13 show names in the Sandbox sidebars: course channels named after instructors, model-card authors, and two people's names. These came over from the ACH deck. Check them before a public audience.
 - Slide 11's sign-in screenshot is from June and shows an email and password form above the CUNY Login button. Check it against the current sign-in page.
 - The public Tools page (ailab.gc.cuny.edu/tools, Media Processing) still embeds the old transcription GIF, whose privacy notice says files go to Fireworks AI and AssemblyAI. That is a website fix, separate from this deck. Slide 15's screenshot is cropped above the GIF.
