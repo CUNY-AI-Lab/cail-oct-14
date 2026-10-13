@@ -92,7 +92,7 @@ The diagram is a lighter version of the ACH "CALI to CAIL" chart, with the four 
       <section class="stefano">
         <h2>Where the Tools Run</h2>
         <div class="hosts">
-          <svg viewBox="0 0 1168 488" role="img" aria-label="Two ways in and three places the tools run. People sign in with CUNY Login, apply, then pass the front door into the cloud tools; for local work, people send a request that Lab staff review. On Cloudflare Workers: PDF Accessibility, Agent Studio, Site Studio and Media Tools, all calling models through the Model Gateway, itself a Cloudflare Worker; PDF Accessibility also calls Google Gemini directly. On AWS: the Sandbox, which calls the Gateway and also connects directly to Amazon Bedrock. In the New Media Lab: a media pipeline that runs on the Lab's own GPU server. The Gateway sends requests to Cloudflare Workers AI and Amazon Bedrock.">
+          <svg viewBox="0 0 1168 488" role="img" aria-label="Two ways in and three places the tools run. People sign in with CUNY Login, apply, then pass the front door into the cloud tools; for local work, people send a request that Lab staff review. On Cloudflare Workers: PDF Accessibility, Agent Studio, Site Studio and Media Tools, all calling models through the Model Gateway, itself a Cloudflare Worker. On AWS: the Sandbox, which calls the Gateway and also connects directly to Amazon Bedrock. In the New Media Lab: a media pipeline that runs on the Lab's own GPU server. The Gateway sends requests to Cloudflare Workers AI and Amazon Bedrock.">
             <defs>
               <marker id="hz-in" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="hz-head"/></marker>
               <marker id="hz-out" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="hz-head-out"/></marker>
@@ -151,9 +151,7 @@ The diagram is a lighter version of the ACH "CALI to CAIL" chart, with the four 
             <path class="hz-line" d="M1040 202 V246" marker-end="url(#hz-in)"/>
 
             <!-- Commercial providers -->
-            <rect class="hz-zone hz-zone-out" x="0" y="388" width="736" height="100" rx="14"/>
-            <rect class="hz-provider" x="24" y="406" width="208" height="64" rx="10"/>
-            <text class="hz-name" x="128" y="445">Google Gemini</text>
+            <rect class="hz-zone hz-zone-out" x="228" y="388" width="508" height="100" rx="14"/>
             <rect class="hz-provider" x="252" y="406" width="220" height="64" rx="10"/>
             <text class="hz-name" x="362" y="445">Workers AI</text>
             <rect class="hz-provider" x="492" y="406" width="220" height="64" rx="10"/>
@@ -163,17 +161,16 @@ The diagram is a lighter version of the ACH "CALI to CAIL" chart, with the four 
             <path class="hz-line" d="M362 308 V400" marker-end="url(#hz-in)"/>
             <path class="hz-line" d="M560 308 V400" marker-end="url(#hz-in)"/>
             <!-- Direct, around the Gateway -->
-            <path class="hz-direct" d="M20 176 H8 V370 H128 V400" marker-end="url(#hz-out)"/>
             <path class="hz-direct" d="M807 202 V370 H660 V400" marker-end="url(#hz-out)"/>
           </svg>
         </div>
         <aside class="notes">Two ways in, three hosting arrangements, and model calls that cross them. Solid lines go through the Gateway or are run by the Lab; dashed lines go straight to a provider.
 - Ways in: for the cloud tools, people sign in with CUNY Login, apply (on their own or for a class, slide 9), and the front door then checks CUNY Login, access and allowance on every visit. For local work, people send a request and Lab staff review it before anything touches the GPU server.
-- Cloudflare Workers: PDF Accessibility, Agent Studio, Site Studio, Media Tools, and the Model Gateway itself, plus the sign-in front door. These tools reach models through the Gateway; PDF Accessibility also calls Google Gemini directly. The self-service Media Tools run here; speaker labels run in a Cloudflare container with no outside model.
+- Cloudflare Workers: PDF Accessibility, Agent Studio, Site Studio, Media Tools, and the Model Gateway itself, plus the sign-in front door. These tools reach models through the Gateway. The self-service Media Tools run here; speaker labels run in a Cloudflare container with no outside model.
 - AWS: the Sandbox (Open WebUI on ECS). It calls the Gateway and also keeps a direct Bedrock connection. The public website is also on AWS (Amplify).
 - New Media Lab: the local media pipeline (transcription, speaker labels, image description, OCR) runs on our own GPU server and sends nothing out; it is for material that shouldn't leave the GC, and Lab staff review requests for it. AI Use Disclosure (not drawn) is a static page on the same server and calls no model.
 - The Gateway serves only Workers AI and Amazon Bedrock, open-weight models with zero data retention. We no longer use OpenRouter or Fireworks.
-The conundrum: hosting and model calls don't line up. The AWS-hosted Sandbox reaches Bedrock both through and around the Gateway, and PDF Accessibility calls Gemini outside it.
+The conundrum: hosting and model calls don't line up. The AWS-hosted Sandbox reaches Bedrock both through and around the Gateway, and the local pipeline never leaves our hardware.
 Say aloud what fits the room: Cloudflare is an Enterprise account, and the AWS contract is close but not yet signed.
 Source: cail-knowledge-base (October 12) and the cail-gateway and cail-tools-admission repos. The Sandbox's direct Bedrock connection comes from the knowledge base, not a live check.</aside>
       </section>
