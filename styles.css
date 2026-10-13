@@ -289,3 +289,19 @@
   line-height: 1.4;
   color: var(--body);
 }
+
+/* Workshop series named under a bullet (slide 6). */
+.reveal .series {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+.reveal .series span {
+  padding: 4px 14px;
+  border: 1px solid #c9cfd6;
+  border-radius: 999px;
+  background: var(--bg);
+  font-size: 16pt;
+  color: var(--fg);
+}

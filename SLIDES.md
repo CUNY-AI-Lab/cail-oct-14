@@ -27,7 +27,7 @@ Times are targets. The four sections run about 25 minutes, which leaves about 35
 | 17 | Zach | Configurations for Courses | ACH 22 |
 | 18 | Zach | AmigAI in Spanish Courses | ACH 25 |
 | 19 | Zach | Tools Portal | ACH 38, new screenshot and bullets |
-| 20 | Zach | Access and Outreach | new |
+| 20 | Zach | Who Has Access | new; workshops and fellows moved to slide 6 |
 | 21 | all | Discussion | ACH 47 |
 
 Stefano's section carries the commitments and the long view. Steve's Gateway slide shows where those commitments become working rules, so it does not repeat them. Open weights and zero retention live on slide 3, under the website's Transparency and Privacy by Design; provider switching is spoken on slide 8. Slide 5 names the providers.
