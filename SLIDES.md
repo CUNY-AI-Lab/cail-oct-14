@@ -12,7 +12,7 @@ Times are targets. The four sections run about 25 minutes, which leaves about 35
 | 2 | Stefano | Infrastructure Decisions | new opener |
 | 3 | Stefano | Our Commitments | working outline III; position paper "AI Infrastructure for CUNY, by CUNY" |
 | 4 | Stefano | Handling Requests | working outline II.A, IV |
-| 5 | Stefano | Services We Buy and Run | working outline V.A |
+| 5 | Stefano | Services We Buy and Run | working outline V.A; parallel diagram after cuny-ai-lab.github.io/systems-map, bullets moved to notes |
 | 6 | Stefano | Sustaining and Sharing the Work | working outline V.B; position paper |
 | 7 | Steve | The CAIL Gateway and Agent Tools | new opener |
 | 8 | Steve | The CAIL Gateway | five-slide Gateway deck 01 and 03, merged |

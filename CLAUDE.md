@@ -33,6 +33,8 @@ reveal.js speaker notes inside `index.html`; press `S` to open the speaker view.
   openers, Discussion. The presenter name is `<p class="name">`.
 - `.card` holding an `<h2>` and a `<ul>`: text slide. Keep to four bullets.
 - `.side`: bullets left, picture or diagram right.
+- `.map`: two parallel four-step paths (slide 5), after the public systems map.
+  Filled boxes are run by the Lab, dashed ones by someone else.
 - `.figure` with an `<img class="shot">`, or an `.r-stack` of images with
   `class="fragment"` for click-through steps.
 

@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
-  <link rel="stylesheet" href="styles.css?v=20261013e">
+  <link rel="stylesheet" href="styles.css?v=20261013g">
 </head>
 <body>
   <div class="reveal">
@@ -65,16 +65,44 @@
       </section>
 
       <section class="stefano">
-        <div class="card">
-          <h2>Services We Buy and Run</h2>
-          <ul>
-            <li>We buy inference and cloud hosting from outside companies</li>
-            <li>We control access, model choice and data terms</li>
-            <li>Model developers control training and say little about their data</li>
-            <li>We run our own hardware for material we shouldn&rsquo;t send out</li>
-          </ul>
+        <h2>Services We Buy and Run</h2>
+        <div class="map" role="img" aria-label="Two parallel paths. Services we buy: sign in with CUNY Login, then the Lab's tools, then the model gateway, then commercial hosts with zero retention. Hardware we run: a request to Lab staff, then transcription, speaker labels, image description and OCR, then a private network, then the GPU server in the New Media Lab.">
+          <p class="map-head" style="grid-column: 2;">Services we buy</p>
+          <p class="map-head" style="grid-column: 3;">Hardware we run</p>
+
+          <p class="map-step" style="grid-row: 2;"><span>1</span>Start</p>
+          <div class="map-box map-out" style="grid-row: 2;"><strong>CUNY Login</strong></div>
+          <div class="map-box map-plain" style="grid-row: 2;"><strong>Request to Lab staff</strong></div>
+
+          <p class="map-arrow" style="grid-row: 3; grid-column: 2;" aria-hidden="true">&darr;</p>
+          <p class="map-arrow" style="grid-row: 3; grid-column: 3;" aria-hidden="true">&darr;</p>
+
+          <p class="map-step" style="grid-row: 4;"><span>2</span>Tool</p>
+          <div class="map-box map-tool" style="grid-row: 4;"><span>Sandbox</span><span>Studios</span><span>Media Tools</span><span>Model API</span></div>
+          <div class="map-box map-tool" style="grid-row: 4;"><span>Transcription</span><span>Speaker labels</span><span>Image description</span><span>OCR</span></div>
+
+          <p class="map-arrow" style="grid-row: 5; grid-column: 2;" aria-hidden="true">&darr;</p>
+          <p class="map-arrow" style="grid-row: 5; grid-column: 3;" aria-hidden="true">&darr;</p>
+
+          <p class="map-step" style="grid-row: 6;"><span>3</span>Route</p>
+          <div class="map-box map-core" style="grid-row: 6;"><strong>Model gateway</strong> access and allowance</div>
+          <div class="map-box map-core" style="grid-row: 6;"><strong>Private network</strong> Lab staff only</div>
+
+          <p class="map-arrow" style="grid-row: 7; grid-column: 2;" aria-hidden="true">&darr;</p>
+          <p class="map-arrow" style="grid-row: 7; grid-column: 3;" aria-hidden="true">&darr;</p>
+
+          <p class="map-step" style="grid-row: 8;"><span>4</span>Model</p>
+          <div class="map-box map-out" style="grid-row: 8;"><strong>Commercial hosts</strong> zero retention</div>
+          <div class="map-box map-run" style="grid-row: 8;"><strong>GPU server, New Media Lab</strong> stays at the GC</div>
+
+          <p class="map-legend" style="grid-row: 9;"><span class="map-key map-key-core"></span>Run by the Lab <span class="map-key map-key-out"></span>Run by someone else</p>
         </div>
-        <aside class="notes">The slide names no vendors. Say aloud what fits the room: Cloudflare is an Enterprise account, and the AWS contract is close but not yet signed.
+        <aside class="notes">Left: what most people use. Right: the same kinds of jobs for material we shouldn't send out.
+- We buy inference and cloud hosting from outside companies.
+- We control access, model choice and data terms.
+- Model developers control training and say little about their data.
+- We run our own hardware for material we shouldn't send out.
+The slide names no vendors. Say aloud what fits the room: Cloudflare is an Enterprise account, and the AWS contract is close but not yet signed.
 The lab controls one institutional layer inside a larger commercial system. Published weights expose a model's parameters, but most developers keep their training data and process closed.
 Own hardware: the transcription server in the New Media Lab.</aside>
       </section>
