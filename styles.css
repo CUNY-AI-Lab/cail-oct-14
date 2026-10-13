@@ -289,3 +289,21 @@
   line-height: 1.4;
   color: var(--body);
 }
+
+/* Fellowships and workshops by semester (slide 6). */
+.reveal .terms {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: start;
+}
+.reveal .term { display: flex; flex-direction: column; gap: 10px; }
+.reveal .term-head {
+  margin: 0 0 4px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--accent);
+  font-family: var(--font-display);
+  font-size: 22pt;
+  color: var(--fg);
+}
+.reveal .terms .gw-box p { font-size: 16pt; }
