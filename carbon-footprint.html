@@ -15,5 +15,14 @@
 </head>
 <body>
   <img src="images/carbon-footprint.png" alt="A Sandbox response from Mistral Large 3 with its estimate underneath: 0.19 to 0.31 grams of CO2e, 0.40 to 0.66 watt-hours, about 1.26 breaths">
+  <script>
+    // Keys typed inside the overlay land here, not in the deck, so pass Esc
+    // back to reveal.js through its postMessage API.
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && window.parent !== window) {
+        window.parent.postMessage(JSON.stringify({ method: 'closeOverlay', args: [] }), '*');
+      }
+    });
+  </script>
 </body>
 </html>
