@@ -28,8 +28,8 @@ Times are targets. The four sections run about 25 minutes, which leaves about 35
 | 18 | Zach | Comparing Open-Weight Models | ACH 21 |
 | 19 | Zach | Configurations for Courses | ACH 22 |
 | 20 | Zach | AmigAI in Spanish Courses | ACH 25 |
-| 21 | Zach | Teaching Tools | screenshot supplied October 14, showing Stem Splitter and Systems Mapping |
-| 22 | Zach | Tools Portal | ACH 38, new screenshot and bullets |
+| 21 | Zach | Tools Portal | ACH 38, new screenshot and bullets |
+| 22 | Zach | Teaching Tools | screenshot supplied October 14, showing Stem Splitter and Systems Mapping |
 | 23 | Zach | Who Has Access | new; workshops and fellows moved to slide 8 |
 | 24 | all | Discussion | ACH 47 |
 
@@ -45,4 +45,4 @@ Spoken notes live in the deck as reveal.js speaker notes (`<aside class="notes">
 
 - Slides 18 and 19 show names in the Sandbox sidebars: course channels named after instructors, model-card authors, and two people's names. These came over from the ACH deck. Check them before a public audience.
 - Slide 17's sign-in screenshot is from June and shows an email and password form above the CUNY Login button. Check it against the current sign-in page.
-- The public Tools page (ailab.gc.cuny.edu/tools, Media Processing) still embeds the old transcription GIF, whose privacy notice says files go to Fireworks AI and AssemblyAI. That is a website fix, separate from this deck. Slide 22's screenshot is cropped above the GIF.
+- The public Tools page (ailab.gc.cuny.edu/tools, Media Processing) still embeds the old transcription GIF, whose privacy notice says files go to Fireworks AI and AssemblyAI. That is a website fix, separate from this deck. Slide 21's screenshot is cropped above the GIF.
