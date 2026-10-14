@@ -5,10 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#ffffff">
   <title>CUNY AI Lab, October 14, 2026</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
-  <link rel="stylesheet" href="styles.css?v=20261013w">
+  <link rel="stylesheet" href="styles.css?v=20261013x">
 </head>
 <body>
   <div class="reveal">
@@ -22,6 +24,29 @@
           <p>CUNY Graduate Center, October 14, 2026</p>
         </div>
         <aside class="notes">Luke and Matt open with context, without slides. About 5 to 7 minutes.</aside>
+      </section>
+
+      <section>
+        <h2>Origins</h2>
+        <div class="units">
+          <figure>
+            <div class="unit-mark"><img src="images/units/tlc.png" alt="Teaching and Learning Center logo"></div>
+            <figcaption>Teaching and Learning Center</figcaption>
+          </figure>
+          <figure>
+            <div class="unit-mark"><img src="images/units/gcdi.png" alt="GC Digital Initiatives logo"></div>
+            <figcaption>GC Digital Initiatives</figcaption>
+          </figure>
+          <figure>
+            <div class="unit-mark"><img src="images/units/library.svg" alt="Mina Rees Library logo"></div>
+            <figcaption>Mina Rees Library</figcaption>
+          </figure>
+          <figure>
+            <div class="unit-mark"><img src="images/units/ashp.png" alt="American Social History Project logo"></div>
+            <figcaption>American Social History Project</figcaption>
+          </figure>
+        </div>
+        <aside class="notes">Four Graduate Center units that each took up AI in their own way and came together as the CUNY AI Lab: the Teaching and Learning Center, GC Digital Initiatives, the Mina Rees Library, and the American Social History Project / Center for Media and Learning with its New Media Lab. Slide 5 shows how they came together.</aside>
       </section>
 
       <!-- Stefano Morello -->
@@ -49,7 +74,7 @@
           </dl>
         </div>
         <aside class="notes">The four principles published on the Lab website (ailab.gc.cuny.edu), each with something we already do.
-- Privacy by Design, "we use providers that don't retain or train on user data": cloud models run only on zero-retention hosts, and material we shouldn't send out goes to the GPU server in the New Media Lab (slide 6). Faculty and researchers can use the service without adding their work to a provider's training data.
+- Privacy by Design, "we use providers that don't retain or train on user data": cloud models run only on zero-retention hosts, and material we shouldn't send out goes to the GPU server in the New Media Lab (slide 7). Faculty and researchers can use the service without adding their work to a provider's training data.
 - Transparency, "we prioritize open-weight models that can be examined and understood": click "Model Registry" to open it over the slide; Esc or the X closes it. The Model Registry (ailab.gc.cuny.edu/models) lists each model with its license, capabilities and known limits. Published weights let us get the same model from more than one provider. We offer a closed model only for a specific reason.
 - Environmental Accountability, "tools include visibility into computational costs": the Sandbox shows energy and carbon estimates under each response. They cover inference only, not training.
 - Criticality, "AI literacy over AI dependency": criticality is built into the infrastructure, not added as a lesson on top. Across the tools we try to make the technology legible and keep people doing the thinking, in the classroom and about AI itself. Examples to pick from: visible prompts and side-by-side comparison in the Sandbox, Agent Studio keeping sources and drafts in view, the Registry's stated limits, and published code anyone can inspect.</aside>
@@ -161,7 +186,7 @@ The diagram is a lighter version of the ACH "CALI to CAIL" chart, with the four 
           </svg>
         </div>
         <aside class="notes">One way in, the places the cloud tools run, and model calls that cross them. Solid lines go through the Gateway or are run by the Lab; dashed lines go straight to a provider. The local pipeline is on the next slide.
-- Ways in: for the cloud tools, people sign in with CUNY Login, apply (on their own or for a class, slide 10), and the front door then checks CUNY Login, access and allowance on every visit.
+- Ways in: for the cloud tools, people sign in with CUNY Login, apply (on their own or for a class, slide 11), and the front door then checks CUNY Login, access and allowance on every visit.
 - Cloudflare Workers: PDF Accessibility, Agent Studio, Site Studio, Media Tools, and the Model Gateway itself, plus the sign-in front door. These tools reach models through the Gateway. The self-service Media Tools run here; speaker labels run in a Cloudflare container with no outside model.
 - With a Lab key: API access works from any code or app, on a laptop, a server or another project, with the person's Lab key and allowance. CAIL Pi is one thing it serves: a coding agent in the terminal that reaches the Lab's models through API access.
 - AWS: the Sandbox (Open WebUI on ECS). It calls the Gateway and also keeps a direct Bedrock connection. The public website is also on AWS (Amplify).
@@ -246,7 +271,7 @@ If asked about confidential data: the workstation itself then falls under CUNY's
           <p>Vibe Coding, Sandbox Series, co-working sessions</p>
         </div>
         <aside class="notes">Other universities have asked how CAIL provides model access and decides what to build. Commons In A Box is the CUNY precedent for packaging academic software that other institutions can run and change. CAIL hasn't assembled that kind of package yet.
-Access: all Graduate Center students, faculty and staff can apply. Across the rest of CUNY, access comes mostly through classes (a few faculty and staff from other campuses have individual access). Class access: we open a class when the instructor brings a critical approach to AI and can support their own students, or when we know we can support the course ourselves. Our staff is small; graduate student fellows help us extend that support. Steve says more about class access in a moment (slide 10).
+Access: all Graduate Center students, faculty and staff can apply. Across the rest of CUNY, access comes mostly through classes (a few faculty and staff from other campuses have individual access). Class access: we open a class when the instructor brings a critical approach to AI and can support their own students, or when we know we can support the course ourselves. Our staff is small; graduate student fellows help us extend that support. Steve says more about class access in a moment (slide 11).
 Community of practice, our plan to scale. It includes, among others, graduate student fellows (a February to June 2026 cohort of four, and a 2026–27 call at $10,000 per fellow) test tools, support faculty and their classes, write documentation and help run workshops. Workshop series so far: Vibe Coding, run in spring 2026 (as Coding with Generative AI) and again in fall 2026 (foundations, building a prototype, a bring-your-own-project clinic); in fall 2026 also the Sandbox Series (getting started, knowledge collections, skills and tools) and three drop-in co-working sessions (October 29, November 17, December 3), all in the New Media Lab.
 Procurement: buying for a state university is slow and complicated. Every vendor sees CUNY as an appealing contract. The partners worth having understand the work we do and the limits CUNY works under, and are willing to find creative solutions inside them.</aside>
       </section>

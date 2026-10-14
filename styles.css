@@ -350,3 +350,33 @@
 }
 .reveal .reach li { font-size: 19pt; margin-bottom: 0.5em; }
 .reveal .reach + .cop { margin: 60px 0 auto; }
+
+/* Origins: the four units' logos at equal weight, named underneath. */
+.reveal .units {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  align-items: start;
+  align-content: center;
+}
+.reveal .units figure { margin: 0; text-align: center; }
+.reveal .unit-mark {
+  height: 170px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.reveal .unit-mark img {
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0;
+  object-fit: contain;
+}
+.reveal .units figcaption {
+  margin-top: 26px;
+  font-size: 17pt;
+  line-height: 1.35;
+  color: var(--body);
+}

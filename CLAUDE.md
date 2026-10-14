@@ -7,7 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 The reveal.js slide deck for the **CUNY AI Lab session on October 14, 2026**
 (about 4:15 to 5:20): context from Luke Waltzer and Matthew K. Gold (no slides),
 then Stefano Morello, Stephen Zweibel and Zach Muhlbauer, then discussion.
-22 slides. It reuses images from the ACH 2026 deck (`../ach-2026`) and a
+23 slides. It reuses images from the ACH 2026 deck (`../ach-2026`) and a
 light version of its cali-narst look.
 
 `SLIDES.md` is the manifest (order, sources, open items). Spoken notes are
@@ -34,10 +34,12 @@ reveal.js speaker notes inside `index.html`; press `S` to open the speaker view.
 - `class="opener"` on a section, with a `.card` inside: title slide, section
   openers, Discussion. The presenter name is `<p class="name">`.
 - `.card` holding an `<h2>` and a `<ul>`: text slide. Keep to four bullets.
-- `.principles` (a `<dl>` in a `.card`, slide 3): the website's four guiding
+- `.units` (slide 2, Origins): the four units' logos in `images/units/`, named
+  underneath.
+- `.principles` (a `<dl>` in a `.card`, slide 4): the website's four guiding
   principles as `<dt>`, what the Lab does about each as `<dd>`.
 - `.side`: bullets left, picture or diagram right.
-- `.hosts` (slides 5 and 6): inline SVGs of where the tools run and of the
+- `.hosts` (slides 6 and 7): inline SVGs of where the tools run and of the
   local pipeline. Navy boxes are run
   by the Lab; solid lines go through the Gateway, dashed ones straight to a
   provider.
