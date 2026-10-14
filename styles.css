@@ -380,3 +380,13 @@
   line-height: 1.35;
   color: var(--body);
 }
+
+/* Embedded video, 16:9, as large as the slide allows. */
+.reveal .video {
+  width: min(100%, 960px);
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: 10px;
+  background: #111111;
+  box-shadow: 0 12px 34px rgba(20, 24, 31, 0.18);
+}

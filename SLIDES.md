@@ -30,7 +30,7 @@ Times are targets. The four sections run about 25 minutes, which leaves about 35
 | 20 | Zach | AmigAI in Spanish Courses | ACH 25 |
 | 21 | Zach | Tools Portal | ACH 38, new screenshot and bullets |
 | 22 | Zach | Teaching Tools | screenshot supplied October 14, showing Stem Splitter and Systems Mapping |
-| 23 | Zach | Who Has Access | new; workshops and fellows moved to slide 8 |
+| 23 | Zach | Demo | Vimeo video 1231478071, embedded; replaced the Who Has Access slide October 14 |
 | 24 | all | Discussion | ACH 47 |
 
 Stefano's section carries the commitments and the long view. Steve's Gateway slide shows where those commitments become working rules, so it does not repeat them. Open weights and zero retention live on slide 4, under the website's Transparency and Privacy by Design; provider switching is spoken on slide 10. Slide 6 names the providers.
